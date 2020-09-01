@@ -1,0 +1,309 @@
+{
+  "keys": "E:\\project\\pipishu\\pipishuhu_backend\\config\\config.default.js",
+  "multipart": {
+    "mode": "E:\\project\\pipishu\\pipishuhu_backend\\config\\config.default.js",
+    "autoFields": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "defaultCharset": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "fieldNameSize": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "fieldSize": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "fields": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "fileSize": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "files": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "fileExtensions": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "whitelist": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "tmpdir": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js",
+    "cleanSchedule": {
+      "cron": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-multipart@2.10.3@egg-multipart\\config\\config.default.js"
+    }
+  },
+  "security": {
+    "csrf": {
+      "enable": "E:\\project\\pipishu\\pipishuhu_backend\\config\\config.default.js",
+      "ignoreJSON": "E:\\project\\pipishu\\pipishuhu_backend\\config\\config.default.js",
+      "type": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "useSession": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "cookieName": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "sessionName": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "headerName": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "bodyName": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "queryName": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "refererWhiteList": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "domainWhiteList": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+    "protocolWhiteList": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+    "defaultMiddleware": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+    "xframe": {
+      "enable": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "value": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "hsts": {
+      "enable": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.local.js",
+      "maxAge": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "includeSubdomains": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "dta": {
+      "enable": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "noopen": {
+      "enable": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "nosniff": {
+      "enable": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "referrerPolicy": {
+      "enable": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "value": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "xssProtection": {
+      "enable": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "value": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "csp": {
+      "enable": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "policy": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    },
+    "ssrf": {
+      "ipBlackList": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js",
+      "checkAddress": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+    }
+  },
+  "middleware": "E:\\project\\pipishu\\pipishuhu_backend\\config\\config.default.js",
+  "mysql": {
+    "client": {
+      "host": "E:\\project\\pipishu\\pipishuhu_backend\\config\\config.default.js",
+      "port": "E:\\project\\pipishu\\pipishuhu_backend\\config\\config.default.js",
+      "user": "E:\\project\\pipishu\\pipishuhu_backend\\config\\config.default.js",
+      "password": "E:\\project\\pipishu\\pipishuhu_backend\\config\\config.default.js",
+      "database": "E:\\project\\pipishu\\pipishuhu_backend\\config\\config.default.js"
+    },
+    "default": {
+      "database": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-mysql@3.0.0@egg-mysql\\config\\config.default.js",
+      "connectionLimit": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-mysql@3.0.0@egg-mysql\\config\\config.default.js"
+    },
+    "app": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-mysql@3.0.0@egg-mysql\\config\\config.default.js",
+    "agent": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-mysql@3.0.0@egg-mysql\\config\\config.default.js"
+  },
+  "session": {
+    "maxAge": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-session@3.2.0@egg-session\\config\\config.default.js",
+    "key": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-session@3.2.0@egg-session\\config\\config.default.js",
+    "httpOnly": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-session@3.2.0@egg-session\\config\\config.default.js",
+    "encrypt": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-session@3.2.0@egg-session\\config\\config.default.js"
+  },
+  "helper": {
+    "shtml": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-security@2.8.0@egg-security\\config\\config.default.js"
+  },
+  "jsonp": {
+    "limit": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-jsonp@2.0.0@egg-jsonp\\config\\config.default.js",
+    "callback": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-jsonp@2.0.0@egg-jsonp\\config\\config.default.js",
+    "csrf": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-jsonp@2.0.0@egg-jsonp\\config\\config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-onerror@2.1.0@egg-onerror\\config\\config.default.js",
+    "appErrorFilter": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-onerror@2.1.0@egg-onerror\\config\\config.default.js",
+    "templatePath": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-onerror@2.1.0@egg-onerror\\config\\config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-i18n@2.1.1@egg-i18n\\config\\config.default.js",
+    "dirs": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-i18n@2.1.1@egg-i18n\\config\\config.default.js",
+    "queryField": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-i18n@2.1.1@egg-i18n\\config\\config.default.js",
+    "cookieField": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-i18n@2.1.1@egg-i18n\\config\\config.default.js",
+    "cookieDomain": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-i18n@2.1.1@egg-i18n\\config\\config.default.js",
+    "cookieMaxAge": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-i18n@2.1.1@egg-i18n\\config\\config.default.js"
+  },
+  "watcher": {
+    "type": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-watcher@3.1.1@egg-watcher\\config\\config.local.js",
+    "eventSources": {
+      "default": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-watcher@3.1.1@egg-watcher\\config\\config.default.js",
+      "development": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-watcher@3.1.1@egg-watcher\\config\\config.default.js"
+    }
+  },
+  "customLogger": {
+    "scheduleLogger": {
+      "consoleLevel": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-schedule@3.6.4@egg-schedule\\config\\config.default.js",
+      "file": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-schedule@3.6.4@egg-schedule\\config\\config.default.js"
+    }
+  },
+  "schedule": {
+    "directory": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-schedule@3.6.4@egg-schedule\\config\\config.default.js"
+  },
+  "development": {
+    "watchDirs": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-development@2.6.0@egg-development\\config\\config.default.js",
+    "ignoreDirs": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-development@2.6.0@egg-development\\config\\config.default.js",
+    "fastReady": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-development@2.6.0@egg-development\\config\\config.default.js",
+    "reloadOnDebug": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-development@2.6.0@egg-development\\config\\config.default.js",
+    "overrideDefault": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-development@2.6.0@egg-development\\config\\config.default.js"
+  },
+  "logrotator": {
+    "filesRotateByHour": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-logrotator@3.1.0@egg-logrotator\\config\\config.default.js",
+    "hourDelimiter": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-logrotator@3.1.0@egg-logrotator\\config\\config.default.js",
+    "filesRotateBySize": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-logrotator@3.1.0@egg-logrotator\\config\\config.default.js",
+    "maxFileSize": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-logrotator@3.1.0@egg-logrotator\\config\\config.default.js",
+    "maxFiles": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-logrotator@3.1.0@egg-logrotator\\config\\config.default.js",
+    "rotateDuration": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-logrotator@3.1.0@egg-logrotator\\config\\config.default.js",
+    "maxDays": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-logrotator@3.1.0@egg-logrotator\\config\\config.default.js"
+  },
+  "static": {
+    "prefix": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-static@2.2.0@egg-static\\config\\config.default.js",
+    "dir": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-static@2.2.0@egg-static\\config\\config.default.js",
+    "dynamic": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-static@2.2.0@egg-static\\config\\config.default.js",
+    "preload": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-static@2.2.0@egg-static\\config\\config.default.js",
+    "buffer": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-static@2.2.0@egg-static\\config\\config.default.js",
+    "maxFiles": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-static@2.2.0@egg-static\\config\\config.default.js"
+  },
+  "view": {
+    "root": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-view@2.1.2@egg-view\\config\\config.default.js",
+    "cache": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-view@2.1.2@egg-view\\config\\config.local.js",
+    "defaultExtension": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-view@2.1.2@egg-view\\config\\config.default.js",
+    "defaultViewEngine": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-view@2.1.2@egg-view\\config\\config.default.js",
+    "mapping": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg-view@2.1.2@egg-view\\config\\config.default.js"
+  },
+  "env": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "name": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "cookies": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "proxy": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "maxIpsCount": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "maxProxyCount": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "protocolHeaders": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "ipHeaders": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "hostHeaders": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "pkg": {
+    "name": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "version": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "description": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "private": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "egg": {
+      "declarations": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+    },
+    "dependencies": {
+      "egg": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "egg-mysql": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "egg-scripts": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+    },
+    "devDependencies": {
+      "autod": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "autod-egg": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "egg-bin": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "egg-ci": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "egg-mock": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "eslint": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "eslint-config-egg": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+    },
+    "engines": {
+      "node": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+    },
+    "scripts": {
+      "start": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "stop": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "dev": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "debug": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "test": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "test-local": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "cov": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "lint": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "ci": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "autod": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+    },
+    "ci": {
+      "version": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+    },
+    "repository": {
+      "type": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "url": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+    },
+    "author": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "license": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+  },
+  "baseDir": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "HOME": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "rundir": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "dump": {
+    "ignore": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "notFound": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "sitefile": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "middlewares": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "httpClient": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+  },
+  "siteFile": {
+    "/favicon.ico": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+  },
+  "bodyParser": {
+    "enable": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "encoding": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "formLimit": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "jsonLimit": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "textLimit": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "strict": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "queryString": {
+      "arrayLimit": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "depth": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "parameterLimit": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+    },
+    "onerror": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+  },
+  "logger": {
+    "dir": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "encoding": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "env": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "level": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "consoleLevel": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "disableConsoleAfterReady": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "outputJSON": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "buffer": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "appLogName": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "coreLogName": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "agentLogName": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "errorLogName": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "coreLogger": {
+      "consoleLevel": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.local.js"
+    },
+    "allowDebugAtProd": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "dnsCacheLookupInterval": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "dnsCacheMaxLength": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "request": {
+      "timeout": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "freeSocketTimeout": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "maxSockets": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "maxFreeSockets": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "freeSocketTimeout": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "maxSockets": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "maxFreeSockets": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+    }
+  },
+  "meta": {
+    "enable": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "logging": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+  },
+  "coreMiddleware": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "workerStartTimeout": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "serverTimeout": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "port": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+      "hostname": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+    }
+  },
+  "clusterClient": {
+    "maxWaitTime": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js",
+    "responseTimeout": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+  },
+  "onClientError": "E:\\project\\pipishu\\pipishuhu_backend\\node_modules\\_egg@2.27.0@egg\\config\\config.default.js"
+}

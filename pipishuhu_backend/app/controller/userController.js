@@ -29,7 +29,7 @@ class UserController extends Controller {
         ctx.body = await this.ctx.service.userService.getUserInf();
     }
     //ZY// 根据用户id获取用户信息
-    async getUserAlbum() {
+    async getAnuserInf() {
         const { ctx } = this;
         let u_id = this.ctx.request.query.u_id;
         ctx.body = await this.ctx.service.userService.getUserAlbum(u_id);
