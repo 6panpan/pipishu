@@ -1,23 +1,33 @@
 # pipishu
 
-## 前端
+## 后端
 
 ### 项目搭建
 
 ```
-npm install
+cnpm install
 ```
 
 ### 热加载
 
 ```
-npm run serve
+cnpm run dev
 ```
 
-### 静态编译
+
+
+## 前端
+
+### 项目搭建
 
 ```
-npm run build
+cnpm install
+```
+
+### 热加载
+
+```
+cnpm run serve
 ```
 
 ### 自定义配置
