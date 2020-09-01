@@ -27,7 +27,3 @@ cnpm install
 ```
 cnpm run serve
 ```
-
-### 自定义
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
