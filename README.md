@@ -14,8 +14,6 @@ cnpm install
 cnpm run dev
 ```
 
-
-
 ## 前端
 
 ### 项目搭建
@@ -30,6 +28,6 @@ cnpm install
 cnpm run serve
 ```
 
-### 自定义配置
+### 自定义
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
