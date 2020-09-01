@@ -41,5 +41,12 @@ class AlbumService extends Service {
         let list = await this.ctx.app.mysql.query(sql, [album_id]);
         return list;
     }
+
+
+    async getAlbumByKind(kind) {
+		let sql="select * from album,user where u_id=user_id and kind=? order by album_amount desc limit 0,10;"
+		let list = await this.ctx.app.mysql.query(sql,[kind]);
+		return list;
+  }
 }
 module.exports = AlbumService;

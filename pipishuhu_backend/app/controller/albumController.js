@@ -38,6 +38,14 @@ class AlbumController extends Controller {
         let album_id = this.ctx.request.query.album_id;
         ctx.body = await this.ctx.service.albumService.getoneAlbum(album_id);
     }
+
+
+    
+    async getAlbumByKind() {
+        const { ctx } = this;
+        let kind=this.ctx.request.query.kind;
+        ctx.body = await this.ctx.service.albumService.getAlbumByKind(kind)
+    }
 }
 
 module.exports = AlbumController;

@@ -49,4 +49,7 @@ module.exports = app => {
     // router.post("/delAlbum", controller.followController.delAlbum);
     //ZY// 获取粉丝数
     router.get("/getfollow", controller.followController.getfollow);
+
+
+    router.get('/getAlbumByKind', controller.albumController.getAlbumByKind);
 };

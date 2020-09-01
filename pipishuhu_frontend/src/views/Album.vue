@@ -1,12 +1,22 @@
 <template>
-    <div class="home">
-        <h1>这里是home</h1>
-    </div>
-</template>
+  <div>
+    <ranking></ranking>
+  </div>
+</template> 
 
 <script>
+
+import ranking from "../components/ranking.vue";
 export default {
-    name: "Home",
-    components: {},
+  components: { 
+    ranking,
+  },
+  created(){
+  },
+  methods:{
+  }
 };
 </script>
+
+<style>
+</style>

@@ -8,8 +8,10 @@ Vue.prototype.$http = axios;
 import "normalize.css";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-Vue.use(ElementUI);
 
+import '../public/font/iconfont.css';
+Vue.use(ElementUI);
+Vue.prototype.$http = axios
 Vue.config.productionTip = false;
 
 new Vue({
