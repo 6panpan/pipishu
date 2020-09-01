@@ -26,6 +26,8 @@ module.exports = app => {
     router.get("/getUserAlbum", controller.albumController.getUserAlbum);
     //ZY// 根据专辑id获取专辑
     router.get("/getoneAlbum", controller.albumController.getoneAlbum);
+    // 取出播放量最多的前10位专辑
+    router.get('/getRankAlbumTen', controller.albumController.getRankAlbumTen); 
 
     //音频相关路由
     //CR// 获取所有音频

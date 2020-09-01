@@ -53,6 +53,11 @@ class AlbumController extends Controller {
             let kind=this.ctx.request.query.kind;
             ctx.body = await this.ctx.service.albumService.getAlbumByKind(kind)
         }
+        // 按播放量取出前10的专辑
+        async getRankAlbumTen() {
+            const { ctx } = this;
+            ctx.body = await this.ctx.service.albumService.getRankAlbumTen()
+        } 
 }
 module.exports = AlbumController
 

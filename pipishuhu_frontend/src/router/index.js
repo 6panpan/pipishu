@@ -1,11 +1,18 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import album from '../views/album.vue'
 import rankcon from '../views/rankcon.vue'
 import rankconItem from '../components/rankconItem.vue'
 import rankItemXiangSheng from '../components/rankItemXiangSheng.vue'
 import rankItemYuLe from '../components/rankItemYuLe.vue'
 import rankItemErTong from '../components/rankItemErTong.vue'
+import youshengshu from "../components/youshengshu/youshengshu.vue";
+import youshengintr from "../components/albumlist/youshengintr.vue";
+import searchPage from "../components/search/searchPage.vue";
+import searchAlbum from "../components/search/searchAlbum.vue";
+import searchAll from "../components/search/searchAll.vue";
+import searchShengyin from "../components/search/searchShengyin.vue";
+import searchZhubo from "../components/search/searchZhubo.vue";
+
 Vue.use(VueRouter);
 
 const Album = () => import("../views/Album");
@@ -56,6 +63,31 @@ const routes = [
         ],
 
     },
+    // 有声书
+  {
+    path: '/youshengshu',
+    component: youshengshu,
+    children:[
+      // {path: "id", component: albumPage}
+    ],
+  },
+  {
+    path: '/youshengintr/:album_id',  
+    component: youshengintr,
+    // youshengintr是周月的组件
+  },
+  // 搜索板块
+  {
+    path: '/search/:kw', 
+    component: searchPage,
+    children: [
+      { path: "p1", component: searchAll },
+      { path: "p2", component: searchAlbum },
+      { path: "p3", component: searchShengyin },
+      { path: "p4", component: searchZhubo },
+      {path:'/', redirect: 'p1'}
+    ],
+  },
 ];
 
 const router = new VueRouter({
