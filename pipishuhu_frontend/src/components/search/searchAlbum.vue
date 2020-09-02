@@ -14,7 +14,6 @@
     <div id="btnBox">
       <button class="btn" @click="pagenum" v-for="(item,index) in page" :key="index">{{index+1}}</button>
     </div>
-
   </div>
 </template> 
  
@@ -35,7 +34,7 @@ export default {
   components: {
     toptypeof,
   },
-  created() {
+  mounted() {
     // 取出用户信息
     this.$http
       .get("http://localhost:7001/getUserInf", {})
@@ -48,17 +47,16 @@ export default {
         this.getAllAlbum();
       })
       .catch((err) => {
-        alert(222);
+        console.log(222);
       });
   },
   methods: {
-    // 取出前部符合条件的专辑
     getAllAlbum() {
       this.$http
         .get("http://localhost:7001/getAllAlbum", {})
         .then((res) => {
-          // 取出全部专辑
           this.list = res.data;
+          // console.log(this.list)
 
           //给专辑添加所属用户名
           this.list.forEach((el1) => {
@@ -68,23 +66,25 @@ export default {
               }
             });
           });
+          // this.getAudio();
 
           //专辑名称有关键字
           this.mylist = this.list.filter((el) => {
             return el.album_name.indexOf(`${this.$route.params.kw}`) != -1;
           });
+          
           //专辑发布者有关键字
-          this.mylist = this.mylist.concat(
-            this.list.filter((el) => {
-              return el.nickname.indexOf(`${this.$route.params.kw}`) != -1;
-            })
-          );
+          // this.mylist = this.mylist.concat(
+          //   this.list.filter((el) => {
+          //     return el.nickname.indexOf(`${this.$route.params.kw}`) != -1;
+          //   })
+          // );
+
           this.page = Math.ceil(this.mylist.length / 5);
           this.pagelist = this.mylist.slice(0, 5);
-          // this.pagenum();
         })
         .catch((err) => {
-          alert("axios请求失败44");
+          // console.log("axios请求失败取全");
         });
     },
 
@@ -92,8 +92,8 @@ export default {
     //  1   5*0-5*1   5*(num-1)---5*num
     //  2   5*1-5*2
     pagenum(el) {
-      console.log(this.mylist)
-      console.log(el);
+      // console.log(this.mylist);
+      // console.log(el);
       let num = el ? el.target.innerHTML : 1;
       this.pagelist = this.mylist.slice(5 * (num - 1), num * 5);
     },

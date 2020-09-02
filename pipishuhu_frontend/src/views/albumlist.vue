@@ -54,8 +54,11 @@ export default {
     },
     // 跳search
     searchKw(el) {
-      // console.log(el.target.innerHTML)
-      let path = `/search/${el.target.innerHTML}`;
+      console.log(el.target.innerHTML)
+      let path;
+      if (el.target.innerHTML.length < 10) {
+        path = `/search/${el.target.innerHTML}`;
+      }
       if (path) {
         this.$router.push(path);
       }

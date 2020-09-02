@@ -38,7 +38,7 @@ export default {
   methods: {
     enterAlbum(el) {
       // console.log(el);
-      let path;
+      let path; 
       let kind = el.kind;
 
       switch (kind) {
@@ -48,7 +48,7 @@ export default {
         default:
           break;
       }
-      if (path) {
+      if (path) { 
         this.$router.push(path);
       }
     },

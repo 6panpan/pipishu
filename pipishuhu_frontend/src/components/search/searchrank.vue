@@ -1,15 +1,14 @@
 <template>
   <div id="box" v-if="ranklist.length">
     <slot></slot>
-
     <div class="rankBox">
       <div class="rankitem" v-for="(item,index) in ranklist" :key="item.id">
         <div class="bothOrder">{{index+1}}</div>
-        <span>{{item.album_name}}</span>
+        <span @click="enterAlbum(item)">{{item.album_name}}</span>
       </div>
     </div>
   </div>
-</template> 
+</template>  
  
 <script>
 export default {
@@ -20,8 +19,26 @@ export default {
       },
     },
   },
-  mounted() {},
-  methods: {},
+  methods: {
+    enterAlbum(albumInf) {
+      console.log(albumInf);
+      // /专辑类别/专辑id
+      let path;
+      switch (albumInf.kind) {
+        case "有声书":
+          path = `/youshengintr/${albumInf.album_id}`;
+          break;
+        case "娱乐":
+          path = `/yule/${albumInf.album_id}`;
+          break;
+        default:
+          break;
+      }
+      if(path){
+        this.$router.push(path);
+      }
+    },
+  },
 };
 </script>
 
@@ -43,6 +60,10 @@ export default {
   margin-right: 10px;
   text-align: center;
   float: left;
+}
+
+.rankBox {
+  cursor: pointer;
 }
 
 .rankBox .rankitem:nth-child(1) div {

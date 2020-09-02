@@ -48,7 +48,7 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           let list = res.data;
           this.albnum1 = list.slice(0, 3);
           this.albnum2 = list.slice(4, 6);
