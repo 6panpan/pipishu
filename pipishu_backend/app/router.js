@@ -2,9 +2,11 @@ module.exports = app => {
     const { router, controller } = app;
     //用户相关路由
     //// 注册
-    // router.post("/regist", controller.userController.regist);
+    router.post("/regist", controller.userController.regist);
     //// 登录
-    // router.post("/login", controller.userController.login);
+    router.post("/login", controller.userController.login);
+    // 获取图片
+    router.post('/upload', controller.uploadController.upload);
     //// 注销
     // router.post("/logout", controller.userController.logout);
     //CR// 获取用户信息

@@ -1,6 +1,7 @@
 <template>
-
   <div>
+    <LoginWindow :p="z"></LoginWindow>
+    <Rotation></Rotation>
     <lovealbum></lovealbum>
     <albumlist :item="item" v-for="item in type" :key="item.id"></albumlist>
     <ranking></ranking>
@@ -8,12 +9,13 @@
 </template> 
 
 <script>
-
+import Rotation from "./Rotation";
+import LoginWindow from "./LoginWindow";
 import albumlist from "./albumlist.vue";
 import lovealbum from "./lovealbum.vue";
 import ranking from "../components/ranking.vue";
 export default {
-  data:function(){
+  data: function () {
     return {
       type: [
         {
@@ -95,17 +97,31 @@ export default {
           ],
         },
       ],
-    }
+      z: false,
+    };
   },
   components: {
     lovealbum,
     albumlist,
     ranking,
+    Rotation: Rotation,
+    LoginWindow: LoginWindow,
   },
-  created(){
+  created() {},
+  methods: {},
+  beforeRouteLeave(to, from, next) {
+    if (to.path == "/my") {
+      console.log(document.cookie);
+      if (document.cookie) {
+        next();
+      } else {
+        this.z = true;
+        console.log(this.z);
+      }
+    } else {
+      next();
+    }
   },
-  methods:{
-  }
 };
 </script>
 
