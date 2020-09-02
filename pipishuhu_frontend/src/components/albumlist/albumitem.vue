@@ -3,12 +3,10 @@
     <div id="albumImg">
       <img :src="el.album_url" alt />
       <img id="loadImg" :src="loadImgsrc" alt />
-      <!-- <audio src=""></audio> -->
     </div>
-
+ 
     <span id="amount">
       <i class="el-icon-service"></i>
-      <!-- {{el.album_amount}} -->
       <span class="tubiao" v-if="el.album_amount.toString().length<5">{{el.album_amount}}</span>
       <span
         class="tubiao"
@@ -51,7 +49,7 @@ export default {
           break;
       }
       if (path) {
-        // this.$router.push(path);
+        this.$router.push(path);
       }
     },
     // 取出用户信息

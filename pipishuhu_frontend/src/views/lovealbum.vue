@@ -31,7 +31,6 @@ export default {
       .get("http://localhost:7001/getUserInf", {})
       .then((res) => {
         this.userArr = res.data;
-
         this.getAlbum("娱乐");
       }) 
       .catch((err) => {});
@@ -40,6 +39,7 @@ export default {
     changePath() {
       this.i = this.i > this.list.length / 5 ? 0 : this.i + 5;
       this.mylist = this.list.slice(this.i, this.i + 5);
+      console.log(this.list)
     },
     getAlbum(kind) {
       this.$http
@@ -50,15 +50,16 @@ export default {
         }) 
         .then((res) => {
           this.list = res.data;
-          this.mylist = this.list.slice(this.i, this.i + 5);
-
-          this.mylist.forEach((el1) => {
+          
+          this.list.forEach((el1) => {
             this.userArr.forEach((el2) => {
               if (el1.u_id == el2.user_id) {
                 el1.nickname = el2.nickname;
               }
             });
           });
+
+          this.mylist = this.list.slice(this.i, this.i + 5);
         })
         .catch((err) => {
           alert("axios请求失败");

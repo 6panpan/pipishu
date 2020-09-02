@@ -6,11 +6,20 @@ import rankItemXiangSheng from '../components/rankItemXiangSheng.vue'
 import rankItemYuLe from '../components/rankItemYuLe.vue'
 import rankItemErTong from '../components/rankItemErTong.vue'
 import youshengshu from "../components/youshengshu/youshengshu.vue";
+
+import youshengintr from "../components/youshengintr.vue";
+
+
 import searchPage from "../components/search/searchPage.vue";
 import searchAlbum from "../components/search/searchAlbum.vue";
 import searchAll from "../components/search/searchAll.vue";
 import searchShengyin from "../components/search/searchShengyin.vue";
 import searchZhubo from "../components/search/searchZhubo.vue";
+
+import zhubo from "../components/zhubo.vue"
+import userAlbum from "../components/zhubo/userAlbum.vue"
+import userfans from "../components/zhubo/userfans.vue"
+import userfollow from "../components/zhubo/userfollow.vue"
 
 Vue.use(VueRouter);
 
@@ -18,7 +27,7 @@ const Album = () => import("../views/Album");
 const My = () => import("../views/My");
 const Download = () => import("../views/Download");
 const Search = () => import("../views/Search");
-const Zhubo = () => import("../views/Zhubo");
+const Center = () => import("../views/Center");
 
 const routes = [
     //首页
@@ -43,10 +52,10 @@ const routes = [
         path: "/search",
         component: Search,
     },
-    //个人中心
+    //个人中心 
     {
-        path: "/zhubo",
-        component: Zhubo,
+        path: "/center",
+        component: Center,
     },
     {
         path: '/rankcon',
@@ -70,11 +79,10 @@ const routes = [
       // {path: "albumid", component: albumPage}
     ],
   },
-  // {
-  //   path: '/youshengintr/:album_id',  
-  //   component: youshengintr,
-  //   // youshengintr是周月的组件
-  // },
+  {
+    path: '/youshengintr/:album_id',  
+    component: youshengintr,
+  },
   // 搜索板块
   {
     path: '/search/:kw', 
@@ -86,6 +94,17 @@ const routes = [
       { path: "p4", component: searchZhubo },
       {path:'/', redirect: 'p1'}
     ],
+  },
+
+  {
+    path: '/zhubo/:u_id', 
+    component: zhubo,
+    children:[
+      {path:"userAlbum",component:userAlbum},
+      {path:"userfans",component:userfans},
+      {path:"userfollow",component:userfollow},
+      // {path:"userAlbum",component:userAlbum}
+    ]
   },
 ];
 
