@@ -7,14 +7,14 @@
         <img class="headimg" :src="userinf[0].userimg" alt />
         <span>{{userinf[0].nickname}}</span>
       </div>
-      <div class="userinf" v-if="follower[0]">
-          <span>粉丝数：{{follower[0]['count(ufans_id)']}}万</span>
+      <div class="userinf" v-if="1">
+          <span>粉丝数：{{follower}}</span>
           <span>专辑数：{{AlbumNum}}</span><br><br>
           <p class="userintr" v-if="userinf[0]">简介：{{userinf[0].userintr}}</p>
       </div>
     </div>
     <div class="bottombox">
-      <div class="bottom1"><span class="span1"><i class="el-icon-video-play"></i>TA的专辑</span><span class="span2" @click="toUserAlbum">更多</span></div>
+      <div class="bottom1"><span class="span1" @click="toUserAlbum(userinf)"><i class="el-icon-video-play"></i>TA的专辑</span><span class="span2" @click="toUserAlbum(userinf)">更多</span></div>
       <hr>
       <br>
       <div class="showAlbum">
@@ -101,7 +101,8 @@ export default {
         })
         .then((res) => {
             // console.log(res.data);
-          this.follower=res.data;
+          this.follower=res.data.length;
+          console.log(this.follower);
           
         //   console.log(this.userinf);
         })
@@ -141,14 +142,19 @@ export default {
     //
      toUserMain(userinf){
       //  console.log(userinf[0].user_id);
-       let path=`/zhubo/${userinf[0].user_id}`
+       let path=`/zhubo/${userinf[0].user_id}/userindex`
+       document.cookie="activename=first"
        if (path) {
         this.$router.push(path);
         this.$router.go(0)
       }
     },
-    toUserAlbum(){
-
+    toUserAlbum(userinf){
+      let path=`/zhubo/${userinf[0].user_id}/userAlbum`
+      document.cookie="activename=second"
+      if (path) {
+        this.$router.push(path);
+      }
     },
    
   },

@@ -21,6 +21,7 @@ import zhubo from "../components/zhubo.vue"
 import userAlbum from "../components/zhubo/userAlbum.vue"
 import userfans from "../components/zhubo/userfans.vue"
 import userfollow from "../components/zhubo/userfollow.vue"
+import userindex from "../components/zhubo/userindex.vue"
 
 import subscribed from "../components/my/subscribed.vue"
 import listened from "../components/my/listened.vue"
@@ -124,7 +125,7 @@ const routes = [
       {path:"userAlbum",component:userAlbum},
       {path:"userfans",component:userfans},
       {path:"userfollow",component:userfollow},
-      // {path:"userAlbum",component:userAlbum}
+      {path:"userindex",component:userindex}
     ]
   },
 ];

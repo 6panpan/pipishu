@@ -230,6 +230,12 @@ export default {
 </script>
 
 <style scoped>
+a{
+  text-decoration: none;
+}
+a:hover{
+  color: #3cced0;
+}
 .title {
   margin: 10px 10px;
 }
@@ -294,9 +300,7 @@ export default {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-/* .bottombox span{
-  display: inline-block;
-  width:710px ;
-  word-wrap:normal
-} */
+.btn img:hover{
+  cursor: pointer;
+}
 </style>

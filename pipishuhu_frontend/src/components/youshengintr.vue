@@ -32,7 +32,7 @@ export default {
   height: 100px;
   position: absolute;
   top:560px;
-  left: 1000px;
+  left: 1040px;
 }
 .youshengintr1{
     width: 780px;
@@ -46,10 +46,11 @@ export default {
     left: 1000px;
     margin-top: 69px;
     overflow: hidden;
+    margin-left: 30px;
 }
 .box{
-    width: 100vw;
-    /* height: 2000px; */
+    width: 1500px;
+    height: 968px;
     position: relative;
 }
 .youshengintr3{

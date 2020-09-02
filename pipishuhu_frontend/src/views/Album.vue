@@ -146,11 +146,11 @@ export default {
 </script>
 
 <style scoped>
-.rightbox {
-  top: 260px;
-  position: absolute;
-  left: 904px;
-}
+  .rightbox{
+    top:300px;
+    position: absolute;
+    left: 1050px;
+  }
 #contentBox {
   width: 1120px;
   position: relative;
@@ -159,4 +159,5 @@ export default {
 #middleListBox {
   margin-left: 10px;
 }
+
 </style>
