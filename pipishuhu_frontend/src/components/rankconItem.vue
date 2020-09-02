@@ -24,9 +24,13 @@
         <div class="list-right-foot">
           <div class="latest-audio">{{item.latest_audio}}</div>
 
-          <div class="detailed-album">专辑详情</div>
+          <div class="detailed-album" @click="ToAlbumCon(item.album_id)">专辑详情</div>
 
-          <div v-if="item.collect==0" class="album-not-collect" @click="addcollect(item.album_id)">收藏</div>
+          <div
+            v-if="item.collect==0"
+            class="album-not-collect"
+            @click="addcollect(item.album_id)"
+          >收藏</div>
           <div v-else class="album-collect" @click="delcollect(item.album_id)">已收藏</div>
         </div>
       </span>
@@ -60,10 +64,18 @@ export default {
     },
 
     // 点击删除收藏
-    delcollect: function(al_id) {
+    delcollect: function (al_id) {
       console.log(al_id);
       this.delCollect11(this.id, al_id);
     },
+    // 点击跳转详情
+    ToAlbumCon: function (al_id) {
+      let path = `/youshengintr/${al_id}`;
+      if (path) {
+        this.$router.push(path);
+      }
+    },
+
     // 获取用户登录信息
     getUser(id, albumID) {
       this.$http
@@ -176,8 +188,6 @@ export default {
         });
     },
 
-    // 点击获取
-
     // 点击添加收藏
     addCollect11(us_id, al_id) {
       this.$http
@@ -268,6 +278,9 @@ img {
 .list-item:hover .bofang-Icon {
   display: inline-block;
 }
+.list-item:hover .list-album-name {
+   color: #6eccce;
+}
 
 .list-right {
   width: 890px;
@@ -283,6 +296,7 @@ img {
   color: #40404c;
   margin-bottom: 5px;
 }
+
 .tubiao {
   font-size: 10px;
   margin-right: 2px;

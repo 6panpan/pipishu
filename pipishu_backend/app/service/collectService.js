@@ -19,7 +19,7 @@ class CollectService extends Service {
     }
     // 获取用户收藏专辑id
     async getUserCollect (us_id,albumID) {
-        let sql = `select * from collect where us_id=${us_id} and al_id in(${albumID.toString()})`;
+        let sql = `select * from collect where us_id=${us_id} and al_id in(${albumID})`;
         let r = await this.ctx.app.mysql.query(sql);
         return r;
     }
