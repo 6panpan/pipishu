@@ -5,10 +5,10 @@
     <rotation></rotation>
     <lovealbum></lovealbum>
     <albumlist :item="item" v-for="item in type" :key="item.id"></albumlist>
+
     <div class="rightbox">
       <albumRightRank class="albumRightRank" v-for="(item) in kindArr" :key="item.id" :kind="item"></albumRightRank>
     </div>
-
     <ranking></ranking>
   </div>
 </template> 
@@ -109,36 +109,34 @@ export default {
   },
   components: {
     lovealbum:lovealbum,
-    albumlist:lovealbum,
+    albumlist:albumlist,
     ranking:ranking,
     albumRightRank:albumRightRank,
     rotation: Rotation,
     loginWindow: LoginWindow,
   },
   methods: {
-    beforeRouteLeave(to, from, next) {
-    if (to.path == "/my") {
-      // console.log(document.cookie);
-      if (document.cookie) {
-        next();
-      } else {
-        console.log(this.z);
-        this.z = true;
+      beforeRouteLeave(to, from, next) {
+      if (to.path == "/my") {
+        // console.log(document.cookie);
+        if (document.cookie) {
+          next();
+        } else {
+          console.log(this.z);
+          this.z = true;
+        }
+      } else if (to.path == "/zhubo") {
+        if (document.cookie) {
+          next();
+        } else {
+          this.z = true;
+          console.log(this.z);
+        }
+      } else if (to.path == "/Download") {
+        next(false);
       }
-    } else if (to.path == "/zhubo") {
-      if (document.cookie) {
-        next();
-      } else {
-        this.z = true;
-        console.log(this.z);
-      }
-    } else if (to.path == "/Download") {
-      next(false);
     }
   }
-  }
-
-  
 };
 </script>
 
