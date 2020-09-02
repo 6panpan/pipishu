@@ -1,11 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 // import album from '../views/album.vue'
-import rankcon from '../views/rankcon.vue'
-import rankconItem from '../components/rankconItem.vue'
-import rankItemXiangSheng from '../components/rankItemXiangSheng.vue'
-import rankItemYuLe from '../components/rankItemYuLe.vue'
-import rankItemErTong from '../components/rankItemErTong.vue'
+import rankcon from "../views/rankcon.vue";
+import rankconItem from "../components/rankconItem.vue";
+import rankItemXiangSheng from "../components/rankItemXiangSheng.vue";
+import rankItemYuLe from "../components/rankItemYuLe.vue";
+import rankItemErTong from "../components/rankItemErTong.vue";
 Vue.use(VueRouter);
 
 const Album = () => import("../views/Album");
@@ -43,7 +43,7 @@ const routes = [
         component: Zhubo,
     },
     {
-        path: '/rankcon',
+        path: "/rankcon",
         component: rankcon,
         children: [
             { path: "rankconItem", component: rankconItem },
@@ -52,9 +52,8 @@ const routes = [
             { path: "rankItemErTong", component: rankItemErTong },
             { path: "rankItemYuLe", component: rankItemYuLe },
             { path: "rankItemYuLe", component: rankItemYuLe },
-            { path: '/', redirect: "rankconItem" }
+            { path: "/", redirect: "rankconItem" },
         ],
-
     },
 ];
 

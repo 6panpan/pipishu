@@ -8,9 +8,12 @@
             <router-link to="/zhubo">用户头像:加img标签</router-link>
         </div>
         <router-view />
+        <player />
     </div>
 </template>
 
 <style lang="scss">
-
+body {
+    background-color: #dffeff;
+}
 </style>
