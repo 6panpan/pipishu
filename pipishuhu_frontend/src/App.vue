@@ -18,7 +18,7 @@
           <el-button icon="el-icon-search"></el-button>
         </li>
         <li>
-          <router-link to="/zhubo">
+          <router-link to="/my">
             <img class="UserImg" :src="UserImg" />
           </router-link>
         </li>
@@ -36,19 +36,6 @@ export default {
       UserImg: UserImg,
     };
   },
-  // mounted() {
-  //   if (document.cookie) {
-  //     this.$http
-  //       .get("http://127.0.0.1:7001/getAnuserInf",
-  //       )
-  //       .then((res) => {
-  //         console.log(res.data);
-  //       })
-  //       .catch((e) => {
-  //         console.log(e);
-  //       });
-  //   }
-  // },
 };
 </script>
 <style lang="scss">
@@ -56,7 +43,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // text-align: center;
   color: #2c3e50;
 }
 
@@ -67,7 +53,7 @@ export default {
   box-shadow: 1px 5px 10px rgba(250, 250, 250, 1);
   position: fixed;
   top: 0;
-  z-index: 20;
+  z-index: 2000;
   a {
     color: #2c3e50;
     font-size: 25px;
@@ -90,7 +76,8 @@ export default {
 .myul {
   overflow: hidden;
   list-style: none;
-  display: inline-block;
+  margin: 0 200px;
+  height: 70px;
 }
 
 .myul li {
@@ -122,5 +109,6 @@ export default {
 .UserImg {
   height: 40px;
   border-radius: 20px;
+  margin-left: 100px;
 }
 </style>
