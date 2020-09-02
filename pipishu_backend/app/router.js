@@ -15,6 +15,7 @@ module.exports = app => {
     router.get("/getAnuserInf", controller.userController.getAnuserInf);
 
 
+
     //专辑相关路由
     //CR// 获取全部专辑
     router.get("/getAllAlbum", controller.albumController.getAllAlbum);
@@ -29,11 +30,20 @@ module.exports = app => {
     //ZY// 根据专辑id获取专辑
     router.get("/getoneAlbum", controller.albumController.getoneAlbum);
     // 取出播放量最多的前10位专辑
-    router.get('/getRankAlbumTen', controller.albumController.getRankAlbumTen); 
+    router.get('/getRankAlbumTen', controller.albumController.getRankAlbumTen);
+    
+
 
     //音频相关路由
     //CR// 获取所有音频
     router.get("/getAudio", controller.audioController.getAudio);
+
+    //ZY//根据专辑id取出对应audio
+    router.get('/getSomeAudio', controller.audioController.getSomeAudio);
+
+    //ZY//根据专辑id取出分页专辑里的audio
+    router.get('/getPageAudio', controller.audioController.getPageAudio);
+
 
     //收藏相关路由
     //// 添加

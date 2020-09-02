@@ -50,6 +50,10 @@ class AlbumService extends Service {
 		let list = await this.ctx.app.mysql.query(sql, []);
 		return list;
 	}
+
+	
+
+	
 }
 
 module.exports = AlbumService;
