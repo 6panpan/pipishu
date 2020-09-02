@@ -11,7 +11,7 @@
           <router-link to="/my">我的</router-link>
         </li>
         <li>
-          <router-link to="/download">APP下载</router-link>
+          <router-link to="/Download">APP下载</router-link>
         </li>
         <li>
           <router-link to="/search" tag="input">搜索框</router-link>
@@ -21,6 +21,7 @@
         </li>
       </ul>
     </div>
+    <div class="kong"></div>
     <router-view />
   </div>
 </template>
@@ -34,8 +35,13 @@
 }
 
 #nav {
+  width: 100%;
   border-bottom: 2px solid rgb(218, 218, 218);
+  background-color: #fff;
   box-shadow: 1px 5px 10px rgba(250, 250, 250, 1);
+  position: fixed;
+  top: 0;
+  z-index: 20;
   a {
     color: #2c3e50;
     font-size: 25px;
@@ -64,5 +70,8 @@
 .myul li {
   float: left;
   padding-right: 40px;
+}
+.kong{
+  height: 80px;
 }
 </style>

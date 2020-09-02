@@ -111,15 +111,22 @@ export default {
   methods: {},
   beforeRouteLeave(to, from, next) {
     if (to.path == "/my") {
-      console.log(document.cookie);
+      // console.log(document.cookie);
+      if (document.cookie) {
+        next();
+      } else {
+        console.log(this.z);
+        this.z = true;
+      }
+    } else if (to.path == "/zhubo") {
       if (document.cookie) {
         next();
       } else {
         this.z = true;
         console.log(this.z);
       }
-    } else {
-      next();
+    } else if (to.path == "/Download") {
+      next(false);
     }
   },
 };
