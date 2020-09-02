@@ -46,11 +46,14 @@ module.exports = app => {
 
 
     //收藏相关路由
-    //// 添加
-    // router.post("/addAlbum", controller.collectController.addAlbum);
-    //// 删除
-    // router.post("/delAlbum", controller.collectController.delAlbum);
+     // 添加收藏
+     router.post("/addCollect", controller.collectController.addCollect);
+     // 删除
+     router.get("/delCollect", controller.collectController.delCollect);
+     // 获取用户收藏专辑id
+     router.get("/getUserCollect", controller.collectController.getUserCollect);
 
+     
     //关注相关路由
     //// 关注
     router.post("/addfollow", controller.followController.addfollow);

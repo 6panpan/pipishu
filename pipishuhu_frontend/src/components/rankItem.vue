@@ -1,6 +1,6 @@
 <template>
   <div v-cloak>
-    <p class="list-item" v-for="(item,index) in ranklist" :key="index">
+    <p class="list-item"  @click="getItemID(item.album_id)" v-for="(item,index) in ranklist" :key="index">
       <img :src="item.album_url" v-if="index<3" />
       <span>
         <div class="list-num" v-if="index>=3">{{index+1}}</div>
@@ -37,6 +37,14 @@ export default {
         console.log(err);
       });
   },
+  methods: {
+    getItemID(al_id) {
+      let path = `/youshengintr/${al_id}`;
+      if (path) {
+        this.$router.push(path);
+      }
+    }
+  }
 };
 </script>
 

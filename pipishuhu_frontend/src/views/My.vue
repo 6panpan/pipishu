@@ -20,5 +20,10 @@ export default {
       console.log(tab, event);
     },
   },
+  mounted() {
+    if (!document.cookie) {
+      this.$router.push("/");
+    }
+  },
 };
 </script>

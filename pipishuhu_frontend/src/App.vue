@@ -14,11 +14,12 @@
           <router-link to="/Download">APP下载</router-link>
         </li>
         <li>
-          <router-link to="/search" tag="input">搜索框</router-link>
-          <el-button icon="el-icon-search"></el-button>
+          <router-link to=""><input type="text" class="mysearchC" v-model="mysearchnr"></router-link>
+          <el-button @click="mysearchKeywords
+" icon="el-icon-search" class="mysearchbutton"></el-button>
         </li>
         <li>
-          <router-link to="/zhubo">
+          <router-link to="/my">
             <img class="UserImg" :src="UserImg" />
           </router-link>
         </li>
@@ -34,21 +35,21 @@ export default {
   data() {
     return {
       UserImg: UserImg,
+      mysearchnr:""
     };
   },
-  // mounted() {
-  //   if (document.cookie) {
-  //     this.$http
-  //       .get("http://127.0.0.1:7001/getAnuserInf",
-  //       )
-  //       .then((res) => {
-  //         console.log(res.data);
-  //       })
-  //       .catch((e) => {
-  //         console.log(e);
-  //       });
-  //   }
-  // },
+  watch:{
+    mysearchnr(){
+      console.log(this.mysearchnr)
+      this.mysearchnr = this.mysearchnr
+    }
+  },
+  methods:{
+    mysearchKeywords(){
+      console.log(this.mysearchnr)
+      this.$router.push(`/search/${this.mysearchnr}`)
+    }
+  }
 };
 </script>
 <style lang="scss">
@@ -56,7 +57,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // text-align: center;
   color: #2c3e50;
 }
 
@@ -67,7 +67,7 @@ export default {
   box-shadow: 1px 5px 10px rgba(250, 250, 250, 1);
   position: fixed;
   top: 0;
-  z-index: 20;
+  z-index: 2000;
   a {
     color: #2c3e50;
     font-size: 25px;
@@ -90,7 +90,8 @@ export default {
 .myul {
   overflow: hidden;
   list-style: none;
-  display: inline-block;
+  margin: 0 200px;
+  height: 70px;
 }
 
 .myul li {
@@ -98,7 +99,7 @@ export default {
   padding-right: 40px;
   margin-top: 20px;
 }
-.myul li input {
+.mysearchC {
   width: 240px;
   height: 30px;
   border-radius: 17px;
@@ -112,8 +113,6 @@ export default {
 }
 .el-button {
   height: 34px !important;
-  padding: 0px 15px !important;
-  // padding-bottom: 2px !important;
   margin-left: -15px !important;
   border-radius: 0 17px 17px 0 !important;
   color: #fff !important;
@@ -122,5 +121,10 @@ export default {
 .UserImg {
   height: 40px;
   border-radius: 20px;
+  margin-left: 100px;
+}
+.el-icon-search{
+  position: relative;
+  top: -2px;
 }
 </style>
