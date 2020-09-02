@@ -6,7 +6,6 @@ import rankItemXiangSheng from '../components/rankItemXiangSheng.vue'
 import rankItemYuLe from '../components/rankItemYuLe.vue'
 import rankItemErTong from '../components/rankItemErTong.vue'
 import youshengshu from "../components/youshengshu/youshengshu.vue";
-import youshengintr from "../components/albumlist/youshengintr.vue";
 import searchPage from "../components/search/searchPage.vue";
 import searchAlbum from "../components/search/searchAlbum.vue";
 import searchAll from "../components/search/searchAll.vue";
@@ -61,21 +60,21 @@ const routes = [
             { path: "rankItemYuLe", component: rankItemYuLe },
             { path: '/', redirect: "rankconItem" }
         ],
-
+ 
     },
     // 有声书
   {
     path: '/youshengshu',
     component: youshengshu,
     children:[
-      // {path: "id", component: albumPage}
+      // {path: "albumid", component: albumPage}
     ],
   },
-  {
-    path: '/youshengintr/:album_id',  
-    component: youshengintr,
-    // youshengintr是周月的组件
-  },
+  // {
+  //   path: '/youshengintr/:album_id',  
+  //   component: youshengintr,
+  //   // youshengintr是周月的组件
+  // },
   // 搜索板块
   {
     path: '/search/:kw', 

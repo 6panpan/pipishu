@@ -1,5 +1,4 @@
 <template>
-
   <div>
     <lovealbum></lovealbum>
     <albumlist :item="item" v-for="item in type" :key="item.id"></albumlist>
@@ -8,12 +7,11 @@
 </template> 
 
 <script>
-
 import albumlist from "./albumlist.vue";
 import lovealbum from "./lovealbum.vue";
 import ranking from "../components/ranking.vue";
 export default {
-  data:function(){
+  data: function () {
     return {
       type: [
         {
@@ -95,19 +93,17 @@ export default {
           ],
         },
       ],
-    }
+    };
   },
   components: {
     lovealbum,
     albumlist,
     ranking,
   },
-  created(){
-  },
-  methods:{
-  }
+  created() {},
+  methods: {},
 };
 </script>
 
-<style>
+<style scoped>
 </style>

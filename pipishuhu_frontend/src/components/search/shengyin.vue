@@ -4,9 +4,9 @@
       <div id="audioInf">
         <img :src="item.albumUrl" alt />
         <div>
-          <div class="hoverColor audioName">{{item.audio_name}}</div>
+          <div class="hoverColor audioName" @click="enterAudio">{{item.audio_name}}</div>
           <div class="hoverColor albumName">{{item.albumName}}</div>
-          <p>{{item.albumNickname}}  <i class="el-icon-service"></i>{{item.amount}}</p>
+          <p id="audioInf-bottom"><i class="el-icon-user"></i>{{item.albumNickname}}  <i class="el-icon-service"></i>{{item.amount}}</p>
         </div> 
       </div> 
       <span>{{item.time.slice(0,10)}}</span>
@@ -21,7 +21,13 @@ export default {
   data: function () {
     return {};
   },
-  props:["item"]
+  props:["item"],
+  methods:{
+    enterAudio(){
+      //   /专辑类别/专辑id/音频id
+      // this.router.push(`/youshengshu/${item.albumId}/${item.audio_id}`)
+    }
+  }
 };
 </script>
 
@@ -40,10 +46,11 @@ export default {
   justify-content: space-between;
 }
 img {
-  width: 100px;
+  width: 80px;
   border-radius: 50%;
   margin-right: 16px;
 }
+
 .audioName {
   font-weight: bolder;
 }
@@ -52,6 +59,10 @@ img {
 }
 .albumName {
   color: #a3a3ac;
+  margin-top: 6px;
+}
+#audioInf-bottom {
+  margin-top: 20px;
 }
 .line {
   width: 100%;

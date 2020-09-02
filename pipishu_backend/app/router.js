@@ -41,10 +41,9 @@ module.exports = app => {
 
     //关注相关路由
     //// 关注
-    // router.post("/follow", controller.followController.follow);
+    router.post("/addfollow", controller.followController.addfollow);
     //// 取消关注
-    //！！！！！！！！！！！！有问题
-    // router.post("/delAlbum", controller.followController.delAlbum);
+    router.post("/delfollow", controller.followController.delfollow);
     //ZY// 获取粉丝数
     router.get("/getfollow", controller.followController.getfollow);
 
