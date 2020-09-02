@@ -68,7 +68,7 @@ export default {
 };
 </script>
  
-<style>
+<style scoped>
 #loveBox {
   margin-bottom: 30px;
   cursor: pointer;

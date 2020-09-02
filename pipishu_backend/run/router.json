@@ -211,6 +211,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/getStar",
+    "regexp": "/^\\/getStar(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/getAlbumByKind",
     "regexp": "/^\\/getAlbumByKind(?:\\/(?=$))?$/",
     "stack": [

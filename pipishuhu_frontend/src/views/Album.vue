@@ -142,8 +142,8 @@ export default {
 
 <style scoped>
   .rightbox{
-    width: 500px;
+    top:300px;
     position: absolute;
-    left: 1000px;
+    left: 1050px;
   }
 </style>
