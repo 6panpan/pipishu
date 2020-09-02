@@ -136,6 +136,32 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/getSomeAudio",
+    "regexp": "/^\\/getSomeAudio(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/getPageAudio",
+    "regexp": "/^\\/getPageAudio(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/getfollow",
     "regexp": "/^\\/getfollow(?:\\/(?=$))?$/",
     "stack": [

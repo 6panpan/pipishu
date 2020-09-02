@@ -1,6 +1,8 @@
 <template>
-
   <div>
+    <div class="rightbox">
+      <albumRightRank class="albumRightRank" v-for="(item) in kindArr" :key="item.id" :kind="item"></albumRightRank>
+    </div>
     <lovealbum></lovealbum>
     <albumlist :item="item" v-for="item in type" :key="item.id"></albumlist>
     <ranking></ranking>
@@ -8,12 +10,12 @@
 </template> 
 
 <script>
-
+import albumRightRank from "./albumRightRank.vue";
 import albumlist from "./albumlist.vue";
 import lovealbum from "./lovealbum.vue";
 import ranking from "../components/ranking.vue";
 export default {
-  data:function(){
+  data: function () {
     return {
       type: [
         {
@@ -95,19 +97,24 @@ export default {
           ],
         },
       ],
-    }
+      kindArr: ["有声书", "相声评书", "儿童", "头条", "音乐", "娱乐"],
+    };
   },
   components: {
     lovealbum,
     albumlist,
     ranking,
+    albumRightRank,
   },
-  created(){
-  },
-  methods:{
-  }
+  created() {},
+  methods: {},
 };
 </script>
 
-<style>
+<style scoped>
+  .rightbox{
+    width: 500px;
+    position: absolute;
+    left: 1000px;
+  }
 </style>

@@ -27,11 +27,15 @@ class UserService extends Service {
         let r = await this.ctx.app.mysql.query(sql);
         return r;
     }
-    //ZY// 根据用户id获取用户信息
-    async getUserAlbum(u_id) {
-        let sql = "select * from album where u_id=?";
-        let list = await this.ctx.app.mysql.query(sql, [u_id]);
-        return list;
+
+    //ZY//根据id取出用户信息
+    async getAnuserInf(user_id) {
+		let sql = "select * from user where user_id=?"
+		let list = await this.ctx.app.mysql.query(sql,[user_id]);
+		return list;
     }
+
+
+
 }
 module.exports = UserService;

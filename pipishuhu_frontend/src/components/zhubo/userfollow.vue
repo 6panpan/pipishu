@@ -1,13 +1,15 @@
 <template>
-  <div>周月的板块</div>
+    <div>
+        关注
+    </div>
 </template>
- 
+
 <script>
 export default {
-  created() {
-  },
-};
+
+}
 </script>
 
 <style>
+
 </style>
