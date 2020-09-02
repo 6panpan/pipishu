@@ -6,13 +6,21 @@ class UserController extends Controller {
 
     //注册
     async regist() {
-        let r = await this.ctx.service.userService.regist(参数);
+        let tel = this.ctx.request.body.tel;
+        let pwd = this.ctx.request.body.pwd;
+        let nickname = this.ctx.request.body.nickname;
+        let sex = this.ctx.request.body.sex;
+        let userimg = this.ctx.request.body.userimg;
+        let r = await this.ctx.service.userService.regist(tel, pwd, nickname, sex, userimg);
         this.ctx.response.body = r;
     }
     //登录
     async login() {
-        let r = await this.ctx.service.userService.login(参数);
-        this.ctx.response.body = r;
+        let tel = this.ctx.request.body.tel;
+        let pwd = this.ctx.request.body.pwd;
+        let list = await this.ctx.service.userService.login(tel, pwd);
+        console.log("1")
+        this.ctx.response.body = list;
     }
     //注销
     async logout() {
