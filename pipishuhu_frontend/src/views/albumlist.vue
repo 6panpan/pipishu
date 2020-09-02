@@ -8,8 +8,9 @@
           <span v-for="(item,index) in item.kw" :key="index">{{item}}</span>
         </div>
       </div>
+
       <span>更多</span>
-    </div> 
+    </div>
 
     <div id="album" @click="enterAlbum">
       <albumitem :el="el" v-for="el in list" :key="el.id"></albumitem>
@@ -53,8 +54,11 @@ export default {
     },
     // 跳search
     searchKw(el) {
-      // console.log(el.target.innerHTML)
-      let path = `/search/${el.target.innerHTML}`;
+      console.log(el.target.innerHTML)
+      let path;
+      if (el.target.innerHTML.length < 10) {
+        path = `/search/${el.target.innerHTML}`;
+      }
       if (path) {
         this.$router.push(path);
       }
@@ -92,7 +96,7 @@ export default {
               if (el1.u_id == el2.user_id) {
                 el1.nickname = el2.nickname;
               }
-            }); 
+            });
           });
         })
         .catch((err) => {
@@ -109,7 +113,11 @@ export default {
   margin-bottom: 5px;
   cursor: pointer;
 }
-
+.album-type {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
 .album-type > span:last-child {
   color: #72727b;
 }

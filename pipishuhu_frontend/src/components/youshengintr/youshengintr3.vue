@@ -1,6 +1,8 @@
 <template>
   <div>
+
     <el-tabs v-model="activeName"  >
+
       <el-tab-pane label="声音" name="first">
         <div>
           <ol v-if="audioList">
@@ -25,11 +27,13 @@
       </el-tab-pane>
       <el-tab-pane label="评价" name="second"></el-tab-pane>
     </el-tabs>
+
     <div class="chagebtn">
       <div class="btnbox" v-for="(item,index) in page" :key="item.id" @click="getPageAudio">
         <button type="button" >{{index+1}}</button>
       </div>
     </div>
+
   </div>
 </template>
 

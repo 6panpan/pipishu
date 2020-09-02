@@ -49,7 +49,7 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           let list = res.data;
           list.sort(function () {
             return Math.random()-0.5

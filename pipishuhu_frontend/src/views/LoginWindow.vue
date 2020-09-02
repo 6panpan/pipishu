@@ -1,7 +1,7 @@
 <template>
-  <div class="login-w" v-if="p">
+  <div class="login-w">
     <div class="loginwindow">
-      <span @click="closelogin" class="el-icon-circle-close"></span>
+      <span @click="closelogin" class="el-icon-circle-close loginWindowClose"></span>
       <div class="loginwindow-top">
         <span @click="TZlogin">登录</span>/
         <span @click="TZregister">注册</span>
@@ -50,7 +50,6 @@ export default {
       loginPas: "",
       ts: "",
       Rts: "",
-      pp: this.p,
       mysrc: "",
       RegisterPhone: "",
       Registerpwd: "",
@@ -60,15 +59,10 @@ export default {
       usersex: "",
     };
   },
-  props: ["p"],
-  mounted() {
-    console.log(this.p);
-  },
+  mounted() {},
   methods: {
     closelogin() {
-      this.p = false;
-      console.log(this.p);
-      this.$router.go(0);
+      this.$emit("myloginF");
     },
     TZlogin() {
       this.loginMK = true;
@@ -88,11 +82,11 @@ export default {
           if (res.data.length < 1) {
             this.ts = "用户名或密码错误";
           } else {
-            this.p = false;
             this.ts = "";
             document.cookie = `user=${res.data[0].tel}`;
             document.cookie = `user_id=${res.data[0].user_id}`;
             console.log(document.cookie);
+            this.$emit("myloginF");
           }
         });
     },
@@ -111,21 +105,13 @@ export default {
             this.Rts = "用户名或密码错误";
           } else {
             this.Rts = "";
+            this.$emit("myloginF");
             console.log(document.cookie, 1);
           }
         });
     },
     axiosupload() {
       let file = document.getElementById("choose").files[0];
-      // 验证文件后缀名是否为图片,否则是可以上传任何文件
-      // let finename = file["name"];
-      // console.log(finename);
-      // let patt=/.+(.JPEG|.jpeg|.JPG|.jpg|.PNG|.png)$/;
-      // let result=patt.test(finename);
-      // if(!result) {
-      // 	alert("图片格式不对");
-      // 	return;
-      // }
       let formData = new FormData();
       formData.append("uploadFile", file, file.name);
       const config = {
@@ -155,7 +141,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 5;
+  z-index: 3000;
 }
 .loginwindow {
   width: 440px;
@@ -194,10 +180,10 @@ export default {
 .RegisterMK input {
   margin-top: 20px;
 }
-.el-icon-circle-close {
+.loginWindowClose {
   font-size: 30px;
   position: relative;
-  left: 42%;
+  left: 88%;
   top: 20px;
   cursor: pointer;
 }

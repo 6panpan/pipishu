@@ -9,9 +9,8 @@
     <zhubo :user="myuser"></zhubo>
   </div>
 </template>
-
+ 
 <script>
-// import Bus from "../../Bus.js";
 import zhubo from "./zhubo.vue";
 export default {
   data: function () {
