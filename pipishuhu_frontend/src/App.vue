@@ -109,7 +109,7 @@ export default {
   padding-left: 15px;
 }
 .kong {
-  height: 80px;
+  height: 72px;
 }
 .el-button {
   height: 34px !important;

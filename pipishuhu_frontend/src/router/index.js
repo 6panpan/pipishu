@@ -22,6 +22,11 @@ import userAlbum from "../components/zhubo/userAlbum.vue"
 import userfans from "../components/zhubo/userfans.vue"
 import userfollow from "../components/zhubo/userfollow.vue"
 
+import subscribed from "../components/my/subscribed.vue"
+import listened from "../components/my/listened.vue"
+import buy from "../components/my/buy.vue"
+import like from "../components/my/like.vue"
+
 Vue.use(VueRouter);
 
 const Album = () => import("../views/Album");
@@ -42,6 +47,12 @@ const routes = [
     {
         path: "/my",
         component: My,
+        children:[
+          { path: "subscribed", component: subscribed },
+          { path: "listened", component: listened },
+          { path: "buy", component: buy },
+          { path: "like", component: like }
+        ]
     },
     //APP下载
     {

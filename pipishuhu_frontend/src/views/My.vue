@@ -1,25 +1,18 @@
 <template>
-  <div>
-    <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
-      <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
-      <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
-      <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
-    </el-tabs>
+  <div id="my-nav">
+    <router-link to="/my/subscribed">订阅</router-link>
+    <router-link to="/my/listened">听过</router-link>
+    <router-link to="/my/buy">已购</router-link>
+    <router-link to="/my/like">喜欢</router-link>
+    <router-view />
   </div>
 </template>
 <script>
 export default {
   data() {
-    return {
-      activeName: "first",
-    };
+    return {};
   },
-  methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
-    },
-  },
+  methods: {},
   mounted() {
     if (!document.cookie) {
       this.$router.push("/");
@@ -27,3 +20,20 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+#my-nav{
+  position: relative;
+  top: 50px;
+  left: 200px;
+    a {
+    color: #2c3e50;
+    font-size: 20px;
+    text-decoration: none;
+    margin-left: 30px;
+
+    &.router-link-exact-active {
+      color: #3cced0;
+    }
+  }
+}
+</style>
