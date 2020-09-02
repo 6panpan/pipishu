@@ -1,5 +1,10 @@
 <template>
   <div>
+
+    <div class="rightbox">
+      <albumRightRank class="albumRightRank" v-for="(item) in kindArr" :key="item.id" :kind="item"></albumRightRank>
+    </div>
+
     <LoginWindow :p="z"></LoginWindow>
     <Rotation></Rotation>
     <lovealbum></lovealbum>
@@ -9,8 +14,7 @@
 </template> 
 
 <script>
-import Rotation from "./Rotation";
-import LoginWindow from "./LoginWindow";
+import albumRightRank from "./albumRightRank.vue";
 import albumlist from "./albumlist.vue";
 import lovealbum from "./lovealbum.vue";
 import ranking from "../components/ranking.vue";
@@ -97,40 +101,24 @@ export default {
           ],
         },
       ],
-      z: false,
+      kindArr: ["有声书", "相声评书", "儿童", "头条", "音乐", "娱乐"],
     };
   },
   components: {
     lovealbum,
     albumlist,
     ranking,
-    Rotation: Rotation,
-    LoginWindow: LoginWindow,
+    albumRightRank,
   },
   created() {},
   methods: {},
-  beforeRouteLeave(to, from, next) {
-    if (to.path == "/my") {
-      // console.log(document.cookie);
-      if (document.cookie) {
-        next();
-      } else {
-        console.log(this.z);
-        this.z = true;
-      }
-    } else if (to.path == "/zhubo") {
-      if (document.cookie) {
-        next();
-      } else {
-        this.z = true;
-        console.log(this.z);
-      }
-    } else if (to.path == "/Download") {
-      next(false);
-    }
-  },
 };
 </script>
 
-<style>
+<style scoped>
+  .rightbox{
+    width: 500px;
+    position: absolute;
+    left: 1000px;
+  }
 </style>
