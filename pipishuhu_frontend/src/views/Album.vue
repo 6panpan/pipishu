@@ -1,6 +1,6 @@
 <template>
   <div>
-    <loginWindow :p="z"></loginWindow>
+    <loginWindow @myloginF="myloginS" v-if="z"></loginWindow>
     <rotation></rotation>
 
     <div id="contentBox">
@@ -128,28 +128,20 @@ export default {
     loginWindow: LoginWindow,
   },
 
-  methods: {
-    beforeRouteLeave(to, from, next) {
-      if (to.path == "/my") {
-        // console.log(document.cookie);
-        if (document.cookie) {
-          next();
-        } else {
-          console.log(this.z);
-          this.z = true;
-        }
-      } else if (to.path == "/zhubo") {
-        if (document.cookie) {
-          next();
-        } else {
-          this.z = true;
-          console.log(this.z);
-        }
-      } else if (to.path == "/Download") {
-        next(false);
-      }
-    },
+  methods:{
+    myloginS(){
+      console.log(this.z)
+      this.z = false
+    }
   },
+  mounted(){
+    console.log(this.$router,this.z)
+    if(!document.cookie){
+      this.z = true
+    }else{
+      this.z = false
+    }
+  }
 };
 </script>
 
