@@ -8,7 +8,7 @@
         <span>{{userinf[0].nickname}}</span>
       </div>
       <div class="userinf" v-if="1">
-          <span>粉丝数：{{follower}}</span>
+          <span><i class="el-icon-user"></i>粉丝数：{{follower}}</span>
           <span>专辑数：{{AlbumNum}}</span><br><br>
           <p class="userintr" v-if="userinf[0]">简介：{{userinf[0].userintr}}</p>
       </div>
@@ -18,11 +18,8 @@
       <hr>
       <br>
       <div class="showAlbum">
-        <ul v-if="userAlbum">
-          <li v-for="item in userAlbum" :key="item.id" class="showAlbumLi" @click="changeAlbum(item)">
-            <!-- <div class="liLeft">
-              <img :src="item.album_url" alt="">
-            </div> -->
+        <ul v-if="showAlbum">
+          <li v-for="item in showAlbum" :key="item.id" class="showAlbumLi" @click="changeAlbum(item)">
             <img :src="item.album_url" alt="">
             <div class="liRight">
              <div class="lir">
@@ -41,6 +38,7 @@
 </template>
 
 <script>
+import userAlbumVue from '../zhubo/userAlbum.vue';
 export default {
   //   beforeCreated() {
   //       this.getoneAlbum()
@@ -55,6 +53,7 @@ export default {
       userAlbum:[],
       follower:"",
       AlbumNum:"",
+      showAlbum:[]
     };
   },
   methods: {
@@ -122,6 +121,7 @@ export default {
         .then((res) => {
             // console.log(res.data);
           this.userAlbum=res.data
+          this.showAlbum=this.userAlbum.slice(0,4)
           // console.log(this.userAlbum);
           this.AlbumNum=(this.userAlbum).length
           // console.log(this.AlbumNum);
@@ -192,7 +192,10 @@ export default {
 }
 .userintr{
   padding:10px 10px 14px 12px;
-
+  max-height: 40px;
+  overflow: hidden;
+  white-space: wrap;
+  text-overflow: ellipsis;
 }
 .bottom1{
   display: flex;

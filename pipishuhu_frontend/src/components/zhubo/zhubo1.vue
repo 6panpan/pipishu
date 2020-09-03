@@ -8,21 +8,20 @@
           <span>{{userinf[0].userintr}}</span>
         </div>
         <div class="headinf2">
-          <el-button type="primary" round>+关注</el-button>
+          <el-button @click="addfollow" type="primary" round>+关注</el-button>
         </div>
       </div>
     </div>
     <div class="left">
       <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="主页" name="first">
-        </el-tab-pane>
+        <el-tab-pane label="主页" name="first"></el-tab-pane>
         <el-tab-pane label="专辑" name="second"></el-tab-pane>
         <el-tab-pane label="关注" name="third"></el-tab-pane>
         <el-tab-pane label="粉丝" name="fourth"></el-tab-pane>
       </el-tabs>
       <router-view></router-view>
     </div>
-    
+    <foot></foot>
   </div>
 </template>
 
@@ -101,7 +100,9 @@ export default {
       }
       return tips;
     },
-    
+    addfollow(){
+
+    }
      
   },
 };
@@ -151,7 +152,7 @@ export default {
   margin-top: 20px;
   margin-left: 300px;
   width: 65vw;
-  height: 600px;
+  height: 585px;
   display: block;
   /* position: relative; */
 }

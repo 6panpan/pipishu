@@ -68,13 +68,13 @@ export default {
       console.log(this.getByKey("user_id"));
       this.$http
         .get("http://127.0.0.1:7001/getAnuserInf", {
-          params:{
-            user_id:this.getByKey("user_id")
-          }
+          params: {
+            user_id: this.getByKey("user_id"),
+          },
         })
         .then((res) => {
           console.log(res.data);
-          this.UserImg = res.data[0].userimg
+          this.UserImg = res.data[0].userimg;
         });
     }
   },
@@ -156,4 +156,6 @@ export default {
   position: relative;
   top: -2px;
 }
+
+
 </style>

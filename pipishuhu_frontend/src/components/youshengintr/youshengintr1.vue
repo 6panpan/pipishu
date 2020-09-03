@@ -1,7 +1,7 @@
 <template>
   <div class="contanier" v-if="list[0]">
     <div class="title" >
-      <a href @click="tomain">首页</a>>{{list[0].kind}}>{{list[0].album_name}}
+      <a href @click="tomain"><i class="el-icon-s-home"></i>首页</a>>{{list[0].kind}}>{{list[0].album_name}}
     </div>
     <div class="contanier2">
       <div class="topbox">

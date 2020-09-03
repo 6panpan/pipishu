@@ -15,7 +15,7 @@
         <router-view></router-view>
       </el-tab-pane>
     </el-tabs>
-
+   
   </div>
 </template>
 

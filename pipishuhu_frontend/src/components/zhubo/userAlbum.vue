@@ -8,10 +8,10 @@
       </div>
     </div>
     <hr />
-    <div>
+    <div class="albox">
       <div v-if="mylist.length==0">
-        <div class="AlbumLis" v-for="item in userAlbum" :key="item.id">
-          <img :src="item.album_url" alt />
+        <div class="AlbumLis" v-for="item in userAlbum" :key="item.id"  @click="changeAlbum(item)">
+          <img :src="item.album_url" >
           <div class="albinf">
             <b>{{item.album_name}}</b>
             <p>
@@ -51,7 +51,6 @@
           </div>
           <hr />
         </div>
-        
       </div>
     </div>
   </div>
@@ -94,6 +93,14 @@ export default {
           console.log(222);
         });
     },
+    changeAlbum(item){
+      // console.log(item.album_id);
+      let path=`/youshengintr/${item.album_id}`
+      if (path) {
+        this.$router.push(path);
+        this.$router.go(0)
+      }
+    },
   },
 };
 </script>
@@ -115,6 +122,9 @@ export default {
   margin-left: 10px;
   margin: 13px 0;
 }
+.AlbumLis:hover{
+  cursor: pointer;
+}
 .AlbumLis img {
   height: 70px;
   width: 70px;
@@ -133,5 +143,11 @@ export default {
   height: 50px;
   padding: 0 10px;
   /* line-height: 50px; */
+}
+.albox{
+  overflow-y:auto; 
+  overflow-x:auto; 
+  width:100%; 
+  height:500px;
 }
 </style>

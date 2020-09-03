@@ -17,8 +17,14 @@ Vue.use(ElementUI);
 Vue.prototype.$http = axios
 Vue.config.productionTip = false;
 
+import foot from "./views/foot.vue"
+
+Vue.component("foot",foot)
+
 new Vue({
     router,
     store,
     render: h => h(App),
 }).$mount("#app");
+
+

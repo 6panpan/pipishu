@@ -6,30 +6,34 @@
         <!-- <div><i class="el-icon-search"></i><input @click="serchAlb" class="searchinp"  placeholder="请搜索专辑"></div> -->
       </div>
       <hr />
-      <div>
-        <div class="AlbumLis" v-for="item in hisStar" :key="item.id">
-          <img  @click="tohisMain(item)" :src="item.userimg" alt />
+      <div class="albbox">
+        <div class="AlbumLis" v-for="item in hisStar" :key="item.id" @click="toUserMain(item)">
+          <img  @click="tohisMain(item)" :src="item.userimg"  alt />
           <div class="albinf">
             <b>{{item.nickname}}</b>
-           
+            <inf :myitem="item"></inf>
           </div>
           <hr />
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
+import inf from "./inf.vue"
 export default {
     data:function () {
         return {
            alluser:[],
            hisStar:[],
            starLen:"",
-           star:[]
-
+           star:[],
         }
+    },
+    components:{
+      inf
     },
     created(){
         this.getUserInf()
@@ -78,7 +82,16 @@ export default {
         this.$router.push(path);
         this.$router.go(0)
       }
-    }
+    },
+    toUserMain(item){
+       let path=`/zhubo/${item.user_id}/userindex`
+       document.cookie="activename=first"
+       if (path) {
+        this.$router.push(path);
+        this.$router.go(0)
+      }
+    },
+   
     }
 
 }
@@ -96,6 +109,9 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
+}
+.AlbumLis :hover{
+  cursor: pointer;
 }
 .AlbumLis {
   margin-left: 10px;
@@ -119,6 +135,12 @@ export default {
   /* width: 50px; */
   height: 27px;
   padding: 0 10px;
-  /* line-height: 50px; */
+  line-height: 50px;
+}
+.albbox{
+  overflow-y:auto; 
+  overflow-x:auto; 
+  width:100%; 
+  height:500px;
 }
 </style>

@@ -1,14 +1,23 @@
 <template>
   <div>
     <div class="leftbox">
-      <div class="albinf" v-for="item in userAlbum" :key="item.id">
-        <img :src="item.album_url" alt />
-        <p>{{item.album_name}}</p>
-      </div>
+
+          <div class="albinf"  v-for="item in userAlbum" :key="item.id" @click="changeAlbum(item)">
+          <img :src="item.album_url" alt />
+          <p>{{item.album_name}}</p>
+
+       <!-- <div v-else>
+          <div  class="kongde">
+              <p>TA还没有专辑哦~</p>
+        </div> -->
+
+       </div>
     </div>
 
     <div class="rightbox">
-      <p class="p1"><i class="el-icon-s-order"></i>TA的资料</p>
+      <p class="p1">
+        <i class="el-icon-s-order"></i>TA的资料
+      </p>
       <hr />
       <p class="p2" v-if="userinf[0]">
         <i class="el-icon-user"></i>
@@ -17,19 +26,22 @@
       <p v-if="1" class="el-icon-s-custom">fans：{{follower}}</p>
       <div class="userfollow">
         <br />
-        <p class="p1"><i class="el-icon-circle-plus"></i>TA的关注({{hisStar.length}})</p>
+        <p class="p1">
+          <i class="el-icon-circle-plus"></i>
+          TA的关注({{hisStar.length}})
+        </p>
         <hr />
-        <div class="imgbox" v-for="item in hisStar" :key="item.id">
-          <img @click="toUserMain(item)"  :src="item.userimg" alt />
+        <div class="imgbox" >
+          <img v-for="item in hisStar" :key="item.id" @click="toUserMain(item)" :src="item.userimg" alt />
         </div>
       </div>
     </div>
 
-    <div class="bottombox">
+    <!-- <div class="bottombox">
       <el-tabs>
         <el-tab-pane label="TA的声音" name="first"></el-tab-pane>
       </el-tabs>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -134,20 +146,34 @@ export default {
           console.log(222);
         });
     },
-    toUserMain(item){
+    toUserMain(item) {
       // console.log(item);
-      let path=`/zhubo/${item.user_id}/userindex`
-      document.cookie="activename=first"
-       if (path) {
+      let path = `/zhubo/${item.user_id}/userindex`;
+      document.cookie = "activename=first";
+      if (path) {
         this.$router.push(path);
-        this.$router.go(0)
+        this.$router.go(0);
       }
-    }
+    },
+    changeAlbum(item) {
+      // console.log(item.album_id);
+      let path = `/youshengintr/${item.album_id}`;
+      if (path) {
+        this.$router.push(path);
+        this.$router.go(0);
+      }
+    },
   },
 };
 </script>
 
 <style scoped>
+/* .kongde{
+  width: 100%;
+  height:150px ;
+  text-align: center;
+  line-height: 150px;
+} */
 .p1 {
   padding: 10px 0;
 }
@@ -163,6 +189,11 @@ export default {
 }
 .albinf {
   margin: 5px 15px 9px;
+  /* display: flex;
+  flex-wrap: wrap */
+}
+.albinf:hover {
+  cursor: pointer;
 }
 .albinf img {
   width: 140px;
@@ -190,11 +221,12 @@ export default {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.imgbox{
+.imgbox {
   width: 100%;
   display: flex;
+
 }
-.imgbox img{
+.imgbox img {
   width: 60px;
   height: 60px;
   border-radius: 50%;

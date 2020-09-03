@@ -1,9 +1,12 @@
 <template>
-    <div class="box">
+    <div>
+        <div class="box">
         <youshengintr1 class="youshengintr1"></youshengintr1>
         <youshengintr2 class="youshengintr2"></youshengintr2>
         <img class="imgurl" :src="imgurl" alt="">
         <youshengintr3 class="youshengintr3"></youshengintr3>
+        </div>
+        <foot></foot>
     </div>
     
 </template>
@@ -31,8 +34,8 @@ export default {
   width: 260px;
   height: 100px;
   position: absolute;
-  top:560px;
-  left: 1040px;
+  top:602px;
+  left: 1032px;
 }
 .youshengintr1{
     width: 780px;
@@ -41,7 +44,7 @@ export default {
 }
 .youshengintr2{
     width: 260px;
-    height: 482px;
+    height: 528px;
     position: absolute;
     left: 1000px;
     margin-top: 69px;

@@ -7,24 +7,24 @@
         <!-- <div><i class="el-icon-search"></i><input @click="serchAlb" class="searchinp"  placeholder="请搜索专辑"></div> -->
       </div>
       <hr />
-      <div>
-        <div class="AlbumLis" v-for="item in hisfans" :key="item.id">
+      <div class="albbox">
+        <div class="AlbumLis" v-for="item in hisfans" :key="item.id" @click="toUserMain(item)">
           <img :src="item.userimg" alt />
           <div class="albinf">
             <b>{{item.nickname}}</b>
-            <p>
-              <i class="el-icon-circle-plus"></i>TA的关注：{{starLen}}
-            </p>
+            <inf :myitem="item"></inf>
           </div>
           <hr />
         </div>
       </div>
     </div>
   </div>
+
    </div>
 </template>
 
 <script>
+import inf from "./inf.vue"
 export default {
     data:function () {
         return {
@@ -35,6 +35,9 @@ export default {
             starLen:"",
             star:[]
         }
+    },
+    components:{
+      inf
     },
     created(){
         this.getUserInf()
@@ -95,6 +98,14 @@ export default {
           console.log(222);
         });
     },
+     toUserMain(item){
+       let path=`/zhubo/${item.user_id}/userindex`
+       document.cookie="activename=first"
+       if (path) {
+        this.$router.push(path);
+        this.$router.go(0)
+      }
+    },
     }
 }
 </script>
@@ -116,7 +127,10 @@ export default {
    margin-left: 10px;
    margin: 13px 0;
  }
- .AlbumLis img{
+ .AlbumLis :hover{
+   cursor: pointer;
+ }
+  .AlbumLis img{
    height: 70px;
    width: 70px;
    border-radius: 5px;
@@ -133,6 +147,12 @@ export default {
    /* width: 50px; */
    height: 27px;
    padding:0 10px;
-   /* line-height: 50px; */
+   line-height: 50px;
+ }
+ .albbox{
+   overflow-y:auto; 
+  overflow-x:auto; 
+  width:100%; 
+  height:500px;
  }
 </style>

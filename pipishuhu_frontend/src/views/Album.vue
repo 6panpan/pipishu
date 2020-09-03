@@ -19,6 +19,9 @@
       </div>
       <ranking></ranking>
     </div>
+       <foot class="foot"></foot>
+
+    
   </div>
 </template> 
 
@@ -30,6 +33,8 @@ import LoginWindow from "./LoginWindow";
 import albumlist from "./albumlist.vue";
 import lovealbum from "./lovealbum.vue";
 import ranking from "../components/ranking.vue";
+
+
 
 export default {
   data: function () {
@@ -147,9 +152,9 @@ export default {
 
 <style scoped>
   .rightbox{
-    top:300px;
+    top:252px;
     position: absolute;
-    left: 1050px;
+    left: 905px;
   }
 #contentBox {
   width: 1120px;
