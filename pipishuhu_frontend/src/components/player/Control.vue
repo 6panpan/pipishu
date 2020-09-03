@@ -1,5 +1,6 @@
 <template>
     <div class="control" :class="{ control__playing: true }">
+        <audio :src="$store.state.currentSrc" style="display:none;" ref="audio"></audio>
         <div class="control_btn control_btn__side" @click="handlePrev">
             <i class="el-icon-d-arrow-left" />
         </div>
@@ -9,6 +10,9 @@
         <div class="control_btn control_btn__side" @click="handleNext">
             <i class="el-icon-d-arrow-right" />
         </div>
+        <div class="control_btn" @click="showlistchange">
+            <i class="el-icon-s-unfold" />
+        </div>
     </div>
 </template>
 
@@ -17,16 +21,17 @@ import { mapState } from "vuex";
 import { player } from "../../play.js";
 
 export default {
+    props: ["showlist"],
     //import引入的组件需要注入到对象中才能使用
-    components: {
-        ...mapState(["isPlaying"]),
-    },
+    components: {},
     data() {
         //这里存放数据
         return {};
     },
     //监听属性 类似于data概念
-    computed: {},
+    computed: {
+        ...mapState(["isPlaying"]),
+    },
     //监控data中的数据变化
     watch: {},
     //方法集合
@@ -50,14 +55,24 @@ export default {
                 player.next();
             }
         },
+        showlistchange() {
+            if (this.showlist === false) {
+                this.$emit("listchanged", true);
+            } else {
+                this.$emit("listchanged", false);
+            }
+        },
     },
 };
 </script>
 <style lang="scss" scoped>
 .control {
+    background-color: white;
     position: relative;
     top: -21px;
+    right: -16px;
     display: flex;
+    z-index: 10;
 }
 .control_btn {
     height: 40px;
@@ -70,6 +85,7 @@ export default {
     color: #3cced0;
     font-size: 32px;
     transition: background-color 0.6s ease;
+    z-index: 10;
 }
 .control_btn:hover {
     background-color: #3cced040;

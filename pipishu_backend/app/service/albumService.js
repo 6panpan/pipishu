@@ -44,6 +44,16 @@ class AlbumService extends Service {
 		let list = await this.ctx.app.mysql.query(sql, [kind]);
 		return list;
 	}
+	// 按播放量取出前10位
+	async getRankAlbumTen() {
+		let sql = "select * from album  order by album_amount desc limit 0,10;"
+		let list = await this.ctx.app.mysql.query(sql, []);
+		return list;
+	}
+
+	
+
+	
 }
 
 module.exports = AlbumService;

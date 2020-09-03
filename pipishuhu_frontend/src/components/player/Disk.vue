@@ -1,5 +1,5 @@
 <template>
-    <div class="disk" :class="{ disk__playing: true }">
+    <div class="disk" :class="{ disk__playing: isPlaying }">
         <label
             class="disk_cover"
             ref="cover"
@@ -99,6 +99,7 @@ export default {
     overflow: hidden;
     transform: translateY(-50%) scale(0.88);
     transform: all 0.6 ease;
+    z-index: 100;
 }
 .disk input {
     display: none;

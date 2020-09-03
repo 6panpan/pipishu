@@ -2,15 +2,18 @@ module.exports = app => {
     const { router, controller } = app;
     //用户相关路由
     //// 注册
-    // router.post("/regist", controller.userController.regist);
+    router.post("/regist", controller.userController.regist);
     //// 登录
-    // router.post("/login", controller.userController.login);
+    router.post("/login", controller.userController.login);
+    // 获取图片
+    router.post('/upload', controller.uploadController.upload);
     //// 注销
     // router.post("/logout", controller.userController.logout);
     //CR// 获取用户信息
     router.get("/getUserInf", controller.userController.getUserInf);
     //ZY// 根据用户id获取用户信息
     router.get("/getAnuserInf", controller.userController.getAnuserInf);
+
 
 
     //专辑相关路由
@@ -26,23 +29,36 @@ module.exports = app => {
     router.get("/getUserAlbum", controller.albumController.getUserAlbum);
     //ZY// 根据专辑id获取专辑
     router.get("/getoneAlbum", controller.albumController.getoneAlbum);
+    // 取出播放量最多的前10位专辑
+    router.get('/getRankAlbumTen', controller.albumController.getRankAlbumTen);
+    
+
 
     //音频相关路由
     //CR// 获取所有音频
     router.get("/getAudio", controller.audioController.getAudio);
 
-    //收藏相关路由
-    //// 添加
-    // router.post("/addAlbum", controller.collectController.addAlbum);
-    //// 删除
-    // router.post("/delAlbum", controller.collectController.delAlbum);
+    //ZY//根据专辑id取出对应audio
+    router.get('/getSomeAudio', controller.audioController.getSomeAudio);
 
+    //ZY//根据专辑id取出分页专辑里的audio
+    router.get('/getPageAudio', controller.audioController.getPageAudio);
+
+
+    //收藏相关路由
+     // 添加收藏
+     router.post("/addCollect", controller.collectController.addCollect);
+     // 删除
+     router.get("/delCollect", controller.collectController.delCollect);
+     // 获取用户收藏专辑id
+     router.get("/getUserCollect", controller.collectController.getUserCollect);
+
+     
     //关注相关路由
     //// 关注
-    // router.post("/follow", controller.followController.follow);
+    router.post("/addfollow", controller.followController.addfollow);
     //// 取消关注
-    //！！！！！！！！！！！！有问题
-    // router.post("/delAlbum", controller.followController.delAlbum);
+    router.post("/delfollow", controller.followController.delfollow);
     //ZY// 获取粉丝数
     router.get("/getfollow", controller.followController.getfollow);
 

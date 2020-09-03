@@ -1,7 +1,9 @@
 <template>
     <div class="progress" :class="{ progress__playing: true }">
-        <h2 class="progress_title">音频：{{ name | formatName }}</h2>
-        <p class="progress_text">{{ position | formatTime }} / {{ duration | formatTime }}</p>
+        <h2 class="progress_title">
+            {{ "音频：" + $store.state.songs[$store.state.currentIndex].name }}
+        </h2>
+        <p class="progress_text">{{ position }} / {{ duration }}</p>
         <div class="progress_line">
             <span :style="{ width: progress }"></span>
         </div>
@@ -69,9 +71,9 @@ export default {
     padding-right: 24px;
     height: 100%;
     border-radius: 6px 6px 0 0;
-    background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 20px 20px rgba(95, 23, 101, 0.2);
+    background-color: rgba(255, 255, 255, 0.9);
     transition: all 0.6s ease;
+    z-index: 9s;
 }
 .progress__playing {
     transform: translateY(-100%);

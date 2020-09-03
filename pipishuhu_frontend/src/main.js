@@ -9,14 +9,18 @@ import "normalize.css";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 
+import albumitem from "./components/albumlist/albumitem.vue";
+Vue.component("albumitem", albumitem);
+
 import "../public/font/iconfont.css";
+
 Vue.use(ElementUI);
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 import Player from "./components/player/Player";
 Vue.component(`Player`, Player);
-
 Vue.use(Player);
+
 new Vue({
     router,
     store,

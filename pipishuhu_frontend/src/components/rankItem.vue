@@ -20,7 +20,7 @@ export default {
   },
   props: ["kind"],
   created() {
-    console.log(this.kind);
+    // console.log(this.kind);
     // 请求前3条
     this.$http
       .get(" http://localhost:7001/getRankAlbum", {
@@ -29,9 +29,9 @@ export default {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         this.ranklist = res.data;
-        console.log(this.ranklist);
+        // console.log(this.ranklist);
       })
       .catch((err) => {
         console.log(err);
