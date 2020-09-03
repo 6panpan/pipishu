@@ -5,7 +5,7 @@
         <img :src="item.albumUrl" alt />
         <div>
           <div class="hoverColor audioName" @click="enterAudio(item)">{{item.audio_name}}</div>
-          <div class="hoverColor albumName">{{item.albumName}}</div>
+          <div @click="enterAlbum(item.album_id)" class="hoverColor albumName">{{item.albumName}}</div>
           <p id="audioInf-bottom"><i class="el-icon-user"></i>{{item.albumNickname}}  <i class="el-icon-service"></i>{{item.amount}}</p>
         </div> 
       </div> 
@@ -23,8 +23,8 @@ export default {
   },
   props:["item"],
   methods:{
-    enterAudio(audioInf){ 
-      console.log(audioInf)
+    enterAudio(audioInf){  
+      // console.log(audioInf)
       //   /专辑类别/专辑id/音频id
       let path
       switch (audioInf.albumKind) {
@@ -38,6 +38,9 @@ export default {
       if(path){
         this.$router.push(path)
       }
+    },
+    enterAlbum(album_id,kind){
+      // this.$router.push(`/youshengintr/${album_id}`)
     }
   }
 };

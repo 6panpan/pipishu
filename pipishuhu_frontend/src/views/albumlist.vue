@@ -3,11 +3,11 @@
     <div class="album-type">
       <!-- 类别和关键字 -->
       <div class="albumKw">
-        <span>{{item.sort}}</span>
+        <h3>{{item.sort}}</h3>
         <div id="kw" @click="searchKw">
           <span v-for="(item,index) in item.kw" :key="index">{{item}}</span>
         </div>
-      </div>
+      </div> 
 
       <span>更多</span>
     </div>
