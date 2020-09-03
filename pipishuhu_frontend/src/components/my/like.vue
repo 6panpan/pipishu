@@ -1,6 +1,6 @@
 <template>
 <div>
-    喜欢
+    关注
 </div>
 </template>
 <script>
