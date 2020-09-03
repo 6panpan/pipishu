@@ -35,13 +35,13 @@
 
     <div id="right">
       <searchrank :ranklist="rankAlbumList">
-        <p>皮皮书最热合集</p>
+        <p><i class="el-icon-reading"></i> 皮皮书最热合集</p>
       </searchrank>
       <!-- <searchrank :ranklist="rankZhuboList">
         <p>最多粉丝主播榜</p>
       </searchrank>-->
     </div>
-  </div>
+  </div> 
 </template> 
 
 <script>
@@ -90,7 +90,7 @@ export default {
         .then((res) => {
           this.list = res.data;
           // console.log(this.list)
-
+ 
           //给专辑添加所属用户名
           this.list.forEach((el1) => {
             this.userArr.forEach((el2) => {
@@ -99,20 +99,24 @@ export default {
               }
             });
           });
+          this.getAudio();
 
           //专辑名称有关键字
           this.mylist = this.list.filter((el) => {
             return el.album_name.indexOf(`${this.$route.params.kw}`) != -1;
           });
-          //专辑发布者有关键字
-          this.mylist = this.mylist.concat(
-            this.list.filter((el) => {
-              return el.nickname.indexOf(`${this.$route.params.kw}`) != -1;
-            })
-          );
+
+
+          // console.log(1111)
+          //专辑发布者有关键字,有问题，代码无法接着向下执行
+          // this.mylist = this.mylist.concat(
+          //   this.list.filter((el) => {
+          //     return el.nickname.indexOf(`${this.$route.params.kw}`) != -1;
+          //   })
+          // );
         })
         .catch((err) => {
-          alert("axios请求失败");
+          // console.log("axios请求失败取全");
         });
     },
 
@@ -141,9 +145,10 @@ export default {
           this.myAudio = this.audioAll.filter((el) => {
             return el.audio_name.indexOf(`${this.$route.params.kw}`) != -1;
           });
+          // console.log(this.myAudio)
         })
         .catch((err) => {
-          alert("axios请求失败");
+          // console.log("axios请求失败取字段音频");
         });
     },
 
@@ -172,6 +177,9 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+} 
+.el-icon-reading {
+  color: red;
 }
 
 #album {
@@ -181,7 +189,12 @@ export default {
 }
 #right {
   position: fixed;
-  top: 150px;
-  left: 880px;
+  top: 180px;
+  left: 970px;
+}
+
+#right p {
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 </style>

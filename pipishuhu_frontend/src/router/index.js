@@ -5,12 +5,13 @@ import rankconItem from '../components/rankconItem.vue'
 import rankItemXiangSheng from '../components/rankItemXiangSheng.vue'
 import rankItemYuLe from '../components/rankItemYuLe.vue'
 import rankItemErTong from '../components/rankItemErTong.vue'
+
 import youshengshu from "../components/youshengshu/youshengshu.vue";
+import audioItem from "../components/audio/audioItem.vue"
 
 import youshengintr from "../components/youshengintr.vue";
 
 import uploading from "../components/uploading.vue";
-
 
 import searchPage from "../components/search/searchPage.vue";
 import searchAlbum from "../components/search/searchAlbum.vue";
@@ -22,6 +23,12 @@ import zhubo from "../components/zhubo.vue"
 import userAlbum from "../components/zhubo/userAlbum.vue"
 import userfans from "../components/zhubo/userfans.vue"
 import userfollow from "../components/zhubo/userfollow.vue"
+import userindex from "../components/zhubo/userindex.vue"
+
+import subscribed from "../components/my/subscribed.vue"
+import listened from "../components/my/listened.vue"
+import buy from "../components/my/buy.vue"
+import like from "../components/my/like.vue"
 
 Vue.use(VueRouter);
 
@@ -43,6 +50,12 @@ const routes = [
     {
         path: "/my",
         component: My,
+        children:[
+          { path: "subscribed", component: subscribed },
+          { path: "listened", component: listened },
+          { path: "buy", component: buy },
+          { path: "like", component: like }
+        ]
     },
     //APP下载
     {
@@ -79,7 +92,7 @@ const routes = [
  
     },
     // 有声书
-  {
+  { 
     path: '/youshengshu',
     component: youshengshu,
     children:[
@@ -87,11 +100,20 @@ const routes = [
     ],
   },
   {
+    path: '/youshengshu/:albumId/:audioId',
+    component: audioItem,
+  },
+  {
     path: '/youshengintr/:album_id',  
     component: youshengintr,
   },
-  // 搜索板块
+  // 娱乐
   {
+    path: '/yule/:album_id',  
+    component: youshengintr,
+  },
+  // 热门搜索板块
+  { 
     path: '/search/:kw', 
     component: searchPage,
     children: [
@@ -110,7 +132,7 @@ const routes = [
       {path:"userAlbum",component:userAlbum},
       {path:"userfans",component:userfans},
       {path:"userfollow",component:userfollow},
-      // {path:"userAlbum",component:userAlbum}
+      {path:"userindex",component:userindex}
     ]
   },
 ];

@@ -16,7 +16,7 @@
     </div>
   </div>
 </template>  
-
+ 
 <script>
 import toptypeof from "./toptypeof.vue";
 import shengyin from "./shengyin.vue";
@@ -42,12 +42,12 @@ export default {
     this.$http
       .get("http://localhost:7001/getUserInf", {})
       .then((res) => {
+        // console.log(res.data)
         this.userArr = res.data;
         this.myuser = this.userArr.filter((el) => {
           return el.nickname.indexOf(`${this.$route.params.kw}`) != -1;
         });
         this.getAllAlbum();
-        this.getAudio();
       })
       .catch((err) => {});
   },
@@ -60,6 +60,7 @@ export default {
           // console.log(res.data)
           this.list = res.data;
 
+          // console.log(111);
           //给专辑添加所属用户名
           this.list.forEach((el1) => {
             this.userArr.forEach((el2) => {
@@ -69,19 +70,22 @@ export default {
             });
           });
 
+          this.getAudio();
+
           //专辑名称有关键字
           this.mylist = this.list.filter((el) => {
             return el.album_name.indexOf(`${this.$route.params.kw}`) != -1;
           });
+
           //专辑发布者有关键字
-          this.mylist = this.mylist.concat(
-            this.list.filter((el) => {
-              return el.nickname.indexOf(`${this.$route.params.kw}`) != -1;
-            })
-          );
+          // this.mylist = this.mylist.concat(
+          //   this.list.filter((el) => {
+          //     return el.nickname.indexOf(`${this.$route.params.kw}`) != -1;
+          //   })
+          // );
         })
         .catch((err) => {
-          alert("axios请求失败");
+          // console.log("axios请求失败")
         });
     },
 
@@ -117,7 +121,6 @@ export default {
           alert("axios请求失败");
         });
     },
-
     // 分页
     pagenum(el) {
       let num = el ? el.target.innerHTML : 1;
@@ -139,7 +142,7 @@ p {
 }
 #album {
   margin-top: 20px;
-} 
+}
 
 #btnBox {
   text-align: center;

@@ -14,8 +14,11 @@
           <router-link to="/Download">APP下载</router-link>
         </li>
         <li>
-          <router-link to="/search" tag="input">搜索框</router-link>
-          <el-button icon="el-icon-search"></el-button>
+          <router-link to>
+            <input type="text" class="mysearchC" v-model="mysearchnr" />
+          </router-link>
+          <el-button @click="mysearchKeywords
+" icon="el-icon-search" class="mysearchbutton"></el-button>
         </li>
         <li>
           <router-link to="/my">
@@ -37,15 +40,55 @@ export default {
   data() {
     return {
       UserImg: UserImg,
+      mysearchnr: "",
     };
   },
-  }
+  watch: {
+    mysearchnr() {
+      console.log(this.mysearchnr);
+      this.mysearchnr = this.mysearchnr;
+    },
+  },
+  methods: {
+    mysearchKeywords() {
+      console.log(this.mysearchnr);
+      this.$router.push(`/search/${this.mysearchnr}`);
+    },
+    getByKey(key) {
+      let name = key + "=";
+      let ca = document.cookie.split(";");
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return null;
+    },
+  },
+  mounted() {
+    if (document.cookie) {
+      console.log(this.getByKey("user_id"));
+      this.$http
+        .get("http://127.0.0.1:7001/getAnuserInf", {
+          params: {
+            user_id: this.getByKey("user_id"),
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          this.UserImg = res.data[0].userimg;
+        });
+    }
+  },
+};
 </script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   color: #2c3e50;
 }
 
@@ -88,7 +131,7 @@ export default {
   padding-right: 40px;
   margin-top: 20px;
 }
-.myul li input {
+.mysearchC {
   width: 240px;
   height: 30px;
   border-radius: 17px;
@@ -98,12 +141,10 @@ export default {
   padding-left: 15px;
 }
 .kong {
-  height: 80px;
+  height: 72px;
 }
 .el-button {
   height: 34px !important;
-  padding: 0px 15px !important;
-  // padding-bottom: 2px !important;
   margin-left: -15px !important;
   border-radius: 0 17px 17px 0 !important;
   color: #fff !important;
@@ -114,4 +155,10 @@ export default {
   border-radius: 20px;
   margin-left: 100px;
 }
+.el-icon-search {
+  position: relative;
+  top: -2px;
+}
+
+
 </style>
