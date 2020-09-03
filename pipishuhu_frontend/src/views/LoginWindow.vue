@@ -7,9 +7,9 @@
         <span @click="TZregister">注册</span>
         <div class="loginMK" v-if="loginMK">
           账号：
-          <input v-model="loginPhone" type="text" />
+          <input @keydown.enter="login" v-model="loginPhone" type="text" />
           <br />密码：
-          <input v-model="loginPas" type="password" />
+          <input @keydown.enter="login" v-model="loginPas" type="password" />
           <br />
           <span>{{ts}}</span>
           <br />
@@ -22,15 +22,15 @@
           <br />
           <button @click="axiosupload">确认</button>
           <br />电话：
-          <input type="text" v-model="RegisterPhone" />
+          <input @keydown.enter="register" type="text" v-model="RegisterPhone" />
           <br />密码：
-          <input type="text" v-model="Registerpwd" />
+          <input @keydown.enter="register" type="text" v-model="Registerpwd" />
           <br />昵称：
-          <input type="text" v-model="Registername" />
+          <input @keydown.enter="register" type="text" v-model="Registername" />
           <br />
-          <input type="radio" id="usersexMan" value="男" v-model="usersex" />
+          <input @keydown.enter="register" type="radio" id="usersexMan" value="男" v-model="usersex" />
           <label for="usersexMan">男</label>
-          <input type="radio" id="usersexWoman" value="女" v-model="usersex" />
+          <input @keydown.enter="register" type="radio" id="usersexWoman" value="女" v-model="usersex" />
           <label for="usersexWoman">女</label>
           <br />
           <span>{{Rts}}</span>

@@ -24,6 +24,8 @@ export default {
   mounted() {
     if (!document.cookie) {
       this.$router.push("/");
+    }else if(this.$route.path != "/my/subscribed"){
+      this.$router.push("/my/subscribed")
     }
   },
 };

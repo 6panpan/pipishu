@@ -15,7 +15,7 @@
         </li>
         <li>
           <router-link to>
-            <input type="text" class="mysearchC" v-model="mysearchnr" />
+            <input type="text" @keydown.enter="mysearchKeywords" class="mysearchC" v-model="mysearchnr" />
           </router-link>
           <el-button @click="mysearchKeywords
 " icon="el-icon-search" class="mysearchbutton"></el-button>
@@ -53,6 +53,7 @@ export default {
     mysearchKeywords() {
       console.log(this.mysearchnr);
       this.$router.push(`/search/${this.mysearchnr}`);
+      this.$router.go(0)
     },
     getByKey(key) {
       let name = key + "=";
