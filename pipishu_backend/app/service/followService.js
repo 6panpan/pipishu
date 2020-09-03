@@ -15,7 +15,7 @@ class FollowService extends Service {
         let r = await this.ctx.app.mysql.query(sql, [ustar_id, ufans_id]);
         return r.affectedRows;
     }
-    //ZY// 获取粉丝数
+    //ZY// 获取粉丝
     async getfollow(ustar_id) {
         let sql = "select * from follow where ustar_id=?";
         let list = await this.ctx.app.mysql.query(sql, [ustar_id]);
