@@ -102,7 +102,7 @@ export default {
   z-index: 2000;
   a {
     color: #2c3e50;
-    font-size: 25px;
+    font-size: 24px;
     text-decoration: none;
 
     &.router-link-exact-active {
@@ -120,9 +120,10 @@ export default {
   float: left;
 }
 .myul {
+  min-width: 1200px;
   overflow: hidden;
   list-style: none;
-  margin: 0 200px;
+  margin: 0 185px;
   height: 70px;
 }
 

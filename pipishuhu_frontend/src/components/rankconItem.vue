@@ -53,7 +53,7 @@ export default {
   },
 
   created() {
-    this.id = this.GetCookie("id");
+    this.id = this.GetCookie("user_id");
     this.getAllAlbum(this.kind);
   },
   methods: {

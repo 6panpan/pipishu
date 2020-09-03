@@ -6,7 +6,7 @@
         <span class="el-icon-folder-add upload-logo"></span>
       </div>
       <div class="no-uploading">
-        <div @click="uploadingAudio" class="no-uploading-logo" v-if="num==1">
+        <div v-if="num==0" @click="uploadingAudio" class="no-uploading-logo">
           <div class="upload-box-one upload-box"></div>
           <div class="upload-box-two upload-box"></div>
           <div class="upload-box-three upload-box"></div>
@@ -20,13 +20,14 @@
             <input type="text" id="audio-name" />
           </p>
           <p>
-            音频简介：
-            <input type="text" id="audio-inf" />
-          </p>
-          <p>
             选择专辑:
-            <select id="selectFrame">
-              <option v-for="(item, index) in al_list" :key="index" value="">{{item.album_name}}</option>
+            <select id="selectFrame" @click="getAlbumID">
+              <option
+                id="selectOption"
+                v-for="(item, index) in al_list"
+                :key="index"
+                :value="item.album_id"
+              >{{item.album_name}}</option>
             </select>
           </p>
           <p>
@@ -34,11 +35,37 @@
             <input type="file" id="choose-audio" />
           </p>
           <p class="upload-btn-p">
-            <span class="upload-btn">上传商品</span>
+            <span class="upload-btn" @click="uploadAudio()">上传商品</span>
           </p>
         </div>
       </div>
-      <div></div>
+
+      <!-- <div>
+        <div class="bigbox">
+          <div id="updateDiv" class="smallbox">
+            <span class="tuichu"></span>
+            <div class="box">
+              <p>
+                商品名称：
+                <input type="text" id="name" />
+              </p>
+              <p>
+                商品介绍：
+                <input type="text" id="inf" />
+              </p>
+              <p>
+                商品价格：
+                <input type="number" id="price" />
+              </p>
+              <p>
+                商品图片：
+                <input type="file" id="choose" />
+              </p>
+              <span class="btn" @click="axiosupload">上传商品</span>
+            </div>
+          </div>
+        </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -49,52 +76,93 @@ export default {
   data: function () {
     return {
       num: 0,
-      id:0,
+      id: 0,
       // 用户收藏的的专辑id
-      al_idALL:[],
+      al_idALL: [],
       // 用户收藏的的专辑的信息
-      al_list:[]
+      al_list: [],
+      album_id: 0,
     };
   },
   created() {
-      this.id = this.GetCookie("id");
-      this.getUserCollect(this.id);
+    this.id = this.GetCookie("user_id");
+    this.getUserCollect(this.id);
   },
   methods: {
-    uploadingAudio() {},
+    uploadingAudio() {
+      this.num = 1;
+    },
+    // 得到用户选中的专辑id
+    getAlbumID() {
+      let selectFrame = document.getElementById("selectFrame").value;
+      this.album_id = selectFrame;
+      console.log(this.album_id);
+    },
 
+    // 音频上传
+    uploadAudio () {
+        console.log(this.album_id);
+            let name = document.getElementById("audio-name").value;
+            let date = new Date();
+            let a=date.toISOString().slice(0,10);
+            console.log(a); // 2020-08-06
+            let b = date.toTimeString().slice(0,8)
+            console.log(b); // 19:58:22
+            let nowDate = a+" "+b;
+            console.log(name);
+
+            let file = document.getElementById("choose-audio").files[0];
+            let formData = new FormData();
+            formData.append("name", name);
+            formData.append("a_id", this.album_id);
+            formData.append("time", nowDate);
+
+            formData.append("uploadFile", file, file.name);
+            const config = {
+                headers: {
+                    "Content-Type": "multipart/form-data;boundary=" + new Date().getTime()
+                }
+            };
+           this.$http.post("http://127.0.0.1:7001/uploadAudio", formData, config).then(function (response) {
+                console.log(response.data);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        this.num = 0;
+    },
     getUserCollect(id) {
       this.$http
         .get("http://127.0.0.1:7001/getAllUserCollect", {
           params: {
-            us_id: id
+            us_id: id,
           },
         })
         .then((res) => {
           console.log(res.data);
+          this.album_id = res.data[0].al_id;
+          console.log(this.album_id);
           for (let i = 0; i < res.data.length; i++) {
-              this.al_idALL.push( res.data[i].al_id);
+            this.al_idALL.push(res.data[i].al_id);
           }
           this.getUserCollectName(this.al_idALL);
         })
         .catch((err) => {
           console.log(err);
-          
         });
     },
 
     getUserCollectName(al_id) {
-        console.log(al_id.toString());
-        this.$http
+      console.log(al_id.toString());
+      this.$http
         .get("http://127.0.0.1:7001/getAlbumByCollect", {
           params: {
-            al_id: al_id.toString()
+            al_id: al_id.toString(),
           },
         })
         .then((res) => {
           console.log(res.data);
           for (let i = 0; i < res.data.length; i++) {
-              this.al_list.push( res.data[i]);
+            this.al_list.push(res.data[i]);
           }
           console.log(this.al_list);
         })
@@ -188,7 +256,7 @@ export default {
 
 /* 上传 */
 .uploa-audio {
-  width: 400px;
+  width: 380px;
   margin: 50px auto;
   font-size: 18px;
   color: #aaa;
@@ -213,6 +281,6 @@ select {
   text-align: center;
   border-radius: 20px;
   background-color: #3cced0;
-  margin-left: 155px;
+  margin-left: 100px;
 }
 </style>

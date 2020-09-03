@@ -46,6 +46,9 @@ module.exports = app => {
     //ZY//根据专辑id取出分页专辑里的audio
     router.get('/getPageAudio', controller.audioController.getPageAudio);
 
+    //HJX//上传音频
+    router.post('/uploadAudio', controller.audioController.uploadAudio);
+
 
     //收藏相关路由
      // 添加收藏

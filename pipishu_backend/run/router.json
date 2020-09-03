@@ -210,6 +210,18 @@
       "POST"
     ],
     "paramNames": [],
+    "path": "/uploadAudio",
+    "regexp": "/^\\/uploadAudio(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
     "path": "/addCollect",
     "regexp": "/^\\/addCollect(?:\\/(?=$))?$/",
     "stack": [
@@ -288,6 +300,19 @@
     "paramNames": [],
     "path": "/getfollow",
     "regexp": "/^\\/getfollow(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/getStar",
+    "regexp": "/^\\/getStar(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
