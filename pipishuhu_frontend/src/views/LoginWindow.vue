@@ -59,7 +59,12 @@ export default {
       usersex: "",
     };
   },
-  mounted() {},
+  mounted() {
+    if (document.cookie) {
+      console.log(1);
+      this.$emit("myloginF");
+    }
+  },
   methods: {
     closelogin() {
       this.$emit("myloginF");
@@ -86,6 +91,7 @@ export default {
             document.cookie = `user=${res.data[0].tel}`;
             document.cookie = `user_id=${res.data[0].user_id}`;
             console.log(document.cookie);
+            this.$router.go(0);
             this.$emit("myloginF");
           }
         });

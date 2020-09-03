@@ -51,7 +51,13 @@ class AlbumService extends Service {
 		return list;
 	}
 
-	
+	// HJX根据用户收藏id取出专辑信息
+	async getAlbumByCollect(al_id) {
+		console.log(al_id);
+		let sql = `select * from album where album_id in(${al_id})`
+		let list = await this.ctx.app.mysql.query(sql);
+		return list;
+	}
 
 	
 }

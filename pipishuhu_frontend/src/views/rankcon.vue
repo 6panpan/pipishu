@@ -14,7 +14,6 @@
         <el-tab-pane class="rank-kinds" label="娱乐" name="sexth"></el-tab-pane>
       </el-tabs>
       <router-view />
-
     </div>
   </div>
 </template>
@@ -35,10 +34,8 @@ export default {
   methods: {
     // 排行榜切换路由
     handleClick(tab, event) {
-      // console.log(tab, event);
-      // console.log(tab.label);
       this.kinds = tab.label;
-      // console.log(this.kinds);
+      document.cookie = `kind=${tab.name}`;
       let path;
       switch (this.kinds) {
         case "有声书":

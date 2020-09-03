@@ -7,22 +7,19 @@
         <img class="headimg" :src="userinf[0].userimg" alt />
         <span>{{userinf[0].nickname}}</span>
       </div>
-      <div class="userinf" v-if="follower[0]">
-          <span>粉丝数：{{follower[0]['count(ufans_id)']}}万</span>
+      <div class="userinf" v-if="1">
+          <span><i class="el-icon-user"></i>粉丝数：{{follower}}</span>
           <span>专辑数：{{AlbumNum}}</span><br><br>
           <p class="userintr" v-if="userinf[0]">简介：{{userinf[0].userintr}}</p>
       </div>
     </div>
     <div class="bottombox">
-      <div class="bottom1"><span class="span1"><i class="el-icon-video-play"></i>TA的专辑</span><span class="span2" @click="toUserAlbum">更多</span></div>
+      <div class="bottom1"><span class="span1" @click="toUserAlbum(userinf)"><i class="el-icon-video-play"></i>TA的专辑</span><span class="span2" @click="toUserAlbum(userinf)">更多</span></div>
       <hr>
       <br>
       <div class="showAlbum">
-        <ul v-if="userAlbum">
-          <li v-for="item in userAlbum" :key="item.id" class="showAlbumLi" @click="changeAlbum(item)">
-            <!-- <div class="liLeft">
-              <img :src="item.album_url" alt="">
-            </div> -->
+        <ul v-if="showAlbum">
+          <li v-for="item in showAlbum" :key="item.id" class="showAlbumLi" @click="changeAlbum(item)">
             <img :src="item.album_url" alt="">
             <div class="liRight">
              <div class="lir">
@@ -41,6 +38,7 @@
 </template>
 
 <script>
+import userAlbumVue from '../zhubo/userAlbum.vue';
 export default {
   //   beforeCreated() {
   //       this.getoneAlbum()
@@ -55,6 +53,7 @@ export default {
       userAlbum:[],
       follower:"",
       AlbumNum:"",
+      showAlbum:[]
     };
   },
   methods: {
@@ -101,7 +100,8 @@ export default {
         })
         .then((res) => {
             // console.log(res.data);
-          this.follower=res.data;
+          this.follower=res.data.length;
+          console.log(this.follower);
           
         //   console.log(this.userinf);
         })
@@ -121,6 +121,7 @@ export default {
         .then((res) => {
             // console.log(res.data);
           this.userAlbum=res.data
+          this.showAlbum=this.userAlbum.slice(0,4)
           // console.log(this.userAlbum);
           this.AlbumNum=(this.userAlbum).length
           // console.log(this.AlbumNum);
@@ -141,14 +142,19 @@ export default {
     //
      toUserMain(userinf){
       //  console.log(userinf[0].user_id);
-       let path=`/zhubo/${userinf[0].user_id}`
+       let path=`/zhubo/${userinf[0].user_id}/userindex`
+       document.cookie="activename=first"
        if (path) {
         this.$router.push(path);
         this.$router.go(0)
       }
     },
-    toUserAlbum(){
-
+    toUserAlbum(userinf){
+      let path=`/zhubo/${userinf[0].user_id}/userAlbum`
+      document.cookie="activename=second"
+      if (path) {
+        this.$router.push(path);
+      }
     },
    
   },
@@ -186,7 +192,10 @@ export default {
 }
 .userintr{
   padding:10px 10px 14px 12px;
-
+  max-height: 40px;
+  overflow: hidden;
+  white-space: wrap;
+  text-overflow: ellipsis;
 }
 .bottom1{
   display: flex;

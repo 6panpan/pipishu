@@ -14,12 +14,20 @@ Vue.component("albumitem", albumitem);
 
 import "../public/font/iconfont.css";
 
+import "../public/font/iconfont.css";
+import LoginWindow from "./views/LoginWindow.vue";
+
 Vue.use(ElementUI);
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 import Player from "./components/player/Player";
 Vue.component(`Player`, Player);
 Vue.use(Player);
+Vue.component("loginwindow", LoginWindow);
+
+import foot from "./views/foot.vue";
+
+Vue.component("foot", foot);
 
 new Vue({
     router,

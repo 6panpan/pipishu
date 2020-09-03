@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="searchBox">
     <p>首页>搜索 "{{this.$route.params.kw}}"</p>
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="全部" name="first">
@@ -15,7 +15,7 @@
         <router-view></router-view>
       </el-tab-pane>
     </el-tabs>
-
+   
   </div>
 </template>
 
@@ -63,6 +63,9 @@ export default {
 };
 </script>
 
-<style>
- 
+<style scoped>
+ #searchBox {
+   margin: 0 auto;
+   width: 1100px;
+ }
 </style>

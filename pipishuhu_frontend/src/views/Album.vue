@@ -1,6 +1,6 @@
 <template>
   <div>
-    <loginWindow @myloginF="myloginS" v-if="z"></loginWindow>
+    <loginwindow @myloginF="myloginS" v-if="loginif"></loginwindow>
     <rotation></rotation>
 
     <div id="contentBox">
@@ -19,6 +19,9 @@
       </div>
       <ranking></ranking>
     </div>
+       <foot class="foot"></foot>
+
+    
   </div>
 </template> 
 
@@ -30,6 +33,8 @@ import LoginWindow from "./LoginWindow";
 import albumlist from "./albumlist.vue";
 import lovealbum from "./lovealbum.vue";
 import ranking from "../components/ranking.vue";
+
+
 
 export default {
   data: function () {
@@ -115,7 +120,7 @@ export default {
         },
       ],
       kindArr: ["有声书", "相声评书", "儿童", "头条", "音乐", "娱乐"],
-      z: false,
+      loginif: false,
     };
   },
 
@@ -125,32 +130,27 @@ export default {
     ranking: ranking,
     albumRightRank: albumRightRank,
     rotation: Rotation,
-    loginWindow: LoginWindow,
   },
 
   methods:{
     myloginS(){
-      console.log(this.z)
-      this.z = false
+      this.loginif = false;
     }
   },
   mounted(){
-    console.log(this.$router,this.z)
     if(!document.cookie){
-      this.z = true
-    }else{
-      this.z = false
+      this.loginif = true;
     }
   }
 };
 </script>
 
 <style scoped>
-.rightbox {
-  top: 260px;
-  position: absolute;
-  left: 904px;
-}
+  .rightbox{
+    top:252px;
+    position: absolute;
+    left: 905px;
+  }
 #contentBox {
   width: 1120px;
   position: relative;
@@ -159,4 +159,5 @@ export default {
 #middleListBox {
   margin-left: 10px;
 }
+
 </style>

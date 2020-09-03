@@ -1,23 +1,24 @@
 <template>
-  <div>
-    <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
-      <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
-      <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
-      <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
-    </el-tabs>
+  <div id="my-nav">
+    <router-link to="/my/subscribed">订阅</router-link>
+    <router-link to="/my/listened">听过</router-link>
+    <router-link to="/my/buy">已购</router-link>
+    <router-link to="/my/like">喜欢</router-link>
+    <button class="logout" @click="logout">退出登录</button>
+    <router-view />
   </div>
 </template>
 <script>
 export default {
   data() {
-    return {
-      activeName: "first",
-    };
+    return {};
   },
   methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
+    logout() {
+      document.cookie = "user_id=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      alert("退出成功");
+      this.$router.go(0);
     },
   },
   mounted() {
@@ -27,3 +28,31 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+#my-nav {
+  position: relative;
+  top: 50px;
+  left: 200px;
+  a {
+    color: #2c3e50;
+    font-size: 20px;
+    text-decoration: none;
+    margin-left: 30px;
+
+    &.router-link-exact-active {
+      color: #3cced0;
+    }
+  }
+}
+.logout {
+  border-color: #3cced0;
+  border-radius: 5px;
+  background-color: #3cced0;
+  width: 100px;
+  height: 40px;
+  margin-left: 600px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+}
+</style>

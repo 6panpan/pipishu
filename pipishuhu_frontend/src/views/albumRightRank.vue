@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="box" >
-    <p @click="changePath">{{kind}}飙升榜</p>
+    <h3 @click="changePath">{{kind}}飙升榜</h3>
+    <br>
     <ul>
       <li v-for="item in albnum1" :key="item.id" class="ol1" @click="ToAlbumintr(item)">
         <div class="box2">
@@ -19,9 +20,10 @@
         </div>
       </li>
       <li v-for="(item,index) in albnum2" :key="item.id" class="ol2" @click="ToAlbumintr(item)" >
-        <span class="s1">{{index+4}}</span>
-        <span class="s2">{{item.album_name}}</span>
+        <span class="s1">{{index+4}}  {{item.album_name}}</span>
+        <!-- <span class="s2"> </span> -->
       </li>
+        
     </ul>
   </div>
   </div>
@@ -48,10 +50,13 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           let list = res.data;
+          list.sort(function () {
+            return Math.random()-0.5
+          })
           this.albnum1 = list.slice(0, 3);
-          this.albnum2 = list.slice(4, 6);
+          this.albnum2 = list.slice(3, 6);
         })
         .catch((err) => {
           console.log(222);
@@ -99,12 +104,18 @@ export default {
 .s1{
   padding-left: 0px;
   padding-right:14px ;
-  color: rgb(163, 163, 172);
+  color: rgb(94, 94, 97);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width:200px;
+  display:inline-block
   
 }
 .s2{
   padding-left: 20px;
-}
+  
+};
 p {
   font-family: PingFangSC-Medium;
   font-size: 20px;
@@ -119,11 +130,8 @@ p:hover{
 .box {
   height: 457px;
   width: 250px;
-  background-color: #ccc;
-  margin-top: 10px;
-  /* float: right; */
-  /* position: absolute;
-  left:1000px */
+  margin-top: 12px;
+  margin-bottom: 22px
 }
 .ol1 {
   list-style: none;
@@ -133,14 +141,12 @@ p:hover{
 .img1 {
   width: 80px;
   height: 80px;
-  /* float: left; */
   position: absolute;
   border-radius: 5px;
 }
 .img2 {
   width: 30px;
   height: 30px;
-  /* z-index: 2000; */
   position: absolute;
   top: 25px;
   left: 22px;
@@ -170,8 +176,6 @@ p:hover{
 }
 ul {
   margin-bottom: 20px;
-  /* background: #fff; */
-  background: #ccc;
   padding-left: 3px;
   list-style: none;
 }
@@ -187,7 +191,7 @@ li {
 }
 .ol2 {
   margin-left: 5px;
-  margin-bottom: 25px;
+  margin-bottom: 12px;
 }
 b {
   width: 115px;
