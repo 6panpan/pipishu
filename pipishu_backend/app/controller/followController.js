@@ -11,7 +11,7 @@ class FollowController extends Controller {
         this.ctx.response.body = r;
     }
 
-    //取消关注
+    //取消关注 
     async delfollow() {
         let ustar_id = this.ctx.request.body.ustar_id;
         let ufans_id = this.ctx.request.body.ufans_id;

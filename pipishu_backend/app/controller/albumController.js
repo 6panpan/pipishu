@@ -57,6 +57,13 @@ class AlbumController extends Controller {
         ctx.body = await this.ctx.service.albumService.getRankAlbumTen()
     }
 
+    // HJX根据用户收藏id取出专辑信息
+	async getAlbumByCollect() {
+        const { ctx } = this;
+        let al_id = this.ctx.request.query.al_id;
+        // console.log(al_id);
+        ctx.body = await this.ctx.service.albumService.getAlbumByCollect(al_id)
+    }
 
 
 }

@@ -1,15 +1,16 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import rankcon from '../views/rankcon.vue'
-import rankconItem from '../components/rankconItem.vue'
-import rankItemXiangSheng from '../components/rankItemXiangSheng.vue'
-import rankItemYuLe from '../components/rankItemYuLe.vue'
-import rankItemErTong from '../components/rankItemErTong.vue'
-
+import rankcon from "../views/rankcon.vue";
+import rankconItem from "../components/rankconItem.vue";
+import rankItemXiangSheng from "../components/rankItemXiangSheng.vue";
+import rankItemYuLe from "../components/rankItemYuLe.vue";
+import rankItemErTong from "../components/rankItemErTong.vue";
 import youshengshu from "../components/youshengshu/youshengshu.vue";
 import audioItem from "../components/audio/audioItem.vue"
 
 import youshengintr from "../components/youshengintr.vue";
+
+import uploading from "../components/uploading.vue";
 
 import searchPage from "../components/search/searchPage.vue";
 import searchAlbum from "../components/search/searchAlbum.vue";
@@ -65,13 +66,18 @@ const routes = [
         path: "/search",
         component: Search,
     },
-    //个人中心 
+    //个人中心
     {
         path: "/center",
         component: Center,
     },
+    // 作品上传
+    { 
+      path: "/uploading",
+      component: uploading,
+    },
     {
-        path: '/rankcon',
+        path: "/rankcon",
         component: rankcon,
         children: [
             { path: "rankconItem", component: rankconItem },
@@ -80,9 +86,8 @@ const routes = [
             { path: "rankItemErTong", component: rankItemErTong },
             { path: "rankItemYuLe", component: rankItemYuLe },
             { path: "rankItemYuLe", component: rankItemYuLe },
-            { path: '/', redirect: "rankconItem" }
+            { path: "/", redirect: "rankconItem" },
         ],
- 
     },
     // 有声书
   { 
@@ -95,12 +100,12 @@ const routes = [
   {
     path: '/youshengshu/:albumId/:audioId',
     component: audioItem,
-  },
+  },  
   {
     path: '/youshengintr/:album_id',  
     component: youshengintr,
   },
-  // 娱乐
+  // 娱乐 
   {
     path: '/yule/:album_id',  
     component: youshengintr,
