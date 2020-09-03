@@ -104,7 +104,7 @@ export default {
           params: {
             us_id: us_id,
             albumID: albumID.toString(),
-          },
+          }, 
         })
         .then((res) => {
           // 判断专辑id是否是用户收藏
@@ -279,7 +279,7 @@ img {
   display: inline-block;
 }
 .list-item:hover .list-album-name {
-   color: #6eccce;
+  color: #6eccce;
 }
 
 .list-right {

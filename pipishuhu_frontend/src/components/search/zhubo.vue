@@ -1,8 +1,9 @@
 <template>
   <div>
     <div id="userItem" v-for="item in user" :key="item.id">
+      <!-- {{item.follow}} -->
       <div id="userTop">
-        <div>
+        <div @click="tousermain(item.user_id)">
           <img id="userImg" :src="item.userimg" alt />
           <div id="userInf">
             <p class="hoverColor">{{item.nickname}}</p>
@@ -11,23 +12,41 @@
         </div>
 
         <div id="attention" @click="attention(item.user_id)">关注</div>
+        <!-- <div
+          v-if="item.follow===1"
+          id="delAttention"
+          @click="delAttention(item.user_id,item.follow)"
+        >已关注</div>
+        <div
+          v-if="item.follow===0"
+          id="addAttention"
+          @click="attention(item.user_id,item.follow)"
+        >关注</div>-->
       </div>
-
       <div id="line"></div>
     </div>
   </div>
 </template>
-
+ 
 <script>
+import { log } from "util";
 export default {
   data: function () {
     return {
       list: [],
       changeAttention: false,
+      id: "",
+      myuser: "",
     };
   },
   props: ["user"],
-  created() {},
+  created() {
+    this.id = this.getByKey("user_id");
+    this.getuserInf();
+  },
+  watch: {
+    myuser: function () {},
+  },
   methods: {
     // 取出用户的cookie具体值
     getByKey(key) {
@@ -41,52 +60,134 @@ export default {
       }
       return null;
     },
-    attention(user_id) {
-      // 于林平的登录成功，cookie值上传成功后，删掉下一句
-      document.cookie = "user_id=3";
-      let ufans_id = this.getByKey("user_id");
-      console.log(ufans_id,user_id)
-      // console.log(ufans_id)
-      // console.log(window.event);
-      let el = window.event;
-      if (!this.changeAttention) {
-        // 添加关注
-        // 点击关注在cookie里获取点前用户的id，获取关注人的id
-        // 把两个id值添加到粉丝表
 
-        // console.log(user_id, ufans_id);
+    tousermain(user_id){
+      this.$router.push(`/zhubo/${user_id}/userindex`)        
+    },
+    // 存在bug,有问题
+    attention(ustar_id) {
+      let el = window.event;
+      if (this.id) {
+        if (!this.changeAttention) {
+          this.$http
+            .post("http://localhost:7001/addfollow", {
+              ustar_id: ustar_id,
+              ufans_id: this.id,
+            })
+            .then((res) => {
+              if (res.data === 1) {
+                el.target.innerHTML = "已关注";
+                this.changeAttention = !this.changeAttention;
+              }
+            })
+            .catch((err) => {
+              console.log("axios请求失败");
+            });
+        } else {
+          this.$http
+            .post("http://localhost:7001/delfollow", {
+              ustar_id: ustar_id,
+              ufans_id: this.id,
+            })
+            .then((res) => {
+              if (res.data === 1) {
+                el.target.innerHTML = "关注";
+                this.changeAttention = !this.changeAttention;
+              }
+            })
+            .catch((err) => {
+              console.log("axios请求失败");
+            });
+        }
+      } else {
+        alert("请先登录");
+      }
+    },
+ 
+    // 获取符合关键字的用户信息
+    getuserInf() {
+      this.$http
+        .get("http://localhost:7001/getUserInf", {})
+        .then((res) => {
+          this.userArr = res.data;
+          this.myuser = this.userArr.filter((el) => {
+            return el.nickname.indexOf(`${this.$route.params.kw}`) != -1;
+          });
+
+          this.myuser.forEach((el) => {
+            el.follow = 0;
+          });
+
+          if (this.id) {
+            // 已经登录，取出他关注的主播
+            this.getStar();
+          }
+        })
+        .catch((err) => {});
+    },
+
+    // 获取用户的关注信息
+    getStar() {
+      this.$http
+        .get("http://localhost:7001/getStar", {
+          params: {
+            ufans_id: this.id,
+          },
+        })
+        .then((res) => {
+          // console.log(res.data);
+          for (let i = 0; i < res.data.length; i++) {
+            for (let j = 0; j < this.myuser.length; j++) {
+              if (res.data[i].ustar_id === this.myuser[j].user_id) {
+                this.myuser[j].follow = 1;
+              }
+            }
+          }
+        })
+        .catch((err) => {
+          console.log("axios请求失败");
+        });
+    },
+
+    // 先放着，后面再来完善
+    // 添加关注
+    addattention(ustar_id, follow) {
+      if (this.id) {
         this.$http
           .post("http://localhost:7001/addfollow", {
-            ustar_id: user_id,
-            ufans_id: ufans_id,
+            ustar_id: ustar_id,
+            ufans_id: this.id,
           })
           .then((res) => {
-            // console.log(res.data);
+            console.log("添");
             if (res.data === 1) {
-              el.target.innerHTML = "已关注";
-              el.target.style.color = "#b9b9b9";
-              el.target.style.border = "1px solid #b9b9b9";
-              this.changeAttention = !this.changeAttention;
+              follow = 1;
             }
           })
-          .catch((err) => {});
+          .catch((err) => {
+            console.log("axios请求失败");
+          });
       } else {
-        // 取消关注
-        this.$http
-          .post("http://localhost:7001/delfollow", {
-            ustar_id: user_id,
-            ufans_id: ufans_id,
-          })
-          .then((res) => {
-            if (res.data === 1) {
-              el.target.innerHTML = "关注";
-              el.target.style.color = "#3cced0";
-              el.target.style.border = "1px solid #3cced0";
-              this.changeAttention = !this.changeAttention;
-            }
-          })
-          .catch((err) => {});
+        // 未登录，弹出登录框
+        alert("请登录");
       }
+    },
+    // 取消关注
+    delAttention(ustar_id, follow) {
+      this.$http
+        .post("http://localhost:7001/delfollow", {
+          ustar_id: ustar_id, //被关注者id
+          ufans_id: this.id,
+        })
+        .then((res) => {
+          // console.log(res.data);
+          if (res.data === 1) {
+            follow = 0;
+          }
+        })
+        .catch((err) => {
+          console.log("axios请求失败");
+        });
     },
   },
 };
@@ -110,12 +211,26 @@ export default {
 #userInf {
   display: inline-block;
 }
+
 #attention {
   height: 20px;
   padding: 10px;
   color: #3cced0;
   border: 1px solid #3cced0;
 }
+/* #addAttention {
+  height: 20px;
+  padding: 10px;
+  color: #3cced0;
+  border: 1px solid #3cced0;
+}
+
+#delAttention {
+  height: 20px;
+  padding: 10px;
+  color: #c2c2c2;
+  border: 1px solid #c2c2c2;
+} */
 .hoverColor {
   font-weight: bolder;
 }

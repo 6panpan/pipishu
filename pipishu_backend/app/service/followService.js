@@ -14,7 +14,8 @@ class FollowService extends Service {
         let sql = "delete from follow where ustar_id=? and ufans_id=?";
         let r = await this.ctx.app.mysql.query(sql, [ustar_id, ufans_id]);
         return r.affectedRows;
-    }
+    } 
+
     //ZY// 获取粉丝
     async getfollow(ustar_id) {
         let sql = "select * from follow where ustar_id=?";
@@ -26,6 +27,13 @@ class FollowService extends Service {
     async getStar(ufans_id) {
         let sql = "select * from follow where ufans_id=?";
         let list = await this.ctx.app.mysql.query(sql, [ufans_id]);
+        return list;
+    }
+
+     //ZY//获取所有被关注者id(不限次数)
+     async getAllStar() {
+        let sql = "select ustar_id,count(*) from follow group by ustar_id order by count(*) desc";
+        let list = await this.ctx.app.mysql.query(sql);
         return list;
     }
 }
