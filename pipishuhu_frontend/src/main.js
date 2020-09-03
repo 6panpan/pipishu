@@ -13,9 +13,12 @@ import albumitem from "./components/albumlist/albumitem.vue"
 Vue.component("albumitem",albumitem);
 
 import '../public/font/iconfont.css';
+import LoginWindow from "./views/LoginWindow.vue";
+
 Vue.use(ElementUI);
 Vue.prototype.$http = axios
 Vue.config.productionTip = false;
+Vue.component("loginwindow",LoginWindow)
 
 new Vue({
     router,

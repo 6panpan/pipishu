@@ -4,6 +4,7 @@
     <router-link to="/my/listened">听过</router-link>
     <router-link to="/my/buy">已购</router-link>
     <router-link to="/my/like">喜欢</router-link>
+    <button class="logout" @click="logout">退出登录</button>
     <router-view />
   </div>
 </template>
@@ -12,7 +13,14 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    logout() {
+      document.cookie = "user_id=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      alert("退出成功");
+      this.$router.go(0);
+    },
+  },
   mounted() {
     if (!document.cookie) {
       this.$router.push("/");
@@ -21,11 +29,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-#my-nav{
+#my-nav {
   position: relative;
   top: 50px;
   left: 200px;
-    a {
+  a {
     color: #2c3e50;
     font-size: 20px;
     text-decoration: none;
@@ -35,5 +43,16 @@ export default {
       color: #3cced0;
     }
   }
+}
+.logout {
+  border-color: #3cced0;
+  border-radius: 5px;
+  background-color: #3cced0;
+  width: 100px;
+  height: 40px;
+  margin-left: 600px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
 }
 </style>
