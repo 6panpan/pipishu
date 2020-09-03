@@ -32,6 +32,13 @@ class FollowController extends Controller {
         let ufans_id = this.ctx.request.query.ufans_id;
         ctx.body = await this.ctx.service.followService.getStar(ufans_id);
     }
+
+    //ZY//获取所有被关注者id(不限次数)
+    async getAllStar() {
+        const { ctx } = this;
+        ctx.body = await this.ctx.service.followService.getAllStar();
+    }
+    
 }
 
 module.exports = FollowController;

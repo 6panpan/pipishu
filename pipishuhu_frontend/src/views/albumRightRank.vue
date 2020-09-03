@@ -208,14 +208,13 @@ b:hover{
   /* color: rgb(252, 23, 51); */
   width: 0;
   height: 0;
-  border-top: 16px solid red;
   border-right: 16px solid transparent;
 }
 .tr {
   position: absolute;
   left: 0px;
   top: 16px;
-  z-index: 100;
+  z-index: 2;
 }
 .albintro{
   display: inline-block;
@@ -227,5 +226,16 @@ b:hover{
 .ol2 span:hover{
   cursor: pointer;
   color: #3cced0 ;
+}
+.ol1:nth-child(1) .triangle {
+  border-top: 16px solid rgb(250, 0, 0);
+}
+
+.ol1:nth-child(2) .triangle {
+  border-top: 16px solid rgb(250, 133, 0);
+}
+
+.ol1:nth-child(3) .triangle {
+  border-top: 16px solid rgb(250, 204, 0);
 }
 </style>

@@ -84,7 +84,6 @@ export default {
         })
         .then((res) => {
           this.userinf = res.data;
-          console.log(this.userinf);
         })
         .catch((err) => {
           console.log(222);
@@ -99,11 +98,7 @@ export default {
           },
         })
         .then((res) => {
-            // console.log(res.data);
           this.follower=res.data.length;
-          console.log(this.follower);
-          
-        //   console.log(this.userinf);
         })
         .catch((err) => {
           console.log(222);
@@ -119,20 +114,15 @@ export default {
           },
         })
         .then((res) => {
-            // console.log(res.data);
           this.userAlbum=res.data
           this.showAlbum=this.userAlbum.slice(0,4)
-          // console.log(this.userAlbum);
           this.AlbumNum=(this.userAlbum).length
-          // console.log(this.AlbumNum);
-        //   console.log(this.userinf);
         })
         .catch((err) => {
           console.log(222);
         });
     },
     changeAlbum(item){
-      // console.log(item.album_id);
       let path=`/youshengintr/${item.album_id}`
       if (path) {
         this.$router.push(path);
@@ -141,7 +131,6 @@ export default {
     },
     //
      toUserMain(userinf){
-      //  console.log(userinf[0].user_id);
        let path=`/zhubo/${userinf[0].user_id}/userindex`
        document.cookie="activename=first"
        if (path) {

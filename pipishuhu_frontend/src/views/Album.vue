@@ -6,6 +6,7 @@
     <div id="contentBox">
       <div id="middleListBox">
         <lovealbum></lovealbum>
+        <starRank></starRank>
         <albumlist :item="item" v-for="item in type" :key="item.id"></albumlist>
       </div>
 
@@ -33,7 +34,7 @@ import LoginWindow from "./LoginWindow";
 import albumlist from "./albumlist.vue";
 import lovealbum from "./lovealbum.vue";
 import ranking from "../components/ranking.vue";
-
+import starRank from "./starRank.vue";
 
 
 export default {
@@ -130,6 +131,7 @@ export default {
     ranking: ranking,
     albumRightRank: albumRightRank,
     rotation: Rotation,
+    starRank:starRank
   },
 
   methods:{

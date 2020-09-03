@@ -50,7 +50,6 @@ export default {
           // console.log(res.data);
           this.star = res.data;
           this.starLen=this.star.length
-          console.log(this.star);
           for (let i = 0; i < this.star.length; i++) {
             for (let j = 0; j < this.alluser.length; j++) {
               if (this.star[i].ustar_id == this.alluser[j].user_id) {
@@ -69,7 +68,6 @@ export default {
         .get("http://localhost:7001/getUserInf", {})
         .then((res) => {
           this.alluser = res.data;
-          console.log(this.alluser);
           this.getStar()
         })
         .catch((err) => {
