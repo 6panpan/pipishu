@@ -83,12 +83,12 @@ const routes = [
   {
     path: '/youshengshu/:albumId/:audioId',
     component: audioItem,
-  },
+  },  
   {
     path: '/youshengintr/:album_id',  
     component: youshengintr,
   },
-  // 娱乐
+  // 娱乐 
   {
     path: '/yule/:album_id',  
     component: youshengintr,

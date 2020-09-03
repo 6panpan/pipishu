@@ -11,7 +11,7 @@ class FollowController extends Controller {
         this.ctx.response.body = r;
     }
 
-    //取消关注
+    //取消关注 
     async delfollow() {
         let ustar_id = this.ctx.request.body.ustar_id;
         let ufans_id = this.ctx.request.body.ufans_id;
@@ -24,6 +24,13 @@ class FollowController extends Controller {
         const { ctx } = this;
         let ustar_id = this.ctx.request.query.ustar_id;
         ctx.body = await this.ctx.service.followService.getfollow(ustar_id);
+    }
+
+    //ZY// 根据粉丝id获取关注者
+    async getStar() {
+        const { ctx } = this;
+        let ufans_id = this.ctx.request.query.ufans_id;
+        ctx.body = await this.ctx.service.followService.getStar(ufans_id);
     }
 }
 

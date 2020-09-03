@@ -1,47 +1,64 @@
 <template>
   <div id="container">
     <div id="left">
-      <!-- 相关专辑 -->
-      <p class="title">
-        <span>
-          <span>'{{this.$route.params.kw}}'</span> 相关的专辑
-        </span>
-        <span>更多</span>
-      </p>
-      <div id="album">
-        <albumitem :el="item" v-for="item in mylist" :key="item.id"></albumitem>
-      </div>
-
-      <!-- 相关声音 -->
-      <p class="title">
-        <span>
-          <span>'{{this.$route.params.kw}}'</span> 相关的声音
-        </span>
-        <span>更多</span>
-      </p>
       <div>
-        <shengyin :item="item" v-for="item in myAudio" :key="item.id"></shengyin>
+        <div v-if="mylist.length">
+          <!-- 相关专辑 -->
+          <p class="title">
+            <span>
+              <span>'{{this.$route.params.kw}}'</span> 相关的专辑
+            </span>
+            <span>更多</span>
+          </p>
+          <div id="album">
+            <albumitem :el="item" v-for="item in mylist" :key="item.id"></albumitem>
+          </div>
+        </div>
+        <div v-else>无相关专辑</div>
       </div>
 
-      <!-- 相关主播 -->
-      <p class="title">
-        <span>
-          <span>'{{this.$route.params.kw}}'</span> 相关的主播
-        </span>
-        <span>更多</span>
-      </p>
-      <zhubo :user="myuser"></zhubo>
+      <div>
+        <div v-if="myAudio.length">
+          <!-- 相关声音 -->
+          <p class="title">
+            <span>
+              <span>'{{this.$route.params.kw}}'</span> 相关的声音
+            </span>
+            <span>更多</span>
+          </p>
+          <div>
+            <shengyin :item="item" v-for="item in myAudio" :key="item.id"></shengyin>
+          </div>
+        </div>
+        <p v-else>无相关声音</p>
+      </div>
+
+      <div>
+        <div v-if="myuser.length">
+          <!-- 相关主播 -->
+          <p class="title">
+            <span>
+              <span>'{{this.$route.params.kw}}'</span> 相关的主播
+            </span>
+            <span>更多</span>
+          </p>
+          <zhubo :user="myuser"></zhubo>
+        </div>
+        <p v-else>无相关主播</p>
+      </div>
     </div>
 
     <div id="right">
       <searchrank :ranklist="rankAlbumList">
-        <p><i class="el-icon-reading"></i> 皮皮书最热合集</p>
+        <p>
+          <i class="el-icon-reading"></i> 皮皮书最热合集
+        </p>
       </searchrank>
       <!-- <searchrank :ranklist="rankZhuboList">
         <p>最多粉丝主播榜</p>
       </searchrank>-->
     </div>
-  </div> 
+  </div>
 </template> 
 
 <script>
@@ -74,9 +91,15 @@ export default {
       .get("http://localhost:7001/getUserInf", {})
       .then((res) => {
         this.userArr = res.data;
+        // console.log(this.userArr)
+
         this.myuser = this.userArr.filter((el) => {
           return el.nickname.indexOf(`${this.$route.params.kw}`) != -1;
         });
+        this.myuser.forEach((el) => {
+          el.follow;
+        });
+
         this.getAllAlbum();
         this.getAudio();
       })
@@ -90,7 +113,7 @@ export default {
         .then((res) => {
           this.list = res.data;
           // console.log(this.list)
- 
+
           //给专辑添加所属用户名
           this.list.forEach((el1) => {
             this.userArr.forEach((el2) => {
@@ -105,7 +128,6 @@ export default {
           this.mylist = this.list.filter((el) => {
             return el.album_name.indexOf(`${this.$route.params.kw}`) != -1;
           });
-
 
           // console.log(1111)
           //专辑发布者有关键字,有问题，代码无法接着向下执行
@@ -177,7 +199,7 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-} 
+}
 .el-icon-reading {
   color: red;
 }
