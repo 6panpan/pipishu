@@ -1,7 +1,7 @@
 <template>
   <div class="contanier" v-if="list[0]">
     <div class="title" >
-      <a href @click="tomain">首页</a>>{{list[0].kind}}>{{list[0].album_name}}
+      <a href @click="tomain"><i class="el-icon-s-home"></i>首页</a>>{{list[0].kind}}>{{list[0].album_name}}
     </div>
     <div class="contanier2">
       <div class="topbox">
@@ -230,6 +230,12 @@ export default {
 </script>
 
 <style scoped>
+a{
+  text-decoration: none;
+}
+a:hover{
+  color: #3cced0;
+}
 .title {
   margin: 10px 10px;
 }
@@ -294,9 +300,7 @@ export default {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-/* .bottombox span{
-  display: inline-block;
-  width:710px ;
-  word-wrap:normal
-} */
+.btn img:hover{
+  cursor: pointer;
+}
 </style>

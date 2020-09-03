@@ -159,6 +159,19 @@
       "GET"
     ],
     "paramNames": [],
+    "path": "/getAlbumByCollect",
+    "regexp": "/^\\/getAlbumByCollect(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
     "path": "/getAudio",
     "regexp": "/^\\/getAudio(?:\\/(?=$))?$/",
     "stack": [
@@ -225,6 +238,19 @@
     "paramNames": [],
     "path": "/getUserCollect",
     "regexp": "/^\\/getUserCollect(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/getAllUserCollect",
+    "regexp": "/^\\/getAllUserCollect(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

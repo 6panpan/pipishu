@@ -7,7 +7,7 @@
         <div id="kw" @click="searchKw">
           <span v-for="(item,index) in item.kw" :key="index">{{item}}</span>
         </div>
-      </div>
+      </div> 
 
       <span>更多</span>
     </div>

@@ -14,7 +14,9 @@
           <router-link to="/Download">APP下载</router-link>
         </li>
         <li>
-          <router-link to=""><input type="text" class="mysearchC" v-model="mysearchnr"></router-link>
+          <router-link to>
+            <input type="text" class="mysearchC" v-model="mysearchnr" />
+          </router-link>
           <el-button @click="mysearchKeywords
 " icon="el-icon-search" class="mysearchbutton"></el-button>
         </li>
@@ -22,6 +24,9 @@
           <router-link to="/my">
             <img class="UserImg" :src="UserImg" />
           </router-link>
+        </li>
+        <li>
+          <router-link to="/uploading">上传作品</router-link>
         </li>
       </ul>
     </div>
@@ -35,21 +40,47 @@ export default {
   data() {
     return {
       UserImg: UserImg,
-      mysearchnr:""
+      mysearchnr: "",
     };
   },
-  watch:{
-    mysearchnr(){
-      console.log(this.mysearchnr)
-      this.mysearchnr = this.mysearchnr
+  watch: {
+    mysearchnr() {
+      console.log(this.mysearchnr);
+      this.mysearchnr = this.mysearchnr;
+    },
+  },
+  methods: {
+    mysearchKeywords() {
+      console.log(this.mysearchnr);
+      this.$router.push(`/search/${this.mysearchnr}`);
+    },
+    getByKey(key) {
+      let name = key + "=";
+      let ca = document.cookie.split(";");
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return null;
+    },
+  },
+  mounted() {
+    if (document.cookie) {
+      console.log(this.getByKey("user_id"));
+      this.$http
+        .get("http://127.0.0.1:7001/getAnuserInf", {
+          params: {
+            user_id: this.getByKey("user_id"),
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          this.UserImg = res.data[0].userimg;
+        });
     }
   },
-  methods:{
-    mysearchKeywords(){
-      console.log(this.mysearchnr)
-      this.$router.push(`/search/${this.mysearchnr}`)
-    }
-  }
 };
 </script>
 <style lang="scss">
@@ -57,6 +88,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   color: #2c3e50;
 }
 
@@ -109,7 +141,7 @@ export default {
   padding-left: 15px;
 }
 .kong {
-  height: 80px;
+  height: 72px;
 }
 .el-button {
   height: 34px !important;
@@ -123,8 +155,10 @@ export default {
   border-radius: 20px;
   margin-left: 100px;
 }
-.el-icon-search{
+.el-icon-search {
   position: relative;
   top: -2px;
 }
+
+
 </style>

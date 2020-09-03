@@ -1,6 +1,6 @@
 <template>
   <div id="searchBox">
-    <p>首页>搜索 "{{this.$route.params.kw}}"</p>
+    <p><span @click="tomainPage">首页</span>>搜索 "{{this.$route.params.kw}}"</p>
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="全部" name="first">
         <router-view></router-view>
@@ -15,7 +15,7 @@
         <router-view></router-view>
       </el-tab-pane>
     </el-tabs>
-
+   
   </div>
 </template>
 
@@ -33,6 +33,9 @@ export default {
   },
 
   methods: {
+    tomainPage(){
+      this.$router.push("/")
+    },
     handleClick(tab, event) {
       // console.log(tab, event);
       let path;
@@ -65,7 +68,9 @@ export default {
 
 <style scoped>
  #searchBox {
-   margin: 0 auto;
+   cursor: pointer;
+   margin: 20px auto;
    width: 1100px;
+
  }
 </style>

@@ -212,7 +212,7 @@ export default {
 #right {
   position: fixed;
   top: 180px;
-  left: 970px;
+  left: 1090px;
 }
 
 #right p {

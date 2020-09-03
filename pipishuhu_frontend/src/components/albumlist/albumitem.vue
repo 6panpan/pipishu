@@ -4,7 +4,7 @@
       <img :src="el.album_url" alt />
       <img id="loadImg" :src="loadImgsrc" alt />
     </div>
- 
+
     <span id="amount">
       <i class="el-icon-service"></i>
       <span class="tubiao" v-if="el.album_amount.toString().length<5">{{el.album_amount}}</span>
@@ -38,7 +38,7 @@ export default {
   methods: {
     enterAlbum(el) {
       // console.log(el);
-      let path; 
+      let path;
       let kind = el.kind;
 
       switch (kind) {
@@ -48,7 +48,7 @@ export default {
         default:
           break;
       }
-      if (path) { 
+      if (path) {
         this.$router.push(path);
       }
     },
@@ -104,6 +104,11 @@ export default {
 #albumName {
   width: 100%;
   font-weight: bolder;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .hoverColor:hover {

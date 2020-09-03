@@ -18,8 +18,8 @@ class FollowController extends Controller {
         let r = await this.ctx.service.followService.delfollow(ustar_id, ufans_id);
         this.ctx.response.body = r;
     }
-
-    //ZY// 获取粉丝数
+    
+    //ZY// 获取粉丝
     async getfollow() {
         const { ctx } = this;
         let ustar_id = this.ctx.request.query.ustar_id;

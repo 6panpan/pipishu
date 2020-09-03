@@ -1,6 +1,8 @@
 <template>
   <div>
-    <el-tabs v-model="activeName">
+
+    <el-tabs v-model="activeName"  >
+
       <el-tab-pane label="声音" name="first">
         <div>
           <ol v-if="audioList">

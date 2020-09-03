@@ -14,7 +14,6 @@
         <el-tab-pane class="rank-kinds" label="娱乐" name="sexth"></el-tab-pane>
       </el-tabs>
       <router-view />
-
     </div>
   </div>
 </template>

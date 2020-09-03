@@ -17,12 +17,18 @@ class CollectController extends Controller {
         let r = await this.ctx.service.collectService.delCollect(us_id,al_id);
         this.ctx.response.body = r;
     }
-    // 获取用户收藏专辑id
+    // 排行榜获取用户收藏专辑id
     async getUserCollect() {
         const { ctx } = this;
         let us_id = this.ctx.request.query.us_id;
         let albumID=this.ctx.request.query.albumID;
         ctx.body = await this.ctx.service.collectService.getUserCollect(us_id,albumID);
+    }
+   //  获取用户收藏所有专辑id
+   async getAllUserCollect() {
+        const { ctx } = this;
+        let us_id = this.ctx.request.query.us_id;
+        ctx.body = await this.ctx.service.collectService.getAllUserCollect(us_id);
     }
 }
 

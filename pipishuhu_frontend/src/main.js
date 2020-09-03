@@ -13,12 +13,21 @@ import albumitem from "./components/albumlist/albumitem.vue"
 Vue.component("albumitem",albumitem);
 
 import '../public/font/iconfont.css';
+import LoginWindow from "./views/LoginWindow.vue";
+
 Vue.use(ElementUI);
 Vue.prototype.$http = axios
 Vue.config.productionTip = false;
+Vue.component("loginwindow",LoginWindow)
+
+import foot from "./views/foot.vue"
+
+Vue.component("foot",foot)
 
 new Vue({
     router,
     store,
     render: h => h(App),
 }).$mount("#app");
+
+

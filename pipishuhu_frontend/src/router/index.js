@@ -11,6 +11,8 @@ import audioItem from "../components/audio/audioItem.vue"
 
 import youshengintr from "../components/youshengintr.vue";
 
+import uploading from "../components/uploading.vue";
+
 import searchPage from "../components/search/searchPage.vue";
 import searchAlbum from "../components/search/searchAlbum.vue";
 import searchAll from "../components/search/searchAll.vue";
@@ -21,6 +23,12 @@ import zhubo from "../components/zhubo.vue"
 import userAlbum from "../components/zhubo/userAlbum.vue"
 import userfans from "../components/zhubo/userfans.vue"
 import userfollow from "../components/zhubo/userfollow.vue"
+import userindex from "../components/zhubo/userindex.vue"
+
+import subscribed from "../components/my/subscribed.vue"
+import listened from "../components/my/listened.vue"
+import buy from "../components/my/buy.vue"
+import like from "../components/my/like.vue"
 
 Vue.use(VueRouter);
 
@@ -42,6 +50,12 @@ const routes = [
     {
         path: "/my",
         component: My,
+        children:[
+          { path: "subscribed", component: subscribed },
+          { path: "listened", component: listened },
+          { path: "buy", component: buy },
+          { path: "like", component: like }
+        ]
     },
     //APP下载
     {
@@ -57,6 +71,11 @@ const routes = [
     {
         path: "/center",
         component: Center,
+    },
+    // 作品上传
+    { 
+      path: "/uploading",
+      component: uploading,
     },
     {
         path: '/rankcon',
@@ -113,7 +132,7 @@ const routes = [
       {path:"userAlbum",component:userAlbum},
       {path:"userfans",component:userfans},
       {path:"userfollow",component:userfollow},
-      // {path:"userAlbum",component:userAlbum}
+      {path:"userindex",component:userindex}
     ]
   },
 ];

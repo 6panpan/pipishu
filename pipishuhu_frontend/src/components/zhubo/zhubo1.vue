@@ -8,36 +8,20 @@
           <span>{{userinf[0].userintr}}</span>
         </div>
         <div class="headinf2">
-          <el-button type="primary" round>+关注</el-button>
+          <el-button @click="addfollow" type="primary" round>+关注</el-button>
         </div>
       </div>
     </div>
     <div class="left">
       <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="主页" name="first">
-           <div class="leftbox">
-             <div class="albinf" v-for="item in userAlbum" :key="item.id"  >
-               <img :src="item.album_url" alt="">
-               <p>{{item.album_name}}</p>
-             </div>
-           </div>
-           
-           <div class="rightbox" v-if="userinf">
-             <p>TA的资料</p><hr>
-             <!-- <p ><i class="el-icon-user"></i> {{userinf[0].nickname}}</p> -->
-             <!-- <p v-if="follower" class="el-icon-s-custom">{{follower[0]['count(ufans_id)']}}</p> -->
-
-           </div>
-        </el-tab-pane>
+        <el-tab-pane label="主页" name="first"></el-tab-pane>
         <el-tab-pane label="专辑" name="second"></el-tab-pane>
         <el-tab-pane label="关注" name="third"></el-tab-pane>
         <el-tab-pane label="粉丝" name="fourth"></el-tab-pane>
       </el-tabs>
       <router-view></router-view>
     </div>
-    <div class="bottombox">
-      
-    </div>
+    <foot></foot>
   </div>
 </template>
 
@@ -48,26 +32,28 @@ export default {
       activeName: "first",
       userinf: [],
       userAlbum:[],
-      follower:[]
+      
     };
   },
   created() {
-    console.log(this.$route.params.u_id);
+    // console.log(this.$route.params.u_id);
     this.getAnuserInf();
-    this.getUserAlbum()
+    this.activeName=this.getCookie("activename")
+    console.log(this.activeName);
   },
   methods: {
     handleClick(el) {
-      console.log(el.label);
+      // console.log(el.label);
       let userId = this.$route.params.u_id;
       let path;
       let key = el.label;
+      document.cookie = `activename=${el.name}`
       switch (key) {
         case "主页":
-          path = `/zhubo/${userId}`;
+          path = `/zhubo/${userId}/userindex`;
           break;
         case "专辑":
-          path =  `/zhubo/${userId}/userAlbum`;
+          path =  `/zhubo/${userId}/userAlbum`; 
           break;
         case "关注":
           path =  `/zhubo/${userId}/userfollow`;
@@ -98,52 +84,39 @@ export default {
           console.log(222);
         });
     },
-    getUserAlbum(){
-      console.log(this.$route.params.u_id);
-        this.$http
-        .get("http://localhost:7001/getUserAlbum", {
-          params: {
-            u_id: this.$route.params.u_id,
-          },
-        })
-        .then((res) => {
-          this.userAlbum=res.data
-          console.log(this.userAlbum);
-        //   console.log(this.userinf);
-        })
-        .catch((err) => {
-          console.log(222);
-        });
+     // 获取缓存
+    getCookie(key) {
+      let getCookie = document.cookie.replace(/[ ]/g, ""); //获取cookie，并且将获得的cookie格式化，去掉空格字符
+      let arrCookie = getCookie.split(";"); //将获得的cookie以"分号"为标识 将cookie保存到arrCookie的数组中
+      let tips; //声明变量tips
+      for (let i = 0; i < arrCookie.length; i++) {
+        //使用for循环查找cookie中的tips变量
+        let arr = arrCookie[i].split("="); //将单条cookie用"等号"为标识，将单条cookie保存为arr数组
+        if (key == arr[0]) {
+          //匹配变量名称，其中arr[0]是指的cookie名称，如果该条变量为tips则执行判断语句中的赋值操作
+          tips = arr[1]; //将cookie的值赋给变量tips
+          break; //终止for循环遍历
+        }
+      }
+      return tips;
     },
-     getfollow(){
-        console.log(this.list[0].u_id);
-        this.$http
-        .get("http://localhost:7001/getfollow", {
-          params: {
-            ustar_id: this.list[0].u_id,
-          },
-        })
-        .then((res) => {
-            // console.log(res.data);
-          this.follower=res.data;
-          
-        //   console.log(this.userinf);
-        })
-        .catch((err) => {
-          console.log(222);
-        });
-    },
+    addfollow(){
+
+    }
+     
   },
 };
 </script>
 
 <style scoped>
 .head {
-  width: 98vw;
+  width: 98.92vw;
   height: 300px;
   /* background-color: rosybrown; */
   background-image: url("https://css1.xmcdn.com/css/img/mycenter_bg/mycenter_bg_3.jpg");
   position: relative;
+  
+  
 }
 .headimg {
   height: 100px;
@@ -166,13 +139,7 @@ export default {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.albinf p{
-  /* display: inline-block; */
-  width: 140px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
+
 
 .headinf2 {
   position: absolute;
@@ -185,35 +152,10 @@ export default {
   margin-top: 20px;
   margin-left: 300px;
   width: 65vw;
-  height: 600px;
+  height: 585px;
   display: block;
+  /* position: relative; */
 }
-.leftbox{
-  width: 700px;
-  /* height: 570px; */
-  display: flex;
-  flex-wrap: wrap;
-  /* overflow: hidden; */
-}
-.albinf{
-  margin: 5px 15px 9px;
-}
-.albinf img{
-  width: 140px;
-  height: 140px;
-  border-radius: 5px;
-}
-.rightbox{
-  width: 250px;
-  height: 300px;
-  background-color: #ccc;
-  position: absolute;
-  top:0px;
-  left: 750px;
-}
-.bottombox{
-  width: 400px;
-  height: 600px;
-  background-color: cadetblue;
-}
+
+
 </style>
