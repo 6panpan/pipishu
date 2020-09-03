@@ -22,6 +22,9 @@
             <img class="UserImg" :src="UserImg" />
           </router-link>
         </li>
+        <li>
+          <router-link to="/uploading">上传作品</router-link>
+        </li>
       </ul>
     </div>
     <div class="kong"></div>
@@ -36,7 +39,7 @@ export default {
       UserImg: UserImg,
     };
   },
-};
+  }
 </script>
 <style lang="scss">
 #app {

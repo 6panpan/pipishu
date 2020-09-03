@@ -31,6 +31,8 @@ module.exports = app => {
     router.get("/getoneAlbum", controller.albumController.getoneAlbum);
     // 取出播放量最多的前10位专辑
     router.get('/getRankAlbumTen', controller.albumController.getRankAlbumTen);
+    // HJX根据用户收藏id取出专辑信息
+    router.get('/getAlbumByCollect', controller.albumController.getAlbumByCollect);
     
 
 
@@ -50,8 +52,10 @@ module.exports = app => {
      router.post("/addCollect", controller.collectController.addCollect);
      // 删除
      router.get("/delCollect", controller.collectController.delCollect);
-     // 获取用户收藏专辑id
+     // 排行榜获取用户收藏专辑id
      router.get("/getUserCollect", controller.collectController.getUserCollect);
+     // 获取用户收藏所有专辑id
+     router.get("/getAllUserCollect", controller.collectController.getAllUserCollect);
 
      
     //关注相关路由

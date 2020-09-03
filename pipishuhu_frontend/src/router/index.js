@@ -9,6 +9,8 @@ import youshengshu from "../components/youshengshu/youshengshu.vue";
 
 import youshengintr from "../components/youshengintr.vue";
 
+import uploading from "../components/uploading.vue";
+
 
 import searchPage from "../components/search/searchPage.vue";
 import searchAlbum from "../components/search/searchAlbum.vue";
@@ -56,6 +58,11 @@ const routes = [
     {
         path: "/center",
         component: Center,
+    },
+    // 作品上传
+    {
+      path: "/uploading",
+      component: uploading,
     },
     {
         path: '/rankcon',
