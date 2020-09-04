@@ -75,18 +75,18 @@ export default {
     created() {},
     //生命周期 - 挂载完成（可以访问DOM元素）
     mounted() {
-        player.onReady.listen(() => {
-            this.changeCover();
-        });
-        player.onChanged.listen(() => {
-            this.changeCover();
-        });
-        player.onPlay.listen(() => {
-            this.togglePlay(true);
-        });
-        player.onPause.listen(() => {
-            this.togglePlay(false);
-        });
+        // player.onReady.listen(() => {
+        //     this.changeCover();
+        // });
+        // player.onChanged.listen(() => {
+        //     this.changeCover();
+        // });
+        // player.onPlay.listen(() => {
+        //     this.togglePlay(true);
+        // });
+        // player.onPause.listen(() => {
+        //     this.togglePlay(false);
+        // });
     },
 };
 </script>
