@@ -28,6 +28,7 @@ import subscribed from "../components/my/subscribed.vue"
 import listened from "../components/my/listened.vue"
 import buy from "../components/my/buy.vue"
 import like from "../components/my/like.vue"
+import usermodify from "../components/my/usermodify.vue"
 
 Vue.use(VueRouter);
 
@@ -53,7 +54,8 @@ const routes = [
           { path: "subscribed", component: subscribed },
           { path: "listened", component: listened },
           { path: "buy", component: buy },
-          { path: "like", component: like }
+          { path: "like", component: like },
+          { path: "usermodify", component: usermodify },
         ]
     },
     //APP下载
