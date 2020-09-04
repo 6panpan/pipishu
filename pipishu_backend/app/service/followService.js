@@ -29,5 +29,12 @@ class FollowService extends Service {
         let list = await this.ctx.app.mysql.query(sql, [ufans_id]);
         return list;
     }
+
+     //ZY//获取所有被关注者id(不限次数)
+     async getAllStar() {
+        let sql = "select ustar_id,count(*) from follow group by ustar_id order by count(*) desc";
+        let list = await this.ctx.app.mysql.query(sql);
+        return list;
+    }
 }
 module.exports = FollowService;

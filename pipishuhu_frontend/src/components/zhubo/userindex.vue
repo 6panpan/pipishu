@@ -73,8 +73,6 @@ export default {
         })
         .then((res) => {
           this.userAlbum = res.data;
-          console.log(this.userAlbum);
-          //   console.log(this.userinf);
         })
         .catch((err) => {
           console.log(222);
@@ -89,7 +87,6 @@ export default {
         })
         .then((res) => {
           this.userinf = res.data;
-          console.log(this.userinf);
         })
         .catch((err) => {
           console.log(222);
@@ -106,7 +103,6 @@ export default {
         .then((res) => {
           // console.log(res.data);
           this.follower = res.data.length;
-          console.log(this.follower);
         })
         .catch((err) => {
           console.log(222);

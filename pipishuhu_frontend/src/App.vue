@@ -91,6 +91,24 @@ export default {
                 });
         }
     },
+    getmyuserimg() {
+        this.$http
+            .get("http://127.0.0.1:7001/getAnuserInf", {
+                params: {
+                    user_id: this.getByKey("user_id"),
+                },
+            })
+            .then(res => {
+                console.log(res.data);
+                this.UserImg = res.data[0].userimg;
+            });
+    },
+    mounted() {
+        if (document.cookie) {
+            console.log(this.getByKey("user_id"));
+            this.getmyuserimg();
+        }
+    },
 };
 </script>
 <style lang="scss">

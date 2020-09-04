@@ -39,7 +39,6 @@ export default {
     // console.log(this.$route.params.u_id);
     this.getAnuserInf();
     this.activeName=this.getCookie("activename")
-    console.log(this.activeName);
   },
   methods: {
     handleClick(el) {
@@ -78,7 +77,6 @@ export default {
         })
         .then((res) => {
           this.userinf = res.data;
-          console.log(this.userinf);
         })
         .catch((err) => {
           console.log(222);
@@ -100,10 +98,7 @@ export default {
       }
       return tips;
     },
-    addfollow(){
-
-    }
-     
+   
   },
 };
 </script>

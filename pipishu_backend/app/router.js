@@ -62,6 +62,8 @@ module.exports = app => {
 
     //ZY// 获取关注者
     router.get("/getStar", controller.followController.getStar);
+    //ZY//获取所有被关注者id(不限次数)
+    router.get("/getAllStar", controller.followController.getAllStar);
 
     router.get("/getAlbumByKind", controller.albumController.getAlbumByKind);
 };
