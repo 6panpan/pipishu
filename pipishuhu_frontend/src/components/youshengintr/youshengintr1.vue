@@ -34,6 +34,7 @@
         </el-collapse>
       </div>
     </div>
+     <loginwindow @myloginF="myloginzz" v-if='login==1'></loginwindow>
   </div>
 </template>
 
@@ -41,7 +42,7 @@
 export default {
   created() {
     // console.log(this.$route.params.album_id);
-    this.id = this.GetCookie("id");
+    this.id = this.GetCookie("user_id");
     this.getoneAlbum();
   },
   data: function () {
@@ -55,12 +56,17 @@ export default {
       // 用户登录id
       id: 0,
       // 收藏为1，未收藏为0
-      collect:0
+      collect:0,
+      login:0
     };
   },
   methods: {
     tomain() {
       return this.$route.push("/");
+    },
+
+   myloginzz:function(){
+      this.login = 0
     },
 
     // 获取专辑所有信息
@@ -172,7 +178,7 @@ export default {
             console.log("用户存在");
           } else {
             console.log("用户不存在");
-            // 弹出登录框
+            this.login=1;
           }
         })
         .catch((err) => {

@@ -26,14 +26,14 @@
                     </router-link>
                 </li>
                 <li>
-          <router-link to="/uploading">上传作品</router-link>
-        </li>
+                  <span class="shangchuan"  @click="userLogin" >上传作品</span>
+                </li>
             </ul>
         </div>
         <div class="kong"></div>
         <router-view />
         <player />
-
+        <loginwindow @myloginF="myloginzz" v-if='login==1'></loginwindow>
     </div>
 </template>
 <script>
@@ -43,6 +43,7 @@ export default {
     return {
       UserImg: UserImg,
       mysearchnr: "",
+      login:0
     };
   },
   watch: {
@@ -68,6 +69,17 @@ export default {
       }
       return null;
     },
+    myloginzz() {
+      this.login=0
+    },
+    userLogin() {
+      if(this.getByKey("user_id")) {
+        let path = "/uploading";
+        this.$router.push(path);
+      } else {
+        this.login=1
+      }
+    }
   },
   mounted() {
     if (document.cookie) {
@@ -163,5 +175,11 @@ export default {
   top: -2px;
 }
 
-
+.shangchuan {
+  display: inline-block;
+  font-size: 25px
+}
+.shangchuan:hover {
+  cursor: pointer;
+}
 </style>

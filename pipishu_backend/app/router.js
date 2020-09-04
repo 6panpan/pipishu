@@ -31,6 +31,8 @@ module.exports = app => {
     router.get("/getRankAlbumTen", controller.albumController.getRankAlbumTen);
     // HJX根据用户收藏id取出专辑信息
     router.get("/getAlbumByCollect", controller.albumController.getAlbumByCollect);
+    // HJX修改专辑最新音频
+    router.post("/changeAlbumLatest", controller.albumController.changeAlbumLatest);
 
     //音频相关路由
     //CR// 获取所有音频

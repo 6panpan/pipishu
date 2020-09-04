@@ -168,6 +168,18 @@
   {
     "name": null,
     "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/changeAlbumLatest",
+    "regexp": "/^\\/changeAlbumLatest(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
       "HEAD",
       "GET"
     ],
@@ -313,6 +325,19 @@
     "paramNames": [],
     "path": "/getStar",
     "regexp": "/^\\/getStar(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/getAllStar",
+    "regexp": "/^\\/getAllStar(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

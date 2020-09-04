@@ -35,10 +35,12 @@
         </div>
       </span>
     </div>
+    <loginwindow @myloginF="myloginzz" v-if='login==1'></loginwindow>
   </div>
 </template> 
 <script>
 import { log } from "util";
+// import Loginwindow from "../views/LoginWindow.vue";
 export default {
   data: function () {
     return {
@@ -49,6 +51,7 @@ export default {
       // 所有专辑id
       albumID: [],
       id: 0,
+      login:0
     };
   },
 
@@ -57,6 +60,10 @@ export default {
     this.getAllAlbum(this.kind);
   },
   methods: {
+    myloginzz:function(){
+      this.login = 0
+    },
+
     // 点击收藏判断用户是否存在
     addcollect: function (al_id) {
       console.log(al_id);
@@ -181,6 +188,7 @@ export default {
           } else {
             console.log("用户不存在");
             // 弹出登录框
+            this.login=1;
           }
         })
         .catch((err) => {

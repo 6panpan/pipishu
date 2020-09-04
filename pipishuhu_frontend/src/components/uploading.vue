@@ -31,41 +31,15 @@
             </select>
           </p>
           <p>
-            选择音频：
+            <span class="select-audiio">选择音频：</span>       
             <input type="file" id="choose-audio" />
           </p>
           <p class="upload-btn-p">
-            <span class="upload-btn" @click="uploadAudio()">上传商品</span>
+            <span class="upload-btn" @click="uploadAudio()">上传音频</span>
           </p>
         </div>
       </div>
 
-      <!-- <div>
-        <div class="bigbox">
-          <div id="updateDiv" class="smallbox">
-            <span class="tuichu"></span>
-            <div class="box">
-              <p>
-                商品名称：
-                <input type="text" id="name" />
-              </p>
-              <p>
-                商品介绍：
-                <input type="text" id="inf" />
-              </p>
-              <p>
-                商品价格：
-                <input type="number" id="price" />
-              </p>
-              <p>
-                商品图片：
-                <input type="file" id="choose" />
-              </p>
-              <span class="btn" @click="axiosupload">上传商品</span>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 </template>
@@ -124,7 +98,16 @@ export default {
                 }
             };
            this.$http.post("http://127.0.0.1:7001/uploadAudio", formData, config).then(function (response) {
-                console.log(response.data);
+                alert("上传成功");
+            }).catch(function (error) {
+                console.log(error);
+            });
+
+            this.$http.post("http://127.0.0.1:7001/changeAlbumLatest",{
+              latest_audio:name,
+              al_id:this.album_id
+            }).then(function (response) {
+
             }).catch(function (error) {
                 console.log(error);
             });
@@ -266,7 +249,7 @@ export default {
   color: #aaa !important;
 }
 .uploa-audio p {
-  margin: 20px 0px;
+  margin: 30px 0px;
 }
 select {
   width: 220px;
@@ -282,5 +265,15 @@ select {
   border-radius: 20px;
   background-color: #3cced0;
   margin-left: 100px;
+}
+.upload-btn:hover {
+  cursor: pointer;
+}
+.select-audiio {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+input[type="file" i] {
+  margin-left: 60px;
 }
 </style>
