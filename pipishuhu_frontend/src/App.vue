@@ -1,40 +1,44 @@
 <template>
-    <div id="app">
-        <div id="nav">
-            <ul class="myul">
-                <li>
-                    <router-link to="/">
-                        <img class="pipishuLogo" src="@/assets/img/pipishuLogo.png" />
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/my">我的</router-link>
-                </li>
-                <li>
-                    <router-link to="/Download">APP下载</router-link>
-                </li>
-                <li>
+  <div id="app">
+    <div id="nav">
+      <ul class="myul">
+        <li>
+          <router-link to="/">
+            <img class="pipishuLogo" src="@/assets/img/pipishuLogo.png" />
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/my">我的</router-link>
+        </li>
+        <li>
+          <router-link to="/Download">APP下载</router-link>
+        </li>
+        <li>
           <router-link to>
-            <input type="text" @keydown.enter="mysearchKeywords" class="mysearchC" v-model="mysearchnr" />
+            <input
+              type="text"
+              @keydown.enter="mysearchKeywords"
+              class="mysearchC"
+              v-model="mysearchnr"
+            />
           </router-link>
           <el-button @click="mysearchKeywords
 " icon="el-icon-search" class="mysearchbutton"></el-button>
         </li>
-                <li>
-                    <router-link to="/my">
-                        <img class="UserImg" :src="UserImg" />
-                    </router-link>
-                </li>
-                <li>
+        <li>
+          <router-link to="/my">
+            <img class="UserImg" :src="UserImg" />
+          </router-link>
+        </li>
+        <li>
           <router-link to="/uploading">上传作品</router-link>
         </li>
-            </ul>
-        </div>
-        <div class="kong"></div>
-        <router-view />
-        <player />
-
+      </ul>
     </div>
+    <div class="kong"></div>
+    <router-view />
+    <player />
+  </div>
 </template>
 <script>
 import UserImg from "@/assets/img/UserImg.png";
@@ -55,7 +59,7 @@ export default {
     mysearchKeywords() {
       console.log(this.mysearchnr);
       this.$router.push(`/search/${this.mysearchnr}`);
-      this.$router.go(0)
+      this.$router.go(0);
     },
     getByKey(key) {
       let name = key + "=";
@@ -68,10 +72,7 @@ export default {
       }
       return null;
     },
-  },
-  mounted() {
-    if (document.cookie) {
-      console.log(this.getByKey("user_id"));
+    getmyuserimg() {
       this.$http
         .get("http://127.0.0.1:7001/getAnuserInf", {
           params: {
@@ -82,6 +83,12 @@ export default {
           console.log(res.data);
           this.UserImg = res.data[0].userimg;
         });
+    },
+  },
+  mounted() {
+    if (document.cookie) {
+      console.log(this.getByKey("user_id"));
+      this.getmyuserimg()
     }
   },
 };
@@ -96,43 +103,43 @@ export default {
 }
 
 #nav {
-    width: 100%;
-    border-bottom: 2px solid rgb(218, 218, 218);
-    background-color: #fff;
-    box-shadow: 1px 5px 10px rgba(250, 250, 250, 1);
-    position: fixed;
-    top: 0;
-    z-index: 2000;
-    a {
-        color: #2c3e50;
-        font-size: 25px;
-        text-decoration: none;
+  width: 100%;
+  border-bottom: 2px solid rgb(218, 218, 218);
+  background-color: #fff;
+  box-shadow: 1px 5px 10px rgba(250, 250, 250, 1);
+  position: fixed;
+  top: 0;
+  z-index: 2000;
+  a {
+    color: #2c3e50;
+    font-size: 25px;
+    text-decoration: none;
 
-        &.router-link-exact-active {
-            color: #3cced0;
-        }
+    &.router-link-exact-active {
+      color: #3cced0;
     }
+  }
 }
 .pipishuLogo {
-    height: 30px;
+  height: 30px;
 }
 .router-link-active {
-    line-height: 30px;
+  line-height: 30px;
 }
 #nav router-link {
-    float: left;
+  float: left;
 }
 .myul {
-    overflow: hidden;
-    list-style: none;
-    margin: 0 200px;
-    height: 70px;
+  overflow: hidden;
+  list-style: none;
+  margin: 0 200px;
+  height: 70px;
 }
 
 .myul li {
-    float: left;
-    padding-right: 40px;
-    margin-top: 20px;
+  float: left;
+  padding-right: 40px;
+  margin-top: 20px;
 }
 .mysearchC {
   width: 240px;
@@ -154,14 +161,12 @@ export default {
   background-image: linear-gradient(90deg, #55d1d3 1%, #3cced0 99%) !important;
 }
 .UserImg {
-    height: 40px;
-    border-radius: 20px;
-    margin-left: 100px;
+  height: 40px;
+  border-radius: 20px;
+  margin-left: 100px;
 }
 .el-icon-search {
   position: relative;
   top: -2px;
 }
-
-
 </style>

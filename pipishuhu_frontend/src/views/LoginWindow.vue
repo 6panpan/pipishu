@@ -30,7 +30,9 @@
           <br />
           <input @keydown.enter="register" type="radio" id="usersexMan" value="男" v-model="usersex" />
           <label for="usersexMan">男</label>
-          <input @keydown.enter="register" type="radio" id="usersexWoman" value="女" v-model="usersex" />
+          <input @keydown.enter="register" type="radio"
+            id="usersexWoman" value="女"
+            v-model="usersex" />
           <label for="usersexWoman">女</label>
           <br />
           <span>{{Rts}}</span>
@@ -112,6 +114,8 @@ export default {
           } else {
             this.Rts = "";
             this.$emit("myloginF");
+            alert("注册成功");
+            this.$router.go(0);
             console.log(document.cookie, 1);
           }
         });
