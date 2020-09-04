@@ -1,7 +1,7 @@
 <template>
     <div class="progress" :class="{ progress__playing: true }">
         <h2 class="progress_title">
-            {{ "音频：" + $store.state.songs[$store.state.currentIndex].name }}
+            {{ $store.state.songs[$store.state.currentIndex].name }}
         </h2>
         <p class="progress_text">{{ position }} / {{ duration }}</p>
         <div class="progress_line">
