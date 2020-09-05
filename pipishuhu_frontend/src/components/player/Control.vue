@@ -1,13 +1,18 @@
 <template>
     <div class="control" :class="{ control__playing: true }">
-        <audio :src="$store.state.currentSrc" style="display:none;" ref="audio"></audio>
-        <div class="control_btn control_btn__side" @click="handlePrev">
+        <audio id="audio" controls style="display:none;">
+            <source :src="$store.state.currentSrc" type="audio/mpeg" />
+        </audio>
+        <!-- @click="handlePrev" -->
+        <div class="control_btn control_btn__side">
             <i class="el-icon-d-arrow-left" />
         </div>
-        <div class="control_btn" @click="handlePlay">
-            <span class="el-icon-video-play" />
+        <!-- @click="handlePlay" -->
+        <div class="control_btn" @click="audioHandle">
+            <span id="audioBtn" class="el-icon-video-play" />
         </div>
-        <div class="control_btn control_btn__side" @click="handleNext">
+        <!-- @click="handleNext" -->
+        <div class="control_btn control_btn__side">
             <i class="el-icon-d-arrow-right" />
         </div>
         <div class="control_btn" @click="showlistchange">
@@ -36,25 +41,54 @@ export default {
     watch: {},
     //方法集合
     methods: {
-        handlePlay() {
-            if (!player.isEmpty) {
-                if (!this.isPlaying) {
-                    player.play();
-                } else {
-                    player.pause();
+        audioPlay() {
+            // let audio = document.getElementById("audio");
+            // let audioBtn = document.getElementById("audioBtn");
+            audio.play();
+            console.log("播放" + audio.play);
+            audioBtn.className = "el-icon-video-pause";
+        },
+        audioPause() {
+            // let audio = document.getElementById("audio");
+            // let audioBtn = document.getElementById("audioBtn");
+            audio.pause();
+            console.log("暂停" + audio.paused);
+            audioBtn.className = "el-icon-video-play";
+        },
+        audioHandle() {
+            let audio = document.getElementById("audio");
+            let audioBtn = document.getElementById("audioBtn");
+            console.log(audio);
+
+            audioBtn.onclick = () => {
+                if (audio.paused) {
+                    this.audioPlay();
+                    return;
                 }
-            }
+                if (audio.play) {
+                    this.audioPause();
+                }
+            };
         },
-        handlePrev() {
-            if (this.isPlaying) {
-                player.prev();
-            }
-        },
-        handleNext() {
-            if (this.isPlaying) {
-                player.next();
-            }
-        },
+        // handlePlay() {
+        //     if (!player.isEmpty) {
+        //         if (!this.isPlaying) {
+        //             player.play();
+        //         } else {
+        //             player.pause();
+        //         }
+        //     }
+        // },
+        // handlePrev() {
+        //     if (this.isPlaying) {
+        //         player.prev();
+        //     }
+        // },
+        // handleNext() {
+        //     if (this.isPlaying) {
+        //         player.next();
+        //     }
+        // },
         showlistchange() {
             if (this.showlist === false) {
                 this.$emit("listchanged", true);

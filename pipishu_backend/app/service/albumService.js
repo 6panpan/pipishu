@@ -53,10 +53,16 @@ class AlbumService extends Service {
 
 	// HJX根据用户收藏id取出专辑信息
 	async getAlbumByCollect(al_id) {
-		console.log(al_id);
 		let sql = `select * from album where album_id in(${al_id})`
 		let list = await this.ctx.app.mysql.query(sql);
 		return list;
+	}
+
+	// HJX修改专辑最新音频
+	async changeAlbumLatest(latest_audio,al_id) { 
+		let sql = 'update album set latest_audio=? where album_id=?'
+		let list = await this.ctx.app.mysql.query(sql,[latest_audio,al_id]);
+		return list.affectedRows;
 	}
 
 	

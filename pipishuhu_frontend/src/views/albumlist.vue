@@ -48,6 +48,7 @@ export default {
         default:
           break;
       }
+      
       if (path) {
         this.$router.push(path);
       }

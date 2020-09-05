@@ -8,27 +8,32 @@ export default new Vuex.Store({
         songs: [
             {
                 id: 0,
-                name: "7rings ",
-                src: "../assets/audio/7rings.mp3",
+                name: "《夜色钢琴曲》杨花落尽子规啼1111111111",
+                src:
+                    "https://aod.cos.tx.xmcdn.com/group86/M03/1E/B8/wKg5IF72vT7Qx6XGABAl5XXVSS8817.m4a",
             },
             {
                 id: 1,
-                name: "Formidable Enemy",
-                src: "../assets/audio/Formidable Enemy.mp3",
+                name: "今日说法",
+                src:
+                    "https://aod.cos.tx.xmcdn.com/group62/M08/E2/C4/wKgMZ10XalSTUIA4AIY_fqxrkIw813.m4a",
             },
             {
                 id: 2,
-                name: "Electric Romeo",
-                src: "../assets/audio/Electric Romeo.mp3",
+                name: "我是小学生米小圈",
+                src:
+                    "https://aod.cos.tx.xmcdn.com/group21/M07/E1/9A/wKgJKFhaF1LB6La5ABf44Sux-Uw565.m4a",
             },
             {
                 id: 3,
                 name: "Have A Nice Day",
-                src: "../assets/audio/Have A Nice Day.mp3",
+                src:
+                    "https://aod.cos.tx.xmcdn.com/group86/M03/1E/B8/wKg5IF72vT7Qx6XGABAl5XXVSS8817.m4a",
             },
         ],
         currentIndex: 0,
-        currentSrc: "../assets/audio/7rings.mp3",
+        currentSrc:
+            "https://aod.cos.tx.xmcdn.com/group86/M03/1E/B8/wKg5IF72vT7Qx6XGABAl5XXVSS8817.m4a",
         activeClass: "active",
     },
     getters: {},

@@ -1,5 +1,7 @@
 <template>
     <div class="playlist">
+        <!-- <audio :src="$store.state.currentSrc" style="display:none;" ref="audio"></audio> -->
+
         <h3>歌曲列表</h3>
         <ul v-for="(song, index) in this.$store.state.songs" :key="song.id">
             <li
@@ -28,12 +30,12 @@ export default {
     //方法集合
     methods: {
         nextSong() {
-            if (this.$store.state.currentIndex < this.this.$store.state.songs.length - 1) {
+            if (this.$store.state.currentIndex < this.$store.state.songs.length - 1) {
                 this.$store.state.currentIndex += 1;
             } else {
                 this.$store.state.currentIndex = 0;
             }
-            this.$store.state.currentSrc = this.this.$store.state.songs[
+            this.$store.state.currentSrc = this.$store.state.songs[
                 this.$store.state.currentIndex
             ].src;
             console.log("$store.state.currentIndex:" + this.$store.state.currentIndex);
@@ -41,11 +43,14 @@ export default {
         },
         playMusic(id) {
             console.log("id:" + id);
+            console.log("src:" + this.$store.state.currentSrc);
             if (this.$store.state.currentIndex !== id) {
                 this.$store.state.currentIndex = id;
-                this.$store.state.currentSrc = this.this.$store.state.songs[
+                this.$store.state.currentSrc = this.$store.state.songs[
                     this.$store.state.currentIndex
                 ].src;
+                audio.load();
+                audio.play();
             }
         },
     },

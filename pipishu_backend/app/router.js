@@ -9,6 +9,8 @@ module.exports = app => {
     router.post("/upload", controller.uploadController.upload);
     //// 注销
     // router.post("/logout", controller.userController.logout);
+    //// 修改个人信息
+    router.get("/modify", controller.userController.modify);
     //CR// 获取用户信息
     router.get("/getUserInf", controller.userController.getUserInf);
     //ZY// 根据用户id获取用户信息
@@ -31,6 +33,8 @@ module.exports = app => {
     router.get("/getRankAlbumTen", controller.albumController.getRankAlbumTen);
     // HJX根据用户收藏id取出专辑信息
     router.get("/getAlbumByCollect", controller.albumController.getAlbumByCollect);
+    // HJX修改专辑最新音频
+    router.post("/changeAlbumLatest", controller.albumController.changeAlbumLatest);
 
     //音频相关路由
     //CR// 获取所有音频
@@ -40,7 +44,12 @@ module.exports = app => {
     router.get("/getSomeAudio", controller.audioController.getSomeAudio);
 
     //ZY//根据专辑id取出分页专辑里的audio
-    router.get("/getPageAudio", controller.audioController.getPageAudio);
+    router.get('/getPageAudio', controller.audioController.getPageAudio);
+
+    //HJX//上传音频
+    router.post('/uploadAudio', controller.audioController.uploadAudio);
+
+
 
     //收藏相关路由
     // 添加收藏
