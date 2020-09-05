@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="topbox">
-      <span>TA共有{{albumLen}}张专辑</span>
+      <span>TA共有<span class="yangshi">{{albumLen}}</span>张专辑</span>
       <div>
         <i class="el-icon-search"></i>
         <input class="searchinp" v-model.lazy="keyword" placeholder="请搜索专辑" />
@@ -149,5 +149,10 @@ export default {
   overflow-x:auto; 
   width:100%; 
   height:500px;
+}
+.yangshi{
+  color: #3cced0;
+  padding: 0 2px;
+  font-weight: bold;
 }
 </style>

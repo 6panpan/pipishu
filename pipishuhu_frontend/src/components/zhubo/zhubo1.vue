@@ -8,7 +8,8 @@
           <span>{{userinf[0].userintr}}</span>
         </div>
         <div class="headinf2">
-          <el-button @click="addfollow" type="primary" round>+关注</el-button>
+          <button class="btn btn1" v-if="flag" @click="addfollow" type="primary" round>+关注</button>
+          <button class="btn btn2" @click="delfollow" v-else  type="primary" round>已关注</button>
         </div>
       </div>
     </div>
@@ -32,13 +33,14 @@ export default {
       activeName: "first",
       userinf: [],
       userAlbum:[],
-      
+      mystar:[],
+      flag:true
     };
   },
   created() {
-    // console.log(this.$route.params.u_id);
     this.getAnuserInf();
     this.activeName=this.getCookie("activename")
+    this.getStar()
   },
   methods: {
     handleClick(el) {
@@ -98,7 +100,59 @@ export default {
       }
       return tips;
     },
-   
+    addfollow(){
+      let userId = this.getCookie("user_id");
+       this.$http
+        .post("http://localhost:7001/addfollow", {
+            ufans_id: userId,
+            ustar_id:this.$route.params.u_id
+        })
+        .then((res) => {
+            this.flag=false;
+            this.$router.go(0)
+        })
+        .catch((err) => {
+          console.log(222);
+        });
+    },
+    delfollow(){
+      let userId = this.getCookie("user_id");
+       this.$http
+        .post("http://localhost:7001/delfollow", {
+            ufans_id: userId,
+            ustar_id:this.$route.params.u_id
+        })
+        .then((res) => {
+            this.flag=true;
+            this.$router.go(0)
+        })
+        .catch((err) => {
+          console.log(222);
+        });
+    },
+    getStar(){
+      let userId = this.getCookie("user_id");
+      console.log(userId);
+      let nowUserid=this.$route.params.u_id;
+      console.log(nowUserid);
+      this.$http
+        .get("http://localhost:7001/getStar", {
+          params: {
+            ufans_id: userId,
+          },
+        })
+        .then((res) => {
+          this.mystar = res.data;
+          for (let i = 0; i < this.mystar.length; i++) {
+            if (this.mystar[i].ustar_id==nowUserid) {
+               this.flag=false
+            }
+          }
+        })
+        .catch((err) => {
+          console.log(222);
+        });
+    }
   },
 };
 </script>
@@ -152,5 +206,15 @@ export default {
   /* position: relative; */
 }
 
+.btn{
+  height: 40px;
+  width: 100px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+.btn1{
+  background-color:#3cced0;
+}
 
 </style>
