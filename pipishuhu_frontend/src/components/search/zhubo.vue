@@ -1,7 +1,6 @@
 <template>
   <div>
     <div id="userItem" v-for="item in user" :key="item.id">
-      <!-- {{item.follow}} -->
       <div id="userTop">
         <div @click="tousermain(item.user_id)">
           <img id="userImg" :src="item.userimg" alt />
@@ -11,17 +10,16 @@
           </div>
         </div>
 
-        <div id="attention" @click="attention(item.user_id)">关注</div>
-        <!-- <div
-          v-if="item.follow===1"
+        <div
+          v-if="item.isfollow==1"
           id="delAttention"
-          @click="delAttention(item.user_id,item.follow)"
+          @click="delAttention(item.user_id,item.isfollow)"
         >已关注</div>
         <div
-          v-if="item.follow===0"
+          v-if="item.isfollow==0"
           id="addAttention"
-          @click="attention(item.user_id,item.follow)"
-        >关注</div>-->
+          @click="addattention(item.user_id,item.isfollow)"
+        >关注</div>
       </div>
       <div id="line"></div>
     </div>
@@ -42,10 +40,9 @@ export default {
   props: ["user"],
   created() {
     this.id = this.getByKey("user_id");
-    this.getuserInf();
-  },
-  watch: {
-    myuser: function () {},
+    if(this.id){
+      this.getStar();
+    }
   },
   methods: {
     // 取出用户的cookie具体值
@@ -61,69 +58,8 @@ export default {
       return null;
     },
 
-    tousermain(user_id){
-      this.$router.push(`/zhubo/${user_id}/userindex`)        
-    },
-    // 存在bug,有问题
-    attention(ustar_id) {
-      let el = window.event;
-      if (this.id) {
-        if (!this.changeAttention) {
-          this.$http
-            .post("http://localhost:7001/addfollow", {
-              ustar_id: ustar_id,
-              ufans_id: this.id,
-            })
-            .then((res) => {
-              if (res.data === 1) {
-                el.target.innerHTML = "已关注";
-                this.changeAttention = !this.changeAttention;
-              }
-            })
-            .catch((err) => {
-              console.log("axios请求失败");
-            });
-        } else {
-          this.$http
-            .post("http://localhost:7001/delfollow", {
-              ustar_id: ustar_id,
-              ufans_id: this.id,
-            })
-            .then((res) => {
-              if (res.data === 1) {
-                el.target.innerHTML = "关注";
-                this.changeAttention = !this.changeAttention;
-              }
-            })
-            .catch((err) => {
-              console.log("axios请求失败");
-            });
-        }
-      } else {
-        alert("请先登录");
-      }
-    },
- 
-    // 获取符合关键字的用户信息
-    getuserInf() {
-      this.$http
-        .get("http://localhost:7001/getUserInf", {})
-        .then((res) => {
-          this.userArr = res.data;
-          this.myuser = this.userArr.filter((el) => {
-            return el.nickname.indexOf(`${this.$route.params.kw}`) != -1;
-          });
-
-          this.myuser.forEach((el) => {
-            el.follow = 0;
-          });
-
-          if (this.id) {
-            // 已经登录，取出他关注的主播
-            this.getStar();
-          }
-        })
-        .catch((err) => {});
+    tousermain(user_id) {
+      this.$router.push(`/zhubo/${user_id}/userindex`);
     },
 
     // 获取用户的关注信息
@@ -135,11 +71,10 @@ export default {
           },
         })
         .then((res) => {
-          // console.log(res.data);
           for (let i = 0; i < res.data.length; i++) {
-            for (let j = 0; j < this.myuser.length; j++) {
-              if (res.data[i].ustar_id === this.myuser[j].user_id) {
-                this.myuser[j].follow = 1;
+            for (let j = 0; j < this.user.length; j++) {
+              if (res.data[i].ustar_id === this.user[j].user_id) {
+                this.user[j].isfollow = 1;
               }
             }
           }
@@ -149,7 +84,6 @@ export default {
         });
     },
 
-    // 先放着，后面再来完善
     // 添加关注
     addattention(ustar_id, follow) {
       if (this.id) {
@@ -162,6 +96,7 @@ export default {
             console.log("添");
             if (res.data === 1) {
               follow = 1;
+              this.$router.go(0)
             }
           })
           .catch((err) => {
@@ -180,9 +115,9 @@ export default {
           ufans_id: this.id,
         })
         .then((res) => {
-          // console.log(res.data);
           if (res.data === 1) {
             follow = 0;
+            this.$router.go(0)
           }
         })
         .catch((err) => {
@@ -212,13 +147,7 @@ export default {
   display: inline-block;
 }
 
-#attention {
-  height: 20px;
-  padding: 10px;
-  color: #3cced0;
-  border: 1px solid #3cced0;
-}
-/* #addAttention {
+#addAttention {
   height: 20px;
   padding: 10px;
   color: #3cced0;
@@ -230,7 +159,7 @@ export default {
   padding: 10px;
   color: #c2c2c2;
   border: 1px solid #c2c2c2;
-} */
+}
 .hoverColor {
   font-weight: bolder;
 }
