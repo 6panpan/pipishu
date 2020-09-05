@@ -3,7 +3,6 @@
 const Controller = require("egg").Controller;
 
 class UserController extends Controller {
-
     //注册
     async regist() {
         let tel = this.ctx.request.body.tel;
@@ -19,7 +18,7 @@ class UserController extends Controller {
         let tel = this.ctx.request.body.tel;
         let pwd = this.ctx.request.body.pwd;
         let list = await this.ctx.service.userService.login(tel, pwd);
-        console.log("1")
+        console.log("1");
         this.ctx.response.body = list;
     }
     //注销
@@ -27,12 +26,12 @@ class UserController extends Controller {
         let r = await this.ctx.service.userService.logout(参数);
         this.ctx.response.body = r;
     }
-    //CR// 获取用户信息
+    // 获取用户信息
     async getUserInf() {
         const { ctx } = this;
         ctx.body = await this.ctx.service.userService.getUserInf();
     }
-    //ZY// 根据用户id获取用户信息
+    // 根据用户id获取用户信息
     async getAnuserInf() {
         const { ctx } = this;
         let user_id = this.ctx.request.query.user_id;
