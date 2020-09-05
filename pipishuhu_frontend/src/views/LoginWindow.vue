@@ -20,11 +20,11 @@
           <br />
           <input type="file" id="choose" />
           <br />
-          <button @click="axiosupload">确认</button>
+          <button @click="axiosupload">预览</button>
           <br />电话：
-          <input @keydown.enter="register" type="text" v-model="RegisterPhone" />
+          <input placeholder="11位手机号" @keydown.enter="register" type="text" v-model="RegisterPhone" />
           <br />密码：
-          <input @keydown.enter="register" type="text" v-model="Registerpwd" />
+          <input placeholder="包含大写、小写、数字" @keydown.enter="register" type="text" v-model="Registerpwd" />
           <br />昵称：
           <input @keydown.enter="register" type="text" v-model="Registername" />
           <br />
@@ -59,6 +59,8 @@ export default {
       usersexMan: true,
       usersexWoman: false,
       usersex: "",
+            YZRegisterPhone: false,
+      YZRegisterpwd: false,
     };
   },
   mounted() {
@@ -66,6 +68,20 @@ export default {
       console.log(1);
       this.$emit("myloginF");
     }
+  },
+  watch: {
+    RegisterPhone() {
+      let reg = /^1[3-9]\d{9}$/;
+      if (reg.test(this.RegisterPhone)) {
+        this.YZRegisterPhone = true;
+      }
+    },
+    Registerpwd() {
+      let reg = /^.*(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.{6,}).*$/;
+      if (reg.test(this.Registerpwd)) {
+        this.YZRegisterpwd = true;
+      }
+    },
   },
   methods: {
     closelogin() {
@@ -114,46 +130,63 @@ export default {
       return tips;
     },
     register() {
-      this.$http
-        .post("http://127.0.0.1:7001/regist", {
-          tel: this.RegisterPhone,
-          pwd: this.Registerpwd,
-          nickname: this.Registername,
-          userimg: this.mysrc,
-          sex: this.usersex,
-        })
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.length < 1) {
-            this.Rts = "用户名或密码错误";
-          } else {
-            this.Rts = "";
-            this.$emit("myloginF");
-            alert("注册成功");
-            this.$router.go(0);
-            console.log(document.cookie, 1);
-          }
-        });
+      if (
+        this.mysrc == "" ||
+        this.RegisterPhone == "" ||
+        this.Registerpwd == "" ||
+        this.Registername == "" ||
+        this.usersex == ""
+      ) {
+        alert("输入有误");
+      } else {
+        if (this.YZRegisterPhone && this.YZRegisterpwd) {
+          console.log(this.YZRegisterPhone, this.YZRegisterpwd);
+          this.$http
+            .post("http://127.0.0.1:7001/regist", {
+              tel: this.RegisterPhone,
+              pwd: this.Registerpwd,
+              nickname: this.Registername,
+              userimg: this.mysrc,
+              sex: this.usersex,
+            })
+            .then((res) => {
+              console.log(res.data);
+              if (res.data.length < 1) {
+                this.Rts = "用户名或密码错误";
+              } else {
+                this.Rts = "";
+                this.$emit("myloginF");
+                alert("注册成功");
+                this.$router.go(0);
+                console.log(document.cookie, 1);
+              }
+            });
+        } else {
+          alert("输入格式有误");
+        }
+      }
     },
     axiosupload() {
       let file = document.getElementById("choose").files[0];
-      let formData = new FormData();
-      formData.append("uploadFile", file, file.name);
-      const config = {
-        headers: {
-          "Content-Type":
-            "multipart/form-data;boundary=" + new Date().getTime(),
-        },
-      };
-      this.$http
-        .post("http://127.0.0.1:7001/upload", formData, config)
-        .then((res) => {
-          this.mysrc = res.data;
-          console.log(res.data);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      if (file) {
+        let formData = new FormData();
+        formData.append("uploadFile", file, file.name);
+        const config = {
+          headers: {
+            "Content-Type":
+              "multipart/form-data;boundary=" + new Date().getTime(),
+          },
+        };
+        this.$http
+          .post("http://127.0.0.1:7001/upload", formData, config)
+          .then((res) => {
+            this.mysrc = res.data;
+            console.log(res.data);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
     },
   },
 };

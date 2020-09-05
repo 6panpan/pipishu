@@ -9,7 +9,9 @@ module.exports = app => {
     router.post("/upload", controller.uploadController.upload);
     // 注销
     // router.post("/logout", controller.userController.logout);
-    // 获取用户信息
+    //// 修改个人信息
+    router.get("/modify", controller.userController.modify);
+    //CR// 获取用户信息
     router.get("/getUserInf", controller.userController.getUserInf);
     // 根据用户id获取用户信息
     router.get("/getAnuserInf", controller.userController.getAnuserInf);

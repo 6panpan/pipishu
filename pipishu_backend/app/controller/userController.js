@@ -37,6 +37,16 @@ class UserController extends Controller {
         let user_id = this.ctx.request.query.user_id;
         ctx.body = await this.ctx.service.userService.getAnuserInf(user_id);
     }
+    // 修改信息
+    async modify() {
+        const { ctx } = this;
+        let user_id = this.ctx.request.query.user_id;
+        let tel = this.ctx.request.query.tel;
+        let nickname = this.ctx.request.query.nickname;
+        let userimg = this.ctx.request.query.userimg;
+        let psw = this.ctx.request.query.psw;
+        ctx.body = await this.ctx.service.userService.modify(user_id, tel, nickname, userimg, psw);
+    }
 }
 
 module.exports = UserController;
