@@ -35,7 +35,12 @@ class UserService extends Service {
 		let list = await this.ctx.app.mysql.query(sql,[user_id]);
 		return list;
     }
-
+    // 修改信息
+    async modify(user_id, tel, nickname, userimg, psw) {
+        let sql = "update user set tel=?, nickname=? , userimg=? , psw=? where user_id=?"
+        let list = await this.ctx.app.mysql.query(sql, [tel, nickname, userimg, psw, user_id]);
+        return list.affectedRows;
+    }
 
 
 }

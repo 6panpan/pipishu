@@ -6,7 +6,10 @@
       <el-tab-pane label="声音" name="first">
         <div>
           <ol v-if="audioList">
-            <li class="audioLi" v-for="item in pageAudio" :key="item.id">
+            <li class="audioLi" v-for="(item) in pageAudio" :key="item.id">
+              <i id="iii" class="el-icon-caret-right">
+
+              </i>
               <span class="audioN">{{item.audio_name}}</span>
               <div class="audioA">
                 <i class="el-icon-headset"></i>
@@ -67,8 +70,6 @@ export default {
         .then((res) => {
           this.audioList = res.data;
           this.page = Math.ceil(this.audioList.length / 10);
-          console.log(this.page);
-          console.log(this.audioList.length);
         })
         .catch((err) => {
           console.log(222);
@@ -76,8 +77,6 @@ export default {
     },
     //分页获取这个专辑的audio
     getPageAudio(el) {
-      // let pagenum=el.target.innerHTML?el.target.innerHTML:1
-      // let el=window.event
       let pagenum;
       if (el) {
         pagenum = el.target.innerHTML;
@@ -141,7 +140,12 @@ export default {
 }
 .audioLi:hover .audioN {
   color: #3cced0;
-  cursor: pointer;
+}
+.audioLi:hover{
+   cursor: pointer;
+}
+.audioLi:hover #iii{
+  display: inline-block;
 }
 .audioT {
   float: right;
@@ -153,6 +157,10 @@ export default {
   /* margin-left: 50px; */
   right: -300px;
   /* float: right; */
+}
+
+#iii{
+  display: none;
 }
 
 .chagebtn {

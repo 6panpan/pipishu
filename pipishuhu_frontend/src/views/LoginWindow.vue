@@ -7,9 +7,9 @@
         <span @click="TZregister">注册</span>
         <div class="loginMK" v-if="loginMK">
           账号：
-          <input v-model="loginPhone" type="text" />
+          <input @keydown.enter="login" v-model="loginPhone" type="text" />
           <br />密码：
-          <input v-model="loginPas" type="password" />
+          <input @keydown.enter="login" v-model="loginPas" type="password" />
           <br />
           <span>{{ts}}</span>
           <br />
@@ -20,17 +20,19 @@
           <br />
           <input type="file" id="choose" />
           <br />
-          <button @click="axiosupload">确认</button>
+          <button @click="axiosupload">预览</button>
           <br />电话：
-          <input type="text" v-model="RegisterPhone" />
+          <input placeholder="11位手机号" @keydown.enter="register" type="text" v-model="RegisterPhone" />
           <br />密码：
-          <input type="text" v-model="Registerpwd" />
+          <input placeholder="包含大写、小写、数字" @keydown.enter="register" type="text" v-model="Registerpwd" />
           <br />昵称：
-          <input type="text" v-model="Registername" />
+          <input @keydown.enter="register" type="text" v-model="Registername" />
           <br />
-          <input type="radio" id="usersexMan" value="男" v-model="usersex" />
+          <input @keydown.enter="register" type="radio" id="usersexMan" value="男" v-model="usersex" />
           <label for="usersexMan">男</label>
-          <input type="radio" id="usersexWoman" value="女" v-model="usersex" />
+          <input @keydown.enter="register" type="radio"
+            id="usersexWoman" value="女"
+            v-model="usersex" />
           <label for="usersexWoman">女</label>
           <br />
           <span>{{Rts}}</span>
@@ -57,13 +59,29 @@ export default {
       usersexMan: true,
       usersexWoman: false,
       usersex: "",
+            YZRegisterPhone: false,
+      YZRegisterpwd: false,
     };
   },
   mounted() {
-    if (document.cookie) {
+    if (this.GetCookie("user_id")) {
       console.log(1);
       this.$emit("myloginF");
     }
+  },
+  watch: {
+    RegisterPhone() {
+      let reg = /^1[3-9]\d{9}$/;
+      if (reg.test(this.RegisterPhone)) {
+        this.YZRegisterPhone = true;
+      }
+    },
+    Registerpwd() {
+      let reg = /^.*(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.{6,}).*$/;
+      if (reg.test(this.Registerpwd)) {
+        this.YZRegisterpwd = true;
+      }
+    },
   },
   methods: {
     closelogin() {
@@ -96,45 +114,79 @@ export default {
           }
         });
     },
+    GetCookie: function (key) {
+      let getCookie = document.cookie.replace(/[ ]/g, ""); //获取cookie，并且将获得的cookie格式化，去掉空格字符
+      let arrCookie = getCookie.split(";"); //将获得的cookie以"分号"为标识 将cookie保存到arrCookie的数组中
+      let tips; //声明变量tips
+      for (let i = 0; i < arrCookie.length; i++) {
+        //使用for循环查找cookie中的tips变量
+        let arr = arrCookie[i].split("="); //将单条cookie用"等号"为标识，将单条cookie保存为arr数组
+        if (key == arr[0]) {
+          //匹配变量名称，其中arr[0]是指的cookie名称，如果该条变量为tips则执行判断语句中的赋值操作
+          tips = arr[1]; //将cookie的值赋给变量tips
+          break; //终止for循环遍历
+        }
+      }
+      return tips;
+    },
     register() {
-      this.$http
-        .post("http://127.0.0.1:7001/regist", {
-          tel: this.RegisterPhone,
-          pwd: this.Registerpwd,
-          nickname: this.Registername,
-          userimg: this.mysrc,
-          sex: this.usersex,
-        })
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.length < 1) {
-            this.Rts = "用户名或密码错误";
-          } else {
-            this.Rts = "";
-            this.$emit("myloginF");
-            console.log(document.cookie, 1);
-          }
-        });
+      if (
+        this.mysrc == "" ||
+        this.RegisterPhone == "" ||
+        this.Registerpwd == "" ||
+        this.Registername == "" ||
+        this.usersex == ""
+      ) {
+        alert("输入有误");
+      } else {
+        if (this.YZRegisterPhone && this.YZRegisterpwd) {
+          console.log(this.YZRegisterPhone, this.YZRegisterpwd);
+          this.$http
+            .post("http://127.0.0.1:7001/regist", {
+              tel: this.RegisterPhone,
+              pwd: this.Registerpwd,
+              nickname: this.Registername,
+              userimg: this.mysrc,
+              sex: this.usersex,
+            })
+            .then((res) => {
+              console.log(res.data);
+              if (res.data.length < 1) {
+                this.Rts = "用户名或密码错误";
+              } else {
+                this.Rts = "";
+                this.$emit("myloginF");
+                alert("注册成功");
+                this.$router.go(0);
+                console.log(document.cookie, 1);
+              }
+            });
+        } else {
+          alert("输入格式有误");
+        }
+      }
     },
     axiosupload() {
       let file = document.getElementById("choose").files[0];
-      let formData = new FormData();
-      formData.append("uploadFile", file, file.name);
-      const config = {
-        headers: {
-          "Content-Type":
-            "multipart/form-data;boundary=" + new Date().getTime(),
-        },
-      };
-      this.$http
-        .post("http://127.0.0.1:7001/upload", formData, config)
-        .then((res) => {
-          this.mysrc = res.data;
-          console.log(res.data);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      if (file) {
+        let formData = new FormData();
+        formData.append("uploadFile", file, file.name);
+        const config = {
+          headers: {
+            "Content-Type":
+              "multipart/form-data;boundary=" + new Date().getTime(),
+          },
+        };
+        this.$http
+          .post("http://127.0.0.1:7001/upload", formData, config)
+          .then((res) => {
+            this.mysrc = res.data;
+            console.log(res.data);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
     },
   },
 };

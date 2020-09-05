@@ -1,11 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import rankcon from '../views/rankcon.vue'
-import rankconItem from '../components/rankconItem.vue'
-import rankItemXiangSheng from '../components/rankItemXiangSheng.vue'
-import rankItemYuLe from '../components/rankItemYuLe.vue'
-import rankItemErTong from '../components/rankItemErTong.vue'
-
+import rankcon from "../views/rankcon.vue";
+import rankconItem from "../components/rankconItem.vue";
+import rankItemXiangSheng from "../components/rankItemXiangSheng.vue";
+import rankItemYuLe from "../components/rankItemYuLe.vue";
+import rankItemErTong from "../components/rankItemErTong.vue";
 import youshengshu from "../components/youshengshu/youshengshu.vue";
 import audioItem from "../components/audio/audioItem.vue"
 
@@ -29,6 +28,7 @@ import subscribed from "../components/my/subscribed.vue"
 import listened from "../components/my/listened.vue"
 import buy from "../components/my/buy.vue"
 import like from "../components/my/like.vue"
+import usermodify from "../components/my/usermodify.vue"
 
 Vue.use(VueRouter);
 
@@ -54,7 +54,8 @@ const routes = [
           { path: "subscribed", component: subscribed },
           { path: "listened", component: listened },
           { path: "buy", component: buy },
-          { path: "like", component: like }
+          { path: "like", component: like },
+          { path: "usermodify", component: usermodify },
         ]
     },
     //APP下载
@@ -67,7 +68,7 @@ const routes = [
         path: "/search",
         component: Search,
     },
-    //个人中心 
+    //个人中心
     {
         path: "/center",
         component: Center,
@@ -78,7 +79,7 @@ const routes = [
       component: uploading,
     },
     {
-        path: '/rankcon',
+        path: "/rankcon",
         component: rankcon,
         children: [
             { path: "rankconItem", component: rankconItem },
@@ -87,9 +88,8 @@ const routes = [
             { path: "rankItemErTong", component: rankItemErTong },
             { path: "rankItemYuLe", component: rankItemYuLe },
             { path: "rankItemYuLe", component: rankItemYuLe },
-            { path: '/', redirect: "rankconItem" }
+            { path: "/", redirect: "rankconItem" },
         ],
- 
     },
     // 有声书
   { 

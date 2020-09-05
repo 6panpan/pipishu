@@ -34,6 +34,7 @@
         </el-collapse>
       </div>
     </div>
+     <loginwindow @myloginF="myloginzz" v-if='login==1'></loginwindow>
   </div>
 </template>
 
@@ -41,8 +42,7 @@
 export default {
   created() {
     // console.log(this.$route.params.album_id);
-    this.id = this.GetCookie("id");
-    console.log(this.id);
+    this.id = this.GetCookie("user_id");
     this.getoneAlbum();
   },
   data: function () {
@@ -56,12 +56,17 @@ export default {
       // 用户登录id
       id: 0,
       // 收藏为1，未收藏为0
-      collect:0
+      collect:0,
+      login:0
     };
   },
   methods: {
     tomain() {
       return this.$route.push("/");
+    },
+
+   myloginzz:function(){
+      this.login = 0
     },
 
     // 获取专辑所有信息
@@ -74,7 +79,6 @@ export default {
         })
         .then((res) => {
           this.list = res.data;
-          console.log(this.list[0]);
           this.getUser(this.id,this.list[0].album_id);
         })
         .catch((err) => {
@@ -83,13 +87,11 @@ export default {
     },
     // 点击收藏判断用户是否存在
     addcollect: function (al_id) {
-      console.log(al_id);
       this.judgeUser(this.id, al_id);
     },
 
     // 点击删除收藏
     delcollect: function (al_id) {
-      console.log(al_id);
       this.delCollect11(this.id, al_id);
     },
     // 获取用户登录信息
@@ -101,9 +103,6 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res.data[0]);
-          console.log(id);
-          console.log(album_id);
           if (res.data[0]) {
             // console.log("用户存在");
             // 获取用户收藏信息
@@ -117,7 +116,6 @@ export default {
 
     // 获取用户收藏信息
     getUserCollect(us_id,album_id) {
-      console.log(album_id);
       this.$http
         .get("http://127.0.0.1:7001/getUserCollect", {
           params: {
@@ -127,10 +125,10 @@ export default {
         })
         .then((res) => {
           // 判断专辑id是否是用户收藏
-          console.log("-------获取用户收藏--------");
-          console.log(res.data[0].al_id);
+          // console.log("-------获取用户收藏--------");
+          // console.log(res.data[0].al_id);
           if(res.data[0].al_id) {
-            console.log("用户收藏了此专辑");
+            // console.log("用户收藏了此专辑");
             this.collect=1;
           }
           // for (let i = 0; i < this.ranklist.length; i++) {
@@ -180,7 +178,7 @@ export default {
             console.log("用户存在");
           } else {
             console.log("用户不存在");
-            // 弹出登录框
+            this.login=1;
           }
         })
         .catch((err) => {

@@ -15,10 +15,14 @@
         </li>
         <li>
           <router-link to>
-            <input type="text" class="mysearchC" v-model="mysearchnr" />
+            <input
+              type="text"
+              @keydown.enter="mysearchKeywords"
+              class="mysearchC"
+              v-model="mysearchnr"
+            />
           </router-link>
-          <el-button @click="mysearchKeywords
-" icon="el-icon-search" class="mysearchbutton"></el-button>
+          <el-button @click="mysearchKeywords" icon="el-icon-search" class="mysearchbutton"></el-button>
         </li>
         <li>
           <router-link to="/my">
@@ -26,12 +30,15 @@
           </router-link>
         </li>
         <li>
-          <router-link to="/uploading">上传作品</router-link>
+          <span class="shangchuan" @click="userLogin">上传作品</span>
+          <!-- <span class="shangchuan">上传作品</span> -->
         </li>
       </ul>
     </div>
     <div class="kong"></div>
     <router-view />
+    <player />
+    <loginwindow @myloginF="myloginzz" v-if="login==1"></loginwindow>
   </div>
 </template>
 <script>
@@ -41,6 +48,7 @@ export default {
     return {
       UserImg: UserImg,
       mysearchnr: "",
+      login: 0,
     };
   },
   watch: {
@@ -53,6 +61,7 @@ export default {
     mysearchKeywords() {
       console.log(this.mysearchnr);
       this.$router.push(`/search/${this.mysearchnr}`);
+      this.$router.go(0);
     },
     getByKey(key) {
       let name = key + "=";
@@ -65,20 +74,35 @@ export default {
       }
       return null;
     },
+    myloginzz() {
+      this.login = 0;
+    },
+    userLogin() {
+      if (this.getByKey("user_id")) {
+        let path = "/uploading";
+        this.$router.push(path);
+      } else {
+        this.login = 1;
+      }
+    },
+    getmyuserimg() {
+     this.$http
+      .get("http://127.0.0.1:7001/getAnuserInf", {
+        params: {
+          user_id: this.getByKey("user_id"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        this.UserImg = res.data[0].userimg;
+      });
   },
+  },
+  
   mounted() {
     if (document.cookie) {
       console.log(this.getByKey("user_id"));
-      this.$http
-        .get("http://127.0.0.1:7001/getAnuserInf", {
-          params: {
-            user_id: this.getByKey("user_id"),
-          },
-        })
-        .then((res) => {
-          console.log(res.data);
-          this.UserImg = res.data[0].userimg;
-        });
+      this.getmyuserimg();
     }
   },
 };
@@ -104,7 +128,6 @@ export default {
     color: #2c3e50;
     font-size: 25px;
     text-decoration: none;
-
     &.router-link-exact-active {
       color: #3cced0;
     }
@@ -120,9 +143,10 @@ export default {
   float: left;
 }
 .myul {
+  min-width: 1200px;
   overflow: hidden;
   list-style: none;
-  margin: 0 200px;
+  margin: 0 185px;
   height: 70px;
 }
 
@@ -159,6 +183,11 @@ export default {
   position: relative;
   top: -2px;
 }
-
-
+.shangchuan {
+  display: inline-block;
+  font-size: 25px;
+}
+.shangchuan:hover {
+  cursor: pointer;
+}
 </style>

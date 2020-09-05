@@ -65,6 +65,13 @@ class AlbumController extends Controller {
         ctx.body = await this.ctx.service.albumService.getAlbumByCollect(al_id)
     }
 
+    // HJX修改专辑最新音频
+    async changeAlbumLatest() {
+        const { ctx } = this;
+        let al_id = this.ctx.request.body.al_id;
+        let latest_audio = this.ctx.request.body.latest_audio;
+        ctx.body = await this.ctx.service.albumService.changeAlbumLatest(latest_audio,al_id)
+    }
 
 }
 module.exports = AlbumController

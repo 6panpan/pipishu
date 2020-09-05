@@ -48,7 +48,6 @@ export default {
         .get("http://localhost:7001/getUserInf", {})
         .then((res) => {
           this.alluser = res.data;
-          console.log(this.alluser);
            this.getfollow(),
         this.getStar()
         })
@@ -91,7 +90,6 @@ export default {
               }
             }
           }
-          console.log(this.hisfans);
           
         })
         .catch((err) => {

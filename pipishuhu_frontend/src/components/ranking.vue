@@ -25,7 +25,6 @@ export default {
   methods: {
     Torankcon(el) {
       console.log(el.target.innerHTML);
-      document.cookie = "id=2";
       let path;
       switch (el.target.innerHTML) {
         case "有声书排行榜":

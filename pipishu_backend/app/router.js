@@ -6,15 +6,15 @@ module.exports = app => {
     //// 登录
     router.post("/login", controller.userController.login);
     // 获取图片
-    router.post('/upload', controller.uploadController.upload);
+    router.post("/upload", controller.uploadController.upload);
     //// 注销
     // router.post("/logout", controller.userController.logout);
+    //// 修改个人信息
+    router.get("/modify", controller.userController.modify);
     //CR// 获取用户信息
     router.get("/getUserInf", controller.userController.getUserInf);
     //ZY// 根据用户id获取用户信息
     router.get("/getAnuserInf", controller.userController.getAnuserInf);
-
-
 
     //专辑相关路由
     //CR// 获取全部专辑
@@ -30,34 +30,37 @@ module.exports = app => {
     //ZY// 根据专辑id获取专辑
     router.get("/getoneAlbum", controller.albumController.getoneAlbum);
     // 取出播放量最多的前10位专辑
-    router.get('/getRankAlbumTen', controller.albumController.getRankAlbumTen);
+    router.get("/getRankAlbumTen", controller.albumController.getRankAlbumTen);
     // HJX根据用户收藏id取出专辑信息
-    router.get('/getAlbumByCollect', controller.albumController.getAlbumByCollect);
-    
-
+    router.get("/getAlbumByCollect", controller.albumController.getAlbumByCollect);
+    // HJX修改专辑最新音频
+    router.post("/changeAlbumLatest", controller.albumController.changeAlbumLatest);
 
     //音频相关路由
     //CR// 获取所有音频
     router.get("/getAudio", controller.audioController.getAudio);
 
     //ZY//根据专辑id取出对应audio
-    router.get('/getSomeAudio', controller.audioController.getSomeAudio);
+    router.get("/getSomeAudio", controller.audioController.getSomeAudio);
 
     //ZY//根据专辑id取出分页专辑里的audio
     router.get('/getPageAudio', controller.audioController.getPageAudio);
 
+    //HJX//上传音频
+    router.post('/uploadAudio', controller.audioController.uploadAudio);
+
+
 
     //收藏相关路由
-     // 添加收藏
-     router.post("/addCollect", controller.collectController.addCollect);
-     // 删除
-     router.get("/delCollect", controller.collectController.delCollect);
-     // 排行榜获取用户收藏专辑id
-     router.get("/getUserCollect", controller.collectController.getUserCollect);
-     // 获取用户收藏所有专辑id
-     router.get("/getAllUserCollect", controller.collectController.getAllUserCollect);
+    // 添加收藏
+    router.post("/addCollect", controller.collectController.addCollect);
+    // 删除
+    router.get("/delCollect", controller.collectController.delCollect);
+    // 排行榜获取用户收藏专辑id
+    router.get("/getUserCollect", controller.collectController.getUserCollect);
+    // 获取用户收藏所有专辑id
+    router.get("/getAllUserCollect", controller.collectController.getAllUserCollect);
 
-     
     //关注相关路由
     //// 关注
     router.post("/addfollow", controller.followController.addfollow);
@@ -68,6 +71,8 @@ module.exports = app => {
 
     //ZY// 获取关注者
     router.get("/getStar", controller.followController.getStar);
+    //ZY//获取所有被关注者id(不限次数)
+    router.get("/getAllStar", controller.followController.getAllStar);
 
-    router.get('/getAlbumByKind', controller.albumController.getAlbumByKind);
-}
+    router.get("/getAlbumByKind", controller.albumController.getAlbumByKind);
+};

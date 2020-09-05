@@ -23,5 +23,10 @@ class AudioController extends Controller {
         let pagenum = this.ctx.request.query.pagenum;
         ctx.body = await this.ctx.service.audioService.getPageAudio(a_id,pagenum)
     }
+    // HJX上传文音频
+    async uploadAudio() {
+      let newUrl = await this.ctx.service.audioService.uploadAudio();
+      this.ctx.response.body = newUrl;
+  }
 }
 module.exports = AudioController;

@@ -1,5 +1,7 @@
 #忽略node_modules
 /node_modules
+#忽略run文件夹
+/run
 # Logs
 logs
 *.log
