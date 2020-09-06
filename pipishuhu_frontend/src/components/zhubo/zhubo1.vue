@@ -102,7 +102,8 @@ export default {
     },
     addfollow(){
       let userId = this.getCookie("user_id");
-       this.$http
+      if (userId) {
+        this.$http
         .post("http://localhost:7001/addfollow", {
             ufans_id: userId,
             ustar_id:this.$route.params.u_id
@@ -114,6 +115,9 @@ export default {
         .catch((err) => {
           console.log(222);
         });
+      }else{
+        alert("请先登录")
+      }
     },
     delfollow(){
       let userId = this.getCookie("user_id");
