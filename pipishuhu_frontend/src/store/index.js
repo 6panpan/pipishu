@@ -8,15 +8,15 @@ export default new Vuex.Store({
         songs: [
             {
                 id: 0,
-                name: "《夜色钢琴曲》杨花落尽子规啼1111111111",
+                name: "《夜色钢琴曲》杨花落尽子规啼",
                 src:
                     "https://aod.cos.tx.xmcdn.com/group86/M03/1E/B8/wKg5IF72vT7Qx6XGABAl5XXVSS8817.m4a",
             },
             {
                 id: 1,
-                name: "今日说法",
+                name: "中国古典纯音乐 — 禅意静心",
                 src:
-                    "https://aod.cos.tx.xmcdn.com/group62/M08/E2/C4/wKgMZ10XalSTUIA4AIY_fqxrkIw813.m4a",
+                    "https://aod.cos.tx.xmcdn.com/group86/M0B/DB/93/wKg5IF9RtvuS1q8WAG-blbRvKdk225.m4a",
             },
             {
                 id: 2,
@@ -26,9 +26,9 @@ export default new Vuex.Store({
             },
             {
                 id: 3,
-                name: "Have A Nice Day",
+                name: "南都快讯-梅西宣布留队：做不到和巴萨闹上法庭，孩子们哭着求我别走",
                 src:
-                    "https://aod.cos.tx.xmcdn.com/group86/M03/1E/B8/wKg5IF72vT7Qx6XGABAl5XXVSS8817.m4a",
+                    "https://aod.cos.tx.xmcdn.com/group86/M0B/DB/93/wKg5IF9RtvuS1q8WAG-blbRvKdk225.m4a",
             },
         ],
         currentIndex: 0,

@@ -2,7 +2,7 @@
   <div>
     <div>
       <div class="topbox">
-        <span>TA共有关注了{{starLen}}人</span>
+        <span>TA共有关注了<span class="yangshi">{{starLen}}</span>人</span>
         <!-- <div><i class="el-icon-search"></i><input @click="serchAlb" class="searchinp"  placeholder="请搜索专辑"></div> -->
       </div>
       <hr />
@@ -140,5 +140,10 @@ export default {
   overflow-x:auto; 
   width:100%; 
   height:500px;
+}
+.yangshi{
+  color: #3cced0;
+  padding: 0 2px;
+  font-weight: bold;
 }
 </style>
