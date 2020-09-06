@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="box">
-      <h3 @click="changePath">{{kind}}飙升榜</h3>
+      <h3 @click="changePath">{{kind}}推荐榜</h3>
       <br />
       <ul>
         <li v-for="item in albnum1" :key="item.id" class="ol1" @click="ToAlbumintr(item)">
@@ -11,7 +11,7 @@
               <em class="triangle"></em>
             </span>
             <img class="img1" :src="item.album_url" alt />
-            <img class="img2" src="../assets/img/play1.png" alt />
+            <img class="img2" src="../assets/img/play2.png" alt />
             <div class="album_inf">
               <b>{{item.album_name}}</b>
               <br />
