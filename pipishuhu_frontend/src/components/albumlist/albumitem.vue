@@ -103,12 +103,11 @@ export default {
 
 #albumName {
   width: 100%;
+  display: inline-block;
   font-weight: bolder;
-  overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .hoverColor:hover {

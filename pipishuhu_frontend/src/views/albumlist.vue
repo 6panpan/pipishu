@@ -131,11 +131,12 @@ export default {
 }
 
 #album {
-  margin-bottom: 30px;
+  margin-bottom: 46px;
   width: 100%;
   font-size: 14px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
 </style>
